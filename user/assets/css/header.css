@@ -14,28 +14,40 @@
 }
 /* logo + name logo */
 .box-logo{
-    width: 10%;
+    width: 190px;
     height: 100%;
     border: none;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.logo{
-    width:50%;
+.logo-1{
     height: 100%;
 }
+.logo-2{
+    width:40px;
+    height:100%;
+    margin-left: 33px;
+    
+}
+
+
+  
 .logo-name{
-    width: 50%;
+    width: 80px;
     height: 100%;
     color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* thanh search */
 .search{
-    width: 80%;
+    width: 1300px;
     height: 100%;
     display: flex;
+    margin-left: 50px;
 }
 .search input{
     width:80%;
@@ -51,11 +63,12 @@
 
 /* thong bao */
 .notification{
-    width:10%;
+    width:40px;
     height:100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-left:85px;
 }
 .notification i{
     width: 100%;

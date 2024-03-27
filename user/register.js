@@ -12,7 +12,7 @@ function Validator(options) {
         var errorElement = getParents(inputElement, options.formGroupSelector).querySelector(options.errorSelector); 
         var errorMessage;
         var rules = selectorRules[rule.selector];
-        for (var i = 0; i < rules.length; i++) {
+        for (var i = 0; i < rules.length; i++)  {
             switch (inputElement.type) {
                 case 'radio':
                 case 'checkbox':

@@ -99,6 +99,18 @@
         </div>
     </div>
     <script>
+        function changeColor(element,element_type) {
+            var icon = element.querySelector(element_type);
+    
+            if (icon.style.color === 'red') {
+                icon.style.color = 'white';
+            } else {
+                icon.style.color = 'red'; 
+                setTimeout(function() {
+                    icon.style.color = 'white'; 
+                }, 200);
+            }
+        }
         fetch('../components/header.html')
             .then(response => response.text())
             .then(data => {

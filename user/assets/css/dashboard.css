@@ -24,7 +24,6 @@
 /* thng bao */
 .box-notification{
     height: 250px;
-    /* background-color:white; */
     padding: 10px;
     margin: 10px;
     display: flex;
@@ -68,7 +67,6 @@
 
 .box-histore{
     height: 550px;
-    /* background-color:white; */
     padding: 10px;
     margin: 20px;
     display: flex;

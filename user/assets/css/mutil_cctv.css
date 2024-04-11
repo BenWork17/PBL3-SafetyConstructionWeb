@@ -1,0 +1,206 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.wrapper{
+    width: 100vw;
+    height: 100vh;
+    padding-top: 40px;
+    padding-left: 70px;
+    overflow: hidden;
+    display: flex;
+}
+.item-list{
+    width: 300px;
+    height: 100vh;
+    background-color: white;
+} 
+.item-title{
+    padding: 10px;
+    font-size: 20px;
+    margin-top:30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+hr{
+    margin:0px 10px;
+}
+.item-cctv-view-all{
+    padding: 10px;
+    margin:10px 10px;
+    display: flex;
+    background-color: #c5c2c7;
+    border-radius: 10px;
+    cursor:pointer;
+}
+.item-cctv-view-all.clicked{
+    background-color: aqua;
+}
+.item-site-A{
+    padding: 10px;
+    margin:10px 10px;
+    display: flex;
+    background-color: #c5c2c7;
+    border-radius: 10px;
+    cursor:pointer;
+
+}
+.item-site-A.clicked{
+    background-color: aqua;
+}
+.item-site-B{
+    padding: 10px;
+    margin:10px 10px;
+    display: flex;
+    background-color: #c5c2c7;
+    border-radius: 10px;
+    cursor:pointer;
+
+}
+.item-site-B.clicked{
+    background-color: aqua;
+}
+.item-underground-vertical-zone{
+    padding: 10px;
+    margin:10px 10px;
+    display: flex;
+    background-color: #c5c2c7;
+    border-radius: 10px;
+    cursor:pointer;
+
+}
+.item-underground-vertical-zone.clicked{
+    background-color: aqua;
+}
+
+.item-show-bookmark{
+    padding: 10px;
+    margin:10px 10px;
+    display: flex;
+    background-color: #c5c2c7;
+    border-radius: 10px;
+    cursor:pointer;
+
+}
+.item-show-bookmark.clicked{
+    background-color: aqua;
+}
+.incon{
+    width:40px;
+    height:20px;
+}
+.svg-mutil_cctv{
+    width: 100%;
+    height: 100%;
+    padding:0px;
+    fill:black;
+}
+.box-content{
+    width: 100vw;
+    height: 100vh;
+    background-color:#c5c2c7 ;
+}
+.title-content{
+    height: 72px;
+    padding-top: 30px;
+    padding-left: 30px;
+    display: flex;
+    justify-content:left;
+    align-items: center;
+}
+.cctv-view{
+    height: 750px;
+    background-color: white;
+    border-radius: 10px;
+    margin: 0px 30px;
+    padding-top:30px ;
+}
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.cctv-view-content {
+    border-radius: 10px;
+    margin: 0px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px; 
+}
+.show-bookmark{
+    border-radius: 10px;
+    margin: 0px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px; 
+}
+.item {
+    width: calc(25% - 10px); 
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 1px;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.page-link {
+    margin: 0 10px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.item-view-cctv{
+    height:200px ;
+    background-color: #c5c2c7;
+    border-radius: 10px;
+}
+.item-information{
+    height: 55px;
+    background-color: #dddcdc;
+    border-radius: 5px;
+}
+.element-type{
+    height:50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+}
+.element-icon{
+    width: 15px;
+    height:15px;
+    background-color: red;
+    border-radius: 50%;
+}
+.element-area{
+    width: 50px;
+    margin:0px 10px;
+}
+.element-name-cctv{
+    width: 50px;
+    margin-left: 10px;
+}
+.element-status-cctv{
+    width: 100px;
+    margin-left: 10px;
+}
+.element-bookmark{
+    width: 20px;
+}
+.element-notifications{
+    height:50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.button-notifications{
+    width: 100%;
+}

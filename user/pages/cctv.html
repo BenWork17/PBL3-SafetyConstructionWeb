@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,10 @@
     <title>Document </title>
 
 </head>
+
 <body>
     <div id="header"></div>
-    
+
     <div class="wrapper">
         <div class="box-title">
             <span>CCTV</span>
@@ -20,20 +22,26 @@
                 <!-- cctv -->
                 <div class="box-cctv">
                     <div class="box-selects">
-                        <div class="select">
-                            <div class="select-area">
-                                <button id="select-area">SITEA</button>
+                        <div class="selectss">
+                            <div class="select1">
+                                <select class="customSelect" id="customSelect1">
+                                </select>
                             </div>
-                            <div class="select-cam">
-                                <button id="select-cam">CH01</button>
+                            <div class="select2">
+                                <select class=" customSelect" id="customSelect2">
+                                </select>
                             </div>
-
                         </div>
                         <div class="add">
-                            <h3 class="add-p">+</h3><p class="add-p">Add Work/Hazard Zone</p>
+                            <h3 class="add-p">+</h3>
+                            <p class="add-p">Add Work/Hazard Zone</p>
                         </div>
                     </div>
-                    <div class="cctv"></div>
+                    <div class="cctv">
+                        <iframe class="video-cctv" frameborder="0" type="text/html"
+                            src="https://www.dailymotion.com/embed/video/x8wr5wi?autoplay=1" width="100%" height="100%"
+                            allowfullscreen title="Dailymotion Video Player" allow="autoplay"> </iframe>
+                    </div>
                 </div>
                 <!--history  -->
                 <div class="box-history">
@@ -48,9 +56,9 @@
                                     <p class="time-element" id="month"></p>
                                     <p class="title-element">/</p>
                                     <p class="time-element" id="year"></p>
-                        
+
                                 </div>
-                                <div class="time" >
+                                <div class="time">
                                     <p class="title-element">Time:</p>
                                     <p class="time-element" id="hour"></p>
                                     <p class="title-element">:</p>
@@ -98,7 +106,7 @@
             .catch(error => console.error('Error fetching header:', error));
     </script> -->
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             fetch('../components/header.html')
                 .then(response => response.text())
                 .then(data => {
@@ -110,128 +118,177 @@
 
     <script>
         const listHistory = [
-        {
-            name: "thanh_lam",
-            price: 10
-        },            {
-            name: "thanh_lam",
-            price: 10
-        },            {
-            name: "thanh_lam",
-            price: 10
-        },
-        {
-            name: "thanh_lam",
-            price: 10
-        },
-        {
-            name: "thanh_lam",
-            price: 10
-        },            {
-            name: "thanh_lam",
-            price: 10
-        },            {
-            name: "thanh_lam",
-            price: 10
-        },            {
-            name: "thanh_lam",
-            price: 10
-        },            {
-            name: "thanh_lam",
-            price: 10
-        },
-        {
-            name: "thanh_lam",
-            price: 10
-        },
-        {
-            name: "thanh_lam",
-            price: 10
-        },            {
-            name: "thanh_lam",
-            price: 10
-        },            {
-            name: "thanh_lam",
-            price: 10
-        },            {
-            name: "thanh_lam",
-            price: 10
-        },            {
-            name: "thanh_lam",
-            price: 10
-        },
-        {
-            name: "thanh_lam",
-            price: 10
-        },
-        {
-            name: "thanh_lam",
-            price: 10
-        },            {
-            name: "thanh_lam",
-            price: 10
-        },            {
-            name: "thanh_lam",
-            price: 10
-        },            {
-            name: "thanh_lam",
-            price: 10
-        },            {
-            name: "thanh_lam",
-            price: 10
-        },
-        {
-            name: "thanh_lam",
-            price: 10
-        },
-        {
-            name: "thanh_lam",
-            price: 10
-        },            {
-            name: "thanh_lam",
-            price: 10
-        },            {
-            name: "thanh_lam",
-            price: 10
-        },            {
-            name: "thanh_lam",
-            price: 10
-        },            {
-            name: "thanh_lam",
-            price: 10
-        },
-        {
-            name: "thanh_lam",
-            price: 10
-        },
-        {
-            name: "thanh_lam",
-            price: 10
-        },            {
-            name: "thanh_lam",
-            price: 10
-        },            {
-            name: "thanh_lam",
-            price: 10
-        },            {
-            name: "thanh_lam",
-            price: 10
-        },            {
-            name: "thanh_lam",
-            price: 10
-        },
-        {
-            name: "thanh_lam",
-            price: 10
-        },
-        {
-            name: "thanh_lam",
-            price: 10
-        },            {
-            name: "thanh_lam",
-            price: 10
-        },
+            {
+                name: "thanh_lam",
+                price: 10
+            }, {
+                name: "thanh_lam",
+                price: 10
+            }, {
+                name: "thanh_lam",
+                price: 10
+            },
+            {
+                name: "thanh_lam",
+                price: 10
+            },
+            {
+                name: "thanh_lam",
+                price: 10
+            }, {
+                name: "thanh_lam",
+                price: 10
+            }, {
+                name: "thanh_lam",
+                price: 10
+            }, {
+                name: "thanh_lam",
+                price: 10
+            }, {
+                name: "thanh_lam",
+                price: 10
+            },
+            {
+                name: "thanh_lam",
+                price: 10
+            },
+            {
+                name: "thanh_lam",
+                price: 10
+            }, {
+                name: "thanh_lam",
+                price: 10
+            }, {
+                name: "thanh_lam",
+                price: 10
+            }, {
+                name: "thanh_lam",
+                price: 10
+            }, {
+                name: "thanh_lam",
+                price: 10
+            },
+            {
+                name: "thanh_lam",
+                price: 10
+            },
+            {
+                name: "thanh_lam",
+                price: 10
+            }, {
+                name: "thanh_lam",
+                price: 10
+            }, {
+                name: "thanh_lam",
+                price: 10
+            }, {
+                name: "thanh_lam",
+                price: 10
+            }, {
+                name: "thanh_lam",
+                price: 10
+            },
+            {
+                name: "thanh_lam",
+                price: 10
+            },
+            {
+                name: "thanh_lam",
+                price: 10
+            }, {
+                name: "thanh_lam",
+                price: 10
+            }, {
+                name: "thanh_lam",
+                price: 10
+            }, {
+                name: "thanh_lam",
+                price: 10
+            }, {
+                name: "thanh_lam",
+                price: 10
+            },
+            {
+                name: "thanh_lam",
+                price: 10
+            },
+            {
+                name: "thanh_lam",
+                price: 10
+            }, {
+                name: "thanh_lam",
+                price: 10
+            }, {
+                name: "thanh_lam",
+                price: 10
+            }, {
+                name: "thanh_lam",
+                price: 10
+            }, {
+                name: "thanh_lam",
+                price: 10
+            },
+            {
+                name: "thanh_lam",
+                price: 10
+            },
+            {
+                name: "thanh_lam",
+                price: 10
+            }, {
+                name: "thanh_lam",
+                price: 10
+            },
         ]
+        const Data = [
+            { id: 8, name: 'Item 8', area: 'CH-A', videoLink: 'https://www.dailymotion.com/embed/video/x8wr5wi?autoplay=1' },
+            { id: 2, name: 'Item 2', area: 'CH-B' },
+            { id: 3, name: 'Item 3', videoLink: 'https://www.dailymotion.com/embed/video/x8wr5wi?autoplay=1' },
+            { id: 4, name: 'Item 4' },
+            { id: 5, name: 'Item 5' },
+            { id: 6, name: 'Item 6' },
+            { id: 7, name: 'Item 7' },
+            { id: 8, name: 'Item 8' },
+            { id: 2, name: 'Item 2' },
+            { id: 3, name: 'Item 3' },
+            { id: 4, name: 'Item 4' },
+            { id: 5, name: 'Item 5' },
+            { id: 6, name: 'Item 6' },
+            { id: 7, name: 'Item 7' },
+            { id: 8, name: 'Item 8' },
+            { id: 2, name: 'Item 2' },
+            { id: 3, name: 'Item 3' },
+            { id: 4, name: 'Item 4' },
+            { id: 5, name: 'Item 5' },
+            { id: 6, name: 'Item 6' },
+            { id: 7, name: 'Item 7' },
+            { id: 8, name: 'Item 8' },
+            { id: 1, name: 'Item 1' },
+            { id: 2, name: 'Item 2' },
+            { id: 3, name: 'Item 3' },
+            { id: 4, name: 'Item 4' },
+            { id: 5, name: 'Item 5' },
+            { id: 6, name: 'Item 6' },
+            { id: 7, name: 'Item 7' },
+            { id: 8, name: 'Item 8' },
+            { id: 2, name: 'Item 2' },
+            { id: 3, name: 'Item 3' }
+        ];
+        
+        var customSelector1 = document.getElementById("customSelect1");
+        Data.forEach( function(item){
+            var option =document.createElement("option");
+            option.value = item.id;
+            option.text = item.name;
+            customSelector1.appendChild(option);
+        });
+        var customSelector2 = document.getElementById("customSelect2");
+        Data.forEach( function(item){
+            var option =document.createElement("option");
+            option.value = item.id;
+            option.text = item.area;
+            customSelector2.appendChild(option);
+        })
 
         const html = listHistory.map(item => {
             return `
@@ -250,7 +307,7 @@
         function updateTime() {
             var now = new Date();
             document.getElementById("date").textContent = now.getDate();
-            document.getElementById("month").textContent = now.getMonth() + 1; 
+            document.getElementById("month").textContent = now.getMonth() + 1;
             document.getElementById("year").textContent = now.getFullYear();
             document.getElementById("hour").textContent = now.getHours();
             document.getElementById("minute").textContent = now.getMinutes();
@@ -260,4 +317,5 @@
         window.onload = getLocation;
     </script>
 </body>
+
 </html>

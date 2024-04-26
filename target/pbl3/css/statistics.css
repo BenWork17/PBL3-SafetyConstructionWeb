@@ -1,0 +1,117 @@
+@charset "UTF-8";
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.wrapper{
+    width: 100vw;
+    height: 100vh;
+    padding-top: 40px;
+    padding-left: 70px;
+    background-color: #c5c2c7;
+    overflow-x: hidden;
+}
+.box-title{
+    height: 30px;
+    margin:10px 20px;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+}
+.box-title span {
+    padding-left: 20px;
+    font-size: 20px;
+}
+.box-content{
+    width: auto;
+    height: auto;
+}
+.box-searchs{
+    padding-left: 60px;
+    padding-right: 20px;
+}
+.search-onsite-statistics{
+    height: 150px;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.all-detection-history{
+    height: 150px;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    background-color: white;
+    border-radius: 5px;
+}
+.element-title{
+    margin-bottom: 20px;
+}
+.element-search{
+    width: auto;
+    height: 30px;
+    display: flex;
+}
+
+.button{
+    width: 250px;
+    display: flex;
+}
+.button1{
+    width: 70px;
+    border-radius: 5px 0 0 5px;
+    border: 1px solid #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.button2{
+    width: 180px;
+    border-radius: 0 5px 5px 0;
+    border: #000000 1px solid;
+}
+#customSelect{
+    width: 100%;
+    height: 100%;
+    border: #00000000 1px solid;
+    border-radius: 0 5px 5px 0;
+
+
+}
+.date-time{
+    margin-left: 30px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+}
+.date-time input{
+  border: none; 
+  border-bottom: 1px solid black; 
+  width:100px;
+  padding: 0 15px;
+}
+    
+.button-search{
+    margin-left: 30px;
+    width: 100px;
+    background-color: aqua;
+    border-radius: 5px;
+}
+.report{
+    margin-left: 60px;
+    margin-top: 20px;
+    margin-right: 20px;
+    background-color: white;
+    padding:10px 20px;
+    border-radius: 5px;
+    height: 600px;
+}
+.chart{
+    height: 500px;
+    width: auto;
+}

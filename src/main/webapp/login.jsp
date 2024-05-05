@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div class="wrapper">
-		<form class="box-login" action="http://localhost:8080/pbl3/login"
+		<form class="box-login" action="http://localhost:8086/pbl3/login"
 			method="post">
 			<div class="title">
 				<h3>Login</h3>

@@ -1,0 +1,12 @@
+service\RegisterService.class
+model\Role.class
+com\controller\Register.class
+model\Users.class
+repository\RolesRepository.class
+repository\UsersRepository.class
+com\controller\login.class
+config\sqlseverConnection.class
+service\RoleService.class
+service\loginService.class
+vidu\vidu.class
+repository\RegisterRepository.class

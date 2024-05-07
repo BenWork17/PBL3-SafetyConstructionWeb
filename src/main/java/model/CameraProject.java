@@ -1,11 +1,29 @@
 package model;
 
-public class Camera {
+public class CameraProject {
 	private int Camera_ID;
 	private String Camera_name;
 	private String IP_address;
 	private String Stastus;
 	private int Project_ID;
+	private String Project_name;
+	public String getProject_name() {
+		return Project_name;
+	}
+
+	public void setProject_name(String project_name) {
+		Project_name = project_name;
+	}
+
+	public String getProject_address() {
+		return Project_address;
+	}
+
+	public void setProject_address(String project_address) {
+		Project_address = project_address;
+	}
+
+	private String Project_address;
 
 	public int getCamera_ID() {
 		return Camera_ID;
@@ -46,4 +64,5 @@ public class Camera {
 	public void setProject_ID(int project_ID) {
 		Project_ID = project_ID;
 	}
+
 }

@@ -22,7 +22,7 @@ public class CameraProjectRepository {
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
 				CameraProject cameraproject = new CameraProject();
-				cameraproject.setCamera_ID(resultSet.getInt("Camera_IB"));
+				cameraproject.setCamera_ID(resultSet.getInt("Camera_ID"));
 				cameraproject.setCamera_name(resultSet.getString("Camera_name"));
 				cameraproject.setIP_address(resultSet.getString("IP_address"));
 				cameraproject.setStastus(resultSet.getString("Status"));

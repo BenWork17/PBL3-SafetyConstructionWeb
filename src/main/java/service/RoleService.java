@@ -7,7 +7,8 @@ import repository.RolesRepository;
 
 public class RoleService {
 	private RolesRepository repository = new RolesRepository();
-	public List<Role> getRole(){
+
+	public List<Role> getRole() {
 		return repository.getRole();
 	}
 }

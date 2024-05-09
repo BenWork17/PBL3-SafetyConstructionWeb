@@ -1,11 +1,11 @@
 package model;
 
-public class CameraProject {
+public class CameraError {
 	@Override
 	public String toString() {
-		return "CameraProject [Camera_ID=" + Camera_ID + ", Camera_name=" + Camera_name + ", IP_address=" + IP_address
-				+ ", Stastus=" + Stastus + ", Project_ID=" + Project_ID + ", Project_name=" + Project_name
-				+ ", Project_address=" + Project_address + "]";
+		return "CameraError [Camera_ID=" + Camera_ID + ", Camera_name=" + Camera_name + ", IP_address=" + IP_address
+				+ ", Stastus=" + Stastus + ", Project_ID=" + Project_ID + ", Error_ID=" + Error_ID + ", Error_type="
+				+ Error_type + ", Descript=" + descript + "]";
 	}
 
 	private int Camera_ID;
@@ -13,24 +13,33 @@ public class CameraProject {
 	private String IP_address;
 	private String Stastus;
 	private int Project_ID;
-	private String Project_name;
-	public String getProject_name() {
-		return Project_name;
+	private int Error_ID;
+	private String Error_type;
+	private String descript;
+
+	public int getError_ID() {
+		return Error_ID;
 	}
 
-	public void setProject_name(String project_name) {
-		Project_name = project_name;
+	public void setError_ID(int error_ID) {
+		Error_ID = error_ID;
 	}
 
-	public String getProject_address() {
-		return Project_address;
+	public String getError_type() {
+		return Error_type;
 	}
 
-	public void setProject_address(String project_address) {
-		Project_address = project_address;
+	public void setError_type(String error_type) {
+		Error_type = error_type;
 	}
 
-	private String Project_address;
+	public String getdescript() {
+		return descript;
+	}
+
+	public void setdescript(String Descript) {
+		descript = Descript;
+	}
 
 	public int getCamera_ID() {
 		return Camera_ID;
@@ -47,7 +56,7 @@ public class CameraProject {
 	public void setCamera_name(String camera_name) {
 		Camera_name = camera_name;
 	}
-
+	
 	public String getIP_address() {
 		return IP_address;
 	}
@@ -71,5 +80,4 @@ public class CameraProject {
 	public void setProject_ID(int project_ID) {
 		Project_ID = project_ID;
 	}
-
 }

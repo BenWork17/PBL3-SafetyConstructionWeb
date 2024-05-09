@@ -9,6 +9,7 @@ import java.util.List;
 
 import config.sqlseverConnection;
 import model.CameraProject;
+import service.CameraProjectService;
 
 public class CameraProjectRepository {
 	public List<CameraProject> getCameraAndProject() {
@@ -26,7 +27,6 @@ public class CameraProjectRepository {
 				cameraproject.setCamera_name(resultSet.getString("Camera_name"));
 				cameraproject.setIP_address(resultSet.getString("IP_address"));
 				cameraproject.setStastus(resultSet.getString("Status"));
-				cameraproject.setProject_ID(resultSet.getInt("Project_ID"));
 				cameraproject.setProject_name(resultSet.getString("Project_name"));
 				cameraproject.setProject_address(resultSet.getString("Project_address"));
 				list.add(cameraproject);
@@ -44,5 +44,13 @@ public class CameraProjectRepository {
 		}
 		return list;
 	}
+//	public static void main(String[] args) {
+//		CameraProjectRepository cam =new CameraProjectRepository();
+//		List<CameraProject> list = cam.getCameraAndProject();
+//		for (CameraProject o : list) {
+//			System.out.println(o);
+//		}
+//	}
+	
 
 }

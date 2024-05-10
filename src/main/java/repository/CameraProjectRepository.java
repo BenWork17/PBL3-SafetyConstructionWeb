@@ -80,13 +80,13 @@ public class CameraProjectRepository {
 		return list;
 	}
 	
-	public static void main(String[] args) {
-		CameraProjectRepository cam = new CameraProjectRepository();
-		List<CameraProject> list = cam.getCameraAndProjectByProjectName("SiteA");
-		for (CameraProject o : list) {
-			System.out.println(o);
-		}
-	}
+//	public static void main(String[] args) {
+//		CameraProjectRepository cam = new CameraProjectRepository();
+//		List<CameraProject> list = cam.getCameraAndProjectByProjectName("SiteA");
+//		for (CameraProject o : list) {
+//			System.out.println(o);
+//		}
+//	}
 	
 
 }

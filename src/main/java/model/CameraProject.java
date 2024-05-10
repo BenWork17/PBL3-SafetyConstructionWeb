@@ -14,6 +14,8 @@ public class CameraProject {
 	private String Stastus;
 	private int Project_ID;
 	private String Project_name;
+	private String Project_address;
+	
 	public String getProject_name() {
 		return Project_name;
 	}
@@ -29,8 +31,6 @@ public class CameraProject {
 	public void setProject_address(String project_address) {
 		Project_address = project_address;
 	}
-
-	private String Project_address;
 
 	public int getCamera_ID() {
 		return Camera_ID;

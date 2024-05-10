@@ -50,12 +50,12 @@ public class CameraErrorRepository {
 		}
 		return list;
 	}
-	public static void main(String[] args) {
-		CameraErrorRepository cam = new CameraErrorRepository();
-		List<CameraError> list = cam.getCameraAndError("Camera1" , "SiteA");
-		for(CameraError o : list) {
-			System.out.println(o);
-		}
-	}
+//	public static void main(String[] args) {
+//		CameraErrorRepository cam = new CameraErrorRepository();
+//		List<CameraError> list = cam.getCameraAndError("Camera1" , "SiteA");
+//		for(CameraError o : list) {
+//			System.out.println(o);
+//		}
+//	}
 
 }

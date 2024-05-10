@@ -1,6 +1,7 @@
 package repository;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,7 +10,6 @@ import java.util.List;
 
 import config.sqlseverConnection;
 import model.CameraProject;
-import service.CameraProjectService;
 
 public class CameraProjectRepository {
 	public List<CameraProject> getCameraAndProject() {
@@ -45,7 +45,7 @@ public class CameraProjectRepository {
 		return list;
 	}
 //	public static void main(String[] args) {
-//		CameraProjectRepository cam =new CameraProjectRepository();
+//		CameraProjectRepository cam = new CameraProjectRepository();
 //		List<CameraProject> list = cam.getCameraAndProject();
 //		for (CameraProject o : list) {
 //			System.out.println(o);

@@ -6,10 +6,7 @@ fetch('./header.jsp')
             .catch(error => console.error('Error fetching header:', error));
 
 
-            const data = [
-                { id: 8, name: 'Item 8',videoLink: 'https://www.dailymotion.com/embed/video/x8wr5wi?autoplay=1' },
-                { id: 3, name: 'Item 3',videoLink: 'https://www.dailymotion.com/embed/video/x8wr5wi?autoplay=1' }
-                ];
+
         
                 function showPage(pageName) {
                     let DATA=[];
@@ -31,7 +28,7 @@ fetch('./header.jsp')
                                 </div>
                             </div>
                         `;
-                            DATA=data;
+                            DATA=cameraproject;
                             renderPage(DATA,'.cctv-view-content', '.previous', '.next', '.page-number');
                             break;
                         case 'site-A':

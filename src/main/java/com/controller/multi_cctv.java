@@ -35,7 +35,7 @@ public class multi_cctv extends HttpServlet{
 	}
 	public static void main(String[] args) {
 		CameraProjectService cam = new CameraProjectService();
-		List<CameraProject> list = cam.getCameraProject();
+		List<CameraProject> list = cam.getCameraProjectA("SiteA");
 		for (CameraProject o : list) {
 			System.out.println(o);
 		}

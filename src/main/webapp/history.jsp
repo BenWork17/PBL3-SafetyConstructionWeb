@@ -23,7 +23,7 @@
                     <h3>Search Detection History</h3>
                     <p>Retrieve alarms history based on detection period and location</p>
                 </div>
-                <div class="item-button">
+                <form class="item-button" action="" method="">
                     <div class="button-onsite">
                         <div class="name-button">Onsite</div>
                         <div class="content-button">
@@ -47,10 +47,10 @@
                             <span>To: <input id="to" type="text"></span>
                         </div>
                         <div class="button-search">
-                            <button onclick="Search()">Search<i class="fas fa-search"></i></button>
+                            <button type ="submit" onclick="Search()">Search<i class="fas fa-search"></i></button>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
             <div class="box-inquiry">
                 <div class="item-title">

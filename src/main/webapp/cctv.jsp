@@ -22,7 +22,7 @@
             <div class="content-top">
                 <!-- cctv -->
                 <div class="box-cctv">
-                    <div class="box-selects">
+                    <form  class="box-selects" action="" method="">
                         <div class="selectss">
                             <div class="select1">
                                 <select class="customSelect" id="customSelect1">
@@ -33,11 +33,10 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="add">
-                            <h3 class="add-p">+</h3>
-                            <p class="add-p">Add Work/Hazard Zone</p>
-                        </div>
-                    </div>
+                         <button type="submit" class="add">
+                         <h3 class="add-p">+       Submit</h3>
+                         </button>
+                    </form>
                     <div class="cctv">
                         <video id="video" width="100%" height="100%" autoplay></video>
                     </div>

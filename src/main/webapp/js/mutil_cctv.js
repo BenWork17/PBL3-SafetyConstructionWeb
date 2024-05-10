@@ -8,9 +8,7 @@ fetch('./header.jsp')
 
             const data = [
                 { id: 8, name: 'Item 8',videoLink: 'https://www.dailymotion.com/embed/video/x8wr5wi?autoplay=1' },
-                
                 { id: 3, name: 'Item 3',videoLink: 'https://www.dailymotion.com/embed/video/x8wr5wi?autoplay=1' }
-                
                 ];
         
                 function showPage(pageName) {

@@ -4,4 +4,14 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+  	<servlet-name>History</servlet-name>
+  	<display-name>History</display-name>
+  	<description></description>
+  	<servlet-class>com.controller.History</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>History</servlet-name>
+  	<url-pattern>/History</url-pattern>
+  </servlet-mapping>
 </web-app>

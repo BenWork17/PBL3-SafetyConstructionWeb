@@ -13,7 +13,7 @@ import model.Alert;
 
 public class AlertRepository {
 
-	public List<Alert> getCamera() {
+	public List<Alert> getAlerst() {
 		List<Alert> list = new ArrayList<>();
 		Connection connection = sqlseverConnection.getConnection();
 		String query = "select * from Alert";

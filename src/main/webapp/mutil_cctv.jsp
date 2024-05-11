@@ -21,7 +21,7 @@
                 <p>Location: <%= project.getCamera_name() %>,</p>
             
         <% } %> --%>
-<%
+<%-- <%
 List<CameraProject> cameraProjects = (List<CameraProject>) request.getAttribute("cameraProjects");
 %>
 const cameraProjects =[
@@ -34,7 +34,7 @@ IP_address: '<%=cameraProject.getIP_address()%>' },
 <%
 }
 %>
-]
+] --%>
 <body>
 	<div id="header"></div>
 

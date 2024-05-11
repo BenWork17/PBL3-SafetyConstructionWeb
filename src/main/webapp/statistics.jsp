@@ -25,7 +25,7 @@
                         <h3>Search Onsite Statistics</h3>
                         <p>Set statistical data period</p>
                     </div>
-                    <div class="element-search">
+                    <form class="element-search" action="" method="">
                         <div class="button">
                             <div class="button1"><span>Onsite</span></div>
                             <div class="button2">
@@ -36,8 +36,8 @@
                             <span>From: <input id="from" type="text"></span>
                             <span>To: <input id="to" type="text"></span>
                         </div>
-                        <button class="button-search" onclick="search()">Search<i class="fas fa-search"></i><span></span></button>
-                    </div>
+                        <button type="submit" class="button-search" onclick="search()">Search<i class="fas fa-search"></i><span></span></button>
+                    </form>
                 </div>
                 <div class="all-detection-history">
                     <div class="element-title">

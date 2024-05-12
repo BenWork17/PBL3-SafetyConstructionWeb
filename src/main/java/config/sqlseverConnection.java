@@ -8,9 +8,9 @@ public class sqlseverConnection {
 		Connection connection= null;
         try{
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            String url = "jdbc:sqlserver://WIND\\SQLEXPRESS:1433;databaseName=pbl3;encrypt=true;trustServerCertificate=true";
+            String url = "jdbc:sqlserver://LAPTOP-B13JTCSN\\BAOPC:1433;databaseName=PBL3;encrypt=true;trustServerCertificate=true";
             String username="sa";
-            String password="0282580";
+            String password="123456789";
             return DriverManager.getConnection(url,username,password);
         }catch(Exception e){
             e.printStackTrace();

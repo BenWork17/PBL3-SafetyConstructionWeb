@@ -78,6 +78,7 @@
             <!-- <div class="pagination-content"></div> -->
         </div>
     </div>
+    <script src="https://api.dmcdn.net/all.js"></script>
     
     <script>
     fetch('./header.jsp')
@@ -99,7 +100,6 @@
 	        <% } %>
 	    ];
 	
-
 
 
 
@@ -145,7 +145,7 @@
                             </div>
                         </div>
                     `;
-                    DATA=cam.filter(item=>item.Project_name==='SITE-B');
+                    DATA=cam.filter(item=>item.Project_name==='SITE-A');
                     console.log(DATA) 
                     renderPage(DATA,'.cctv-view-content', '.previous', '.next', '.page-number');
                     break;
@@ -165,7 +165,7 @@
                             </div>
                         </div>
                     `;
-                    DATA=data.filter(item=>item.Project_name==='SITE-A');
+                    DATA=cam.filter(item=>item.Project_name==='SITE-B');
                     renderPage(DATA,'.cctv-view-content', '.previous', '.next', '.page-number');
                     break;
                 case 'underground-vertical-zone':
@@ -242,7 +242,7 @@
             itemRenderer.classList.add('item');
             itemRenderer.innerHTML = `
                 <div class="item-view-cctv">
-                    <iframe class="video-cctv" frameborder="0" type="text/html" src="${item.IP_address}" width="100%" height="100%" allowfullscreen title="Dailymotion Video Player" allow="autoplay"></iframe>
+	                 <iframe class="video-cctv" frameborder="0" type="video/mp4" src="${item.IP_address}" width="100%" height="100%"  allow="autoplay"></iframe>
 
                 </div>
                 <div class="item-information">

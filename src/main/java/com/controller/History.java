@@ -34,12 +34,10 @@ public class History extends HttpServlet {
         String toDate = req.getParameter("toDate");
         fromDate = historyService.convertDateFormat(fromDate);
         toDate = historyService.convertDateFormat(toDate);
+        req.setAttribute("ErrorByDate", historyService.getAlertbyTimestamp(Camera_Name, Project_camera, fromDate, toDate));
 
         
-        System.out.println("From Date: " + Camera_Name);
-        System.out.println("To Date: " + Project_camera);
-        System.out.println("From Date: " + fromDate);
-        System.out.println("To Date: " + toDate);
+
         
 
         // Tiếp tục xử lý các giá trị từ ngày ở đây...

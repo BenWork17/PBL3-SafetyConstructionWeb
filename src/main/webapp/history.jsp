@@ -61,9 +61,7 @@
         </div>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        
-        <!-- <script src="./js/history.js"></script> -->
-        <script>
+        <script >
         fetch('./header.jsp')
         .then(response => response.text())
         .then(data => {
@@ -74,7 +72,6 @@
                 { id: 8, name: 'Item 8', area: 'CH-A', videoLink: 'https://www.dailymotion.com/embed/video/x8wr5wi?autoplay=1' },
                 { id: 2, name: 'Item 2', area: 'CH-B' },
                 { id: 3, name: 'Item 3', videoLink: 'https://www.dailymotion.com/embed/video/x8wr5wi?autoplay=1' },
-
             ];
 
             var customSelector1 = document.getElementById("customSelect1");
@@ -169,7 +166,6 @@
 
 
         </script>
-        
 </body>
 
 </html>

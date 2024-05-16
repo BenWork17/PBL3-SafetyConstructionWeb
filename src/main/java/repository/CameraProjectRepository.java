@@ -44,41 +44,41 @@ public class CameraProjectRepository {
 		}
 		return list;
 	}
-	public List<CameraProject> getCameraAndProjectByProjectName(String Project_name) {
-		List<CameraProject> list = new ArrayList<>();
-		Connection connection = sqlseverConnection.getConnection();
-		String query = "SELECT Cameras.Camera_ID, Cameras.Camera_name, Cameras.IP_address, Cameras.Status, Project.Project_name, Project.Project_address\r\n"
-				+ "FROM Cameras\r\n"
-				+ "INNER JOIN Project ON Cameras.Project_ID = Project.Project_ID\r\n"
-				+ "WHERE Project.Project_name = ?"
-				;
-		try {
-			PreparedStatement preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setString(1, Project_name);
-			ResultSet resultSet = preparedStatement.executeQuery();
-			while (resultSet.next()) {
-				CameraProject cameraproject = new CameraProject();
-				cameraproject.setCamera_ID(resultSet.getInt("Camera_ID"));
-				cameraproject.setCamera_name(resultSet.getString("Camera_name"));
-				cameraproject.setIP_address(resultSet.getString("IP_address"));
-				cameraproject.setStastus(resultSet.getString("Status"));
-				cameraproject.setProject_name(resultSet.getString("Project_name"));
-				cameraproject.setProject_address(resultSet.getString("Project_address"));
-				list.add(cameraproject);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (connection != null) {
-					connection.close();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return list;
-	}
+//	public List<CameraProject> getCameraAndProjectByProjectName(String Project_name) {
+//		List<CameraProject> list = new ArrayList<>();
+//		Connection connection = sqlseverConnection.getConnection();
+//		String query = "SELECT Cameras.Camera_ID, Cameras.Camera_name, Cameras.IP_address, Cameras.Status, Project.Project_name, Project.Project_address\r\n"
+//				+ "FROM Cameras\r\n"
+//				+ "INNER JOIN Project ON Cameras.Project_ID = Project.Project_ID\r\n"
+//				+ "WHERE Project.Project_name = ?"
+//				;
+//		try {
+//			PreparedStatement preparedStatement = connection.prepareStatement(query);
+//			preparedStatement.setString(1, Project_name);
+//			ResultSet resultSet = preparedStatement.executeQuery();
+//			while (resultSet.next()) {
+//				CameraProject cameraproject = new CameraProject();
+//				cameraproject.setCamera_ID(resultSet.getInt("Camera_ID"));
+//				cameraproject.setCamera_name(resultSet.getString("Camera_name"));
+//				cameraproject.setIP_address(resultSet.getString("IP_address"));
+//				cameraproject.setStastus(resultSet.getString("Status"));
+//				cameraproject.setProject_name(resultSet.getString("Project_name"));
+//				cameraproject.setProject_address(resultSet.getString("Project_address"));
+//				list.add(cameraproject);
+//			}
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} finally {
+//			try {
+//				if (connection != null) {
+//					connection.close();
+//				}
+//			} catch (SQLException e) {
+//				e.printStackTrace();
+//			}
+//		}
+//		return list;
+//	}
 	
 //	public static void main(String[] args) {
 //		CameraProjectRepository cam = new CameraProjectRepository();

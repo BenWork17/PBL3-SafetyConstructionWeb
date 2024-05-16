@@ -8,7 +8,6 @@ fetch('./header.jsp')
                     { id: 8, name: 'Item 8', area: 'CH-A', videoLink: 'https://www.dailymotion.com/embed/video/x8wr5wi?autoplay=1' },
                     { id: 2, name: 'Item 2', area: 'CH-B' },
                     { id: 3, name: 'Item 3', videoLink: 'https://www.dailymotion.com/embed/video/x8wr5wi?autoplay=1' },
-
                 ];
     
                 var customSelector1 = document.getElementById("customSelect1");

@@ -29,17 +29,20 @@ public class multi_cctv extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		req.setAttribute("CameraProject", cameraProjectService.getCameraProject());
-		req.setAttribute("CameraProjectA", cameraProjectService.getCameraProjectA("SiteA"));
-		req.setAttribute("CameraProjectB", cameraProjectService.getCameraProjectA("SiteB"));
 		req.getRequestDispatcher("/mutil_cctv.jsp").forward(req, resp);
 	}
-	public static void main(String[] args) {
-		CameraProjectService cam = new CameraProjectService();
-		List<CameraProject> list = cam.getCameraProjectA("SiteA");
-		for (CameraProject o : list) {
-			System.out.println(o);
-		}
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		super.doPost(req, resp);
 	}
+//	public static void main(String[] args) {
+//		CameraProjectService cam = new CameraProjectService();
+//		List<CameraProject> list = cam.getCameraProjectA("SiteA");
+//		for (CameraProject o : list) {
+//			System.out.println(o);
+//		}
+//	}
 
 }
 

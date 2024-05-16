@@ -78,7 +78,7 @@
             <!-- <div class="pagination-content"></div> -->
         </div>
     </div>
-    <script src="https://api.dmcdn.net/all.js"></script>
+    
     
     <script>
     fetch('./header.jsp')

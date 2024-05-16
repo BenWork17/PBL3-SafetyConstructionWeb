@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import service.CameraProjectService;
 import service.HistoryService;
 
 /**
@@ -17,12 +18,12 @@ import service.HistoryService;
 public class History extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HistoryService historyService = new HistoryService();
-	
+	private CameraProjectService cameraProjectService = new CameraProjectService();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+		req.setAttribute("CameraProject", cameraProjectService.getCameraProject());
 		req.getRequestDispatcher("/history.jsp").forward(req, resp);
 	}
 	@Override
@@ -34,12 +35,10 @@ public class History extends HttpServlet {
         String toDate = req.getParameter("toDate");
         fromDate = historyService.convertDateFormat(fromDate);
         toDate = historyService.convertDateFormat(toDate);
+        req.setAttribute("ErrorByDate", historyService.getAlertbyTimestamp(Camera_Name, Project_camera, fromDate, toDate));
 
         
-        System.out.println("From Date: " + Camera_Name);
-        System.out.println("To Date: " + Project_camera);
-        System.out.println("From Date: " + fromDate);
-        System.out.println("To Date: " + toDate);
+
         
 
         // Tiếp tục xử lý các giá trị từ ngày ở đây...

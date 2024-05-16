@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@page import="model.CameraProject"%>
+    <%@page import="java.util.List"%>
+    <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+    <%@page import="com.google.gson.Gson"%>
+    
+    
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,6 +16,11 @@
     <link rel="stylesheet" href="./css/history.css">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
+<%
+	List<CameraProject> cameraProjects= (List<CameraProject>) request.getAttribute("CameraProject");
+%>
+
+
 
 <body>
     <div id="header"></div>
@@ -68,23 +79,33 @@
             document.getElementById('header').innerHTML = data;
         })
         .catch(error => console.error('Error fetching header:', error));
-            const Data = [
-                { id: 8, name: 'Item 8', area: 'CH-A', videoLink: 'https://www.dailymotion.com/embed/video/x8wr5wi?autoplay=1' },
-                { id: 2, name: 'Item 2', area: 'CH-B' },
-                { id: 3, name: 'Item 3', videoLink: 'https://www.dailymotion.com/embed/video/x8wr5wi?autoplay=1' },
-            ];
+            
+        
+        	
+        	
+        	
+        	const Data =[
+        		<%for(int i=0; i<cameraProjects.size();i++){%>
+        		{
+        			name:'<%= cameraProjects.get(i).getCamera_name()%>',
+        			area:'<%= cameraProjects.get(i).getProject_name() %>'
+        		}
+        		<% if(i < cameraProjects.size() - 1) { %>,<% } %>
+        		<%}%>
+        	];
+        	
 
             var customSelector1 = document.getElementById("customSelect1");
             Data.forEach(function (item) {
                 var option = document.createElement("option");
-                option.value = item.id;
+                option.value = item.name;
                 option.text = item.name;
                 customSelector1.appendChild(option);
             });
             var customSelector2 = document.getElementById("customSelect2");
             Data.forEach(function (item) {
                 var option = document.createElement("option");
-                option.value = item.id;
+                option.value = item.area;
                 option.text = item.area;
                 customSelector2.appendChild(option);
             })

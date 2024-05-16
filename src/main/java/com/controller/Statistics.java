@@ -14,8 +14,8 @@ import service.HistoryService;
 /**
  * Servlet implementation class History
  */
-@WebServlet(name = "history", urlPatterns = "/history")
-public class History extends HttpServlet {
+@WebServlet(name = "Statistics", urlPatterns = "/statistics")
+public class Statistics extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HistoryService historyService = new HistoryService();
 	private CameraProjectService cameraProjectService = new CameraProjectService();
@@ -25,7 +25,7 @@ public class History extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		req.setAttribute("CameraProject", cameraProjectService.getCameraProject());
-		req.getRequestDispatcher("/history.jsp").forward(req, resp);
+		req.getRequestDispatcher("/statistics.jsp").forward(req, resp);
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

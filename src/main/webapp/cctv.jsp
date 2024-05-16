@@ -22,14 +22,14 @@
             <div class="content-top">
                 <!-- cctv -->
                 <div class="box-cctv">
-                    <form  class="box-selects" action="" method="">
+                    <form  class="box-selects" action="http://localhost:8081/pbl3/cctv" method="post">
                         <div class="selectss">
                             <div class="select1">
-                                <select class="customSelect" id="customSelect1">
+                                <select class="customSelect" name ="customSelect1b" id="customSelect1">
                                 </select>
                             </div>
                             <div class="select2">
-                                <select class=" customSelect" id="customSelect2">
+                                <select class=" customSelect" name ="customSelect2b" id="customSelect2">
                                 </select>
                             </div>
                         </div>

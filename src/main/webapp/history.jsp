@@ -1,8 +1,14 @@
+<%@page import="com.google.gson.Gson"%>
+<%@page import="model.CameraProject"%>
+<%@page import="java.util.List"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-
+<%
+List<CameraProject> cameraProjects= (List<CameraProject>) request.getAttribute("CameraProject");
+%>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -73,12 +79,18 @@
         
         
         
-            const Data = [
-                { id: 8, name: 'Item 8', area: 'CH-A', videoLink: 'https://www.dailymotion.com/embed/video/x8wr5wi?autoplay=1' },
-                { id: 2, name: 'Item 2', area: 'CH-B' },
-                { id: 3, name: 'Item 3', videoLink: 'https://www.dailymotion.com/embed/video/x8wr5wi?autoplay=1' }
-            ];
 
+			const Data =[
+				<%for(int i=0;i < cameraProjects.size();i++){%>
+				{
+					name: '<%= cameraProjects.get(i).getCamera_name() %>',
+		            area: '<%= cameraProjects.get(i).getProject_name() %>'
+					
+				}
+				<% if(i < cameraProjects.size() - 1) { %>,<% } %>
+	        <% } %>
+			];
+			
             var customSelector1 = document.getElementById("customSelect1");
             Data.forEach(function (item) {
                 var option = document.createElement("option");

@@ -19,11 +19,7 @@ public class History extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HistoryService historyService = new HistoryService();
 	private CameraProjectService cameraProjectService = new CameraProjectService();
-<<<<<<< HEAD
-=======
-	
->>>>>>> 4018ce4a765e587b55b8115b8ce028a16a32f1b9
-	
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -42,13 +38,7 @@ public class History extends HttpServlet {
         req.setAttribute("ErrorByDate", historyService.getAlertbyTimestamp(Camera_Name, Project_camera, fromDate, toDate));
         req.getRequestDispatcher("/history.jsp").forward(req, resp);
 
-<<<<<<< HEAD
-        
 
-	
-=======
-        	
->>>>>>> 4018ce4a765e587b55b8115b8ce028a16a32f1b9
 	}
 
 }

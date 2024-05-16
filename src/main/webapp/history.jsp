@@ -1,20 +1,22 @@
+<%@page import="model.CameraError"%>
 <%@page import="com.google.gson.Gson"%>
 <%@page import="model.CameraProject"%>
 <%@page import="java.util.List"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@page import="model.CameraProject"%>
-    <%@page import="java.util.List"%>
-    <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
-    <%@page import="com.google.gson.Gson"%>
+
     
     
 <!DOCTYPE html>
 <html lang="en">
 <%
 List<CameraProject> cameraProjects= (List<CameraProject>) request.getAttribute("CameraProject");
+List<CameraError> cameraError = (List<CameraError>) request.getAttribute("ErrorByDate");
 %>
+
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,9 +24,7 @@ List<CameraProject> cameraProjects= (List<CameraProject>) request.getAttribute("
     <link rel="stylesheet" href="./css/history.css">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
-<%
-	List<CameraProject> cameraProjects= (List<CameraProject>) request.getAttribute("CameraProject");
-%>
+
 
 
 
@@ -40,7 +40,7 @@ List<CameraProject> cameraProjects= (List<CameraProject>) request.getAttribute("
                     <h3>Search Detection History</h3>
                     <p>Retrieve alarms history based on detection period and location</p>
                 </div>
-                <form class="item-button" action="" method="">
+                <form class="item-button" action="http://localhost:8081/pbl3/history" method="post">
                     <div class="button-onsite">
                         <div class="name-button">Onsite</div>
                         <div class="content-button">
@@ -82,23 +82,32 @@ List<CameraProject> cameraProjects= (List<CameraProject>) request.getAttribute("
                             <th>Status</th>
                             <th>OnSite</th>
                             <th>Channel</th>
-                            <th>Time</th>
-                            <th>Error</th>
+<!--                             <th>Time</th>
+ -->                            <th>Error</th>
                             <th>View details</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td>1</td>
-                            <td>Unconfirmed</td>
-                            <td>Yes</td>
-                            <td>Twitter</td>
-                            <td>2023-05-16 10:30 AM</td>
-                            <td><img src="thumbnail1.jpg" alt="Thumbnail" width="50"></td>
-                            <td><a href="details1.html">View Details</a></td>
-                          </tr>
-                          
-                        </tbody>
+	                      
+ 						 <c:choose>
+                                <c:when test="${not empty cameraError}">
+                                    <c:forEach var="error" items="${cameraError}" varStatus="status">
+                                        <tr>
+                                            <td>${status.index + 1}</td>
+                                            <td>${error.status}</td>
+                                            <td>${error.project_Name}</td>
+                                            <td>${error.camera_name}</td>
+                                            <td>${error.error_type}</td>
+                                            <td>${error.descript}</td>
+                                        </tr>
+                                    </c:forEach>
+                                </c:when>
+                                <c:otherwise>
+                                    <tr>
+                                        <td colspan="6">No data available.</td>
+                                    </tr>
+                                </c:otherwise>
+                            </c:choose>
                       </table>
                 </div>
             </div>
@@ -114,26 +123,7 @@ List<CameraProject> cameraProjects= (List<CameraProject>) request.getAttribute("
         .catch(error => console.error('Error fetching header:', error));
             
         
-<<<<<<< HEAD
         	
-        	
-        	
-        	const Data =[
-        		<%for(int i=0; i<cameraProjects.size();i++){%>
-        		{
-        			name:'<%= cameraProjects.get(i).getCamera_name()%>',
-        			area:'<%= cameraProjects.get(i).getProject_name() %>'
-        		},
-        		<% if(i < cameraProjects.size() - 1) { %>,<% } %>
-        		<%}%>
-        	];
-        	
-=======
-        
-        
-        
-        
->>>>>>> 4018ce4a765e587b55b8115b8ce028a16a32f1b9
 
 			const Data =[
 				<%for(int i=0;i < cameraProjects.size();i++){%>

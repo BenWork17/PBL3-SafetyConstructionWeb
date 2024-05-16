@@ -11,7 +11,7 @@ import config.sqlseverConnection;
 import model.Error;
 
 public class ErrorRepository {
-	public List<Error> getAlertbyTimestamp(int cameraid, String Project_name, String Date_1, String Date_2) {
+	public List<Error> getAlertbyTimestamp(String cameraname, String Project_name, String Date_1, String Date_2) {
 		List<Error> list = new ArrayList<>();
 		Connection connection = sqlseverConnection.getConnection();
 		String query = "SELECT Error.Error_ID, Error.Error_type , Error.descript\r\n"
@@ -19,10 +19,10 @@ public class ErrorRepository {
 				+ "INNER JOIN Project ON Project.Project_ID = Cameras.Project_ID\r\n"
 				+ "INNER JOIN Alerts ON Cameras.Camera_ID = Alerts.Camera_ID\r\n"
 				+ "INNER JOIN Error ON Error.Error_ID = Alerts.Error_ID \r\n"
-				+ "where Cameras.Camera_ID = ? AND Project.Project_name= ? AND ( Timestamp >= ? AND Timestamp <= ?)";
+				+ "where Cameras.Camera_name = ? AND Project.Project_name= ? AND ( Timestamp >= ? AND Timestamp <= ?)";
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setInt(1, cameraid);
+			preparedStatement.setString(1, cameraname);
 			preparedStatement.setString(2, Project_name);
 			preparedStatement.setString(3, Date_1);
 			preparedStatement.setString(4, Date_2);
@@ -49,7 +49,7 @@ public class ErrorRepository {
 	}
 	public static void main(String[] args) {
 		ErrorRepository cam = new ErrorRepository();
-		List<Error> list = cam.getAlertbyTimestamp(6, "SiteA", "2023-05-06","2025-05-06");
+		List<Error> list = cam.getAlertbyTimestamp("Camera1", "SiteA", "2023-05-01","2024-05-08");
 		for(Error o : list) {
 			System.out.println(o);
 		}

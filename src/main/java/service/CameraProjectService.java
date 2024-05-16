@@ -11,9 +11,9 @@ public class CameraProjectService {
 	public List<CameraProject> getCameraProject(){
 		return cameraProjectRepository.getCameraAndProject();
 	}
-	public List<CameraProject> getCameraProjectA(String Project_name){
-		return cameraProjectRepository.getCameraAndProjectByProjectName(Project_name);
-	}
+//	public List<CameraProject> getCameraProjectA(String Project_name){
+//		return cameraProjectRepository.getCameraAndProjectByProjectName(Project_name);
+//	}
 	
 	
 

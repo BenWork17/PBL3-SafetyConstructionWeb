@@ -4,52 +4,28 @@ fetch('./header.jsp')
                 document.getElementById('header').innerHTML = data;
             })
             .catch(error => console.error('Error fetching header:', error));
+            
+            
+            
+            
+            
                 const Data = [
                     { id: 8, name: 'Item 8', area: 'CH-A', videoLink: 'https://www.dailymotion.com/embed/video/x8wr5wi?autoplay=1' },
                     { id: 2, name: 'Item 2', area: 'CH-B' },
-                    { id: 3, name: 'Item 3', videoLink: 'https://www.dailymotion.com/embed/video/x8wr5wi?autoplay=1' },
-                    { id: 4, name: 'Item 4' },
-                    { id: 5, name: 'Item 5' },
-                    { id: 6, name: 'Item 6' },
-                    { id: 7, name: 'Item 7' },
-                    { id: 8, name: 'Item 8' },
-                    { id: 2, name: 'Item 2' },
-                    { id: 3, name: 'Item 3' },
-                    { id: 4, name: 'Item 4' },
-                    { id: 5, name: 'Item 5' },
-                    { id: 6, name: 'Item 6' },
-                    { id: 7, name: 'Item 7' },
-                    { id: 8, name: 'Item 8' },
-                    { id: 2, name: 'Item 2' },
-                    { id: 3, name: 'Item 3' },
-                    { id: 4, name: 'Item 4' },
-                    { id: 5, name: 'Item 5' },
-                    { id: 6, name: 'Item 6' },
-                    { id: 7, name: 'Item 7' },
-                    { id: 8, name: 'Item 8' },
-                    { id: 1, name: 'Item 1' },
-                    { id: 2, name: 'Item 2' },
-                    { id: 3, name: 'Item 3' },
-                    { id: 4, name: 'Item 4' },
-                    { id: 5, name: 'Item 5' },
-                    { id: 6, name: 'Item 6' },
-                    { id: 7, name: 'Item 7' },
-                    { id: 8, name: 'Item 8' },
-                    { id: 2, name: 'Item 2' },
-                    { id: 3, name: 'Item 3' }
+                    { id: 3, name: 'Item 3', videoLink: 'https://www.dailymotion.com/embed/video/x8wr5wi?autoplay=1' }
                 ];
     
                 var customSelector1 = document.getElementById("customSelect1");
                 Data.forEach(function (item) {
                     var option = document.createElement("option");
-                    option.value = item.id;
+                    option.value = item.name;
                     option.text = item.name;
                     customSelector1.appendChild(option);
                 });
                 var customSelector2 = document.getElementById("customSelect2");
                 Data.forEach(function (item) {
                     var option = document.createElement("option");
-                    option.value = item.id;
+                    option.value = item.area;
                     option.text = item.area;
                     customSelector2.appendChild(option);
                 })

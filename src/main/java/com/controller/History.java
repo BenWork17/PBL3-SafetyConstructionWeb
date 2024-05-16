@@ -39,9 +39,6 @@ public class History extends HttpServlet {
 
         
 
-        
-
-        // Tiếp tục xử lý các giá trị từ ngày ở đây...
 	
 	}
 

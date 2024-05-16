@@ -68,6 +68,33 @@
                     <h3>Detection History Inquiry</h3>
                     <span class="span-nd">Search :All CH& Period - 2004-04-14 to 2004-05-23</span>
                 </div>
+                <div class="inquiry">
+                	<table>
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>Status</th>
+                            <th>OnSite</th>
+                            <th>Channel</th>
+                            <th>Time</th>
+                            <th>Error</th>
+                            <th>View details</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>1</td>
+                            <td>Unconfirmed</td>
+                            <td>Yes</td>
+                            <td>Twitter</td>
+                            <td>2023-05-16 10:30 AM</td>
+                            <td><img src="thumbnail1.jpg" alt="Thumbnail" width="50"></td>
+                            <td><a href="details1.html">View Details</a></td>
+                          </tr>
+                          
+                        </tbody>
+                      </table>
+                </div>
             </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -89,27 +116,48 @@
         		{
         			name:'<%= cameraProjects.get(i).getCamera_name()%>',
         			area:'<%= cameraProjects.get(i).getProject_name() %>'
-        		}
+        		},
         		<% if(i < cameraProjects.size() - 1) { %>,<% } %>
         		<%}%>
         	];
         	
 
             var customSelector1 = document.getElementById("customSelect1");
-            Data.forEach(function (item) {
-                var option = document.createElement("option");
-                option.value = item.name;
-                option.text = item.name;
-                customSelector1.appendChild(option);
-            });
             var customSelector2 = document.getElementById("customSelect2");
-            Data.forEach(function (item) {
-                var option = document.createElement("option");
-                option.value = item.area;
-                option.text = item.area;
-                customSelector2.appendChild(option);
-            })
+            var addedOptions = new Set();
+            Data.forEach(function(item) {
+                if (!addedOptions.has(item.area)) {
+                    var option = document.createElement("option");
+                    option.value = item.area;
+                    option.text = item.area;
+                    customSelector2.appendChild(option);
+                    addedOptions.add(item.area);
+                }
+            });
+			
+            function updateCustomSelector1(area) {
+                // Clear existing options
+                customSelector1.innerHTML = '';
 
+                // Filter Data to get names for the selected area
+                Data.filter(item => item.area === area).forEach(function(item) {
+                    var option = document.createElement("option");
+                    option.value = item.name;
+                    option.text = item.name;
+                    customSelector1.appendChild(option);
+                });
+            }
+            
+            customSelector2.addEventListener('change', function() {
+                var selectedArea = this.value;
+                updateCustomSelector1(selectedArea);
+            });
+            
+            if (customSelector2.options.length > 0) {
+                updateCustomSelector1(customSelector2.options[0].value);
+            }
+            
+            
             function Search() {
                 var fromDate = document.getElementById("from").value;
                 var toDate = document.getElementById("to").value;

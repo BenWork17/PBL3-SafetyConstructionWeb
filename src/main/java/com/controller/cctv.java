@@ -20,7 +20,7 @@ public class cctv extends HttpServlet {
 	private CameraErrorService cameraErrorService = new CameraErrorService();
 
 	@Override
-	protected void doHead(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		req.getRequestDispatcher("/cctv.jsp").forward(req, resp);
 
@@ -29,9 +29,9 @@ public class cctv extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String Camera_name = "bao";
-		String Project_name = "B";
-		req.setAttribute("CameraProject", cameraErrorService.getCameraError(Camera_name, Project_name));
+		String Camera_name = req.getParameter("customSelect1b");
+		String Project_name = req.getParameter("customSelect2b");
+		req.setAttribute("CameraError", cameraErrorService.getCameraError(Camera_name, Project_name));
 
 	}
 

@@ -160,14 +160,14 @@ const Data = [
 var customSelector1 = document.getElementById("customSelect1");
 Data.forEach(function (item) {
     var option = document.createElement("option");
-    option.value = item.id;
+    option.value = item.name;
     option.text = item.name;
     customSelector1.appendChild(option);
 });
 var customSelector2 = document.getElementById("customSelect2");
 Data.forEach(function (item) {
     var option = document.createElement("option");
-    option.value = item.id;
+    option.value = item.area;
     option.text = item.area;
     customSelector2.appendChild(option);
 })

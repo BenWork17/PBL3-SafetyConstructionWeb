@@ -1,3 +1,7 @@
+<%@page import="com.google.gson.Gson"%>
+<%@page import="model.CameraProject"%>
+<%@page import="java.util.List"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@page import="model.CameraProject"%>
@@ -8,7 +12,9 @@
     
 <!DOCTYPE html>
 <html lang="en">
-
+<%
+List<CameraProject> cameraProjects= (List<CameraProject>) request.getAttribute("CameraProject");
+%>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -108,6 +114,7 @@
         .catch(error => console.error('Error fetching header:', error));
             
         
+<<<<<<< HEAD
         	
         	
         	
@@ -121,7 +128,24 @@
         		<%}%>
         	];
         	
+=======
+        
+        
+        
+        
+>>>>>>> 4018ce4a765e587b55b8115b8ce028a16a32f1b9
 
+			const Data =[
+				<%for(int i=0;i < cameraProjects.size();i++){%>
+				{
+					name: '<%= cameraProjects.get(i).getCamera_name() %>',
+		            area: '<%= cameraProjects.get(i).getProject_name() %>'
+					
+				}
+				<% if(i < cameraProjects.size() - 1) { %>,<% } %>
+	        <% } %>
+			];
+			
             var customSelector1 = document.getElementById("customSelect1");
             var customSelector2 = document.getElementById("customSelect2");
             var addedOptions = new Set();

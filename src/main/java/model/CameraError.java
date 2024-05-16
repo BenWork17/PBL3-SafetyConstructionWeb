@@ -4,7 +4,7 @@ public class CameraError {
 	@Override
 	public String toString() {
 		return "CameraError [Camera_ID=" + Camera_ID + ", Camera_name=" + Camera_name + ", IP_address=" + IP_address
-				+ ", Stastus=" + Stastus + ", Project_ID=" + Project_ID + ", Error_ID=" + Error_ID + ", Error_type="
+				+ ", Stastus=" + Stastus + ", Project_ID=" + Project_Name + ", Error_type="
 				+ Error_type + ", Descript=" + descript + "]";
 	}
 
@@ -12,18 +12,11 @@ public class CameraError {
 	private String Camera_name;
 	private String IP_address;
 	private String Stastus;
-	private int Project_ID;
-	private int Error_ID;
+	private String Project_Name;
 	private String Error_type;
 	private String descript;
 
-	public int getError_ID() {
-		return Error_ID;
-	}
 
-	public void setError_ID(int error_ID) {
-		Error_ID = error_ID;
-	}
 
 	public String getError_type() {
 		return Error_type;
@@ -73,11 +66,14 @@ public class CameraError {
 		Stastus = stastus;
 	}
 
-	public int getProject_ID() {
-		return Project_ID;
+	public String getProject_Name() {
+		return Project_Name;
 	}
 
-	public void setProject_ID(int project_ID) {
-		Project_ID = project_ID;
+	public void setProject_Name(String project_Name) {
+		Project_Name = project_Name;
 	}
+
+
+
 }

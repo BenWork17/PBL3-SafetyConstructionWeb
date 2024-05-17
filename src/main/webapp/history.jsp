@@ -1,20 +1,19 @@
+<%@page import="model.CameraError"%>
 <%@page import="com.google.gson.Gson"%>
 <%@page import="model.CameraProject"%>
 <%@page import="java.util.List"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@page import="model.CameraProject"%>
-    <%@page import="java.util.List"%>
-    <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
-    <%@page import="com.google.gson.Gson"%>
+
     
     
 <!DOCTYPE html>
 <html lang="en">
-<%
-List<CameraProject> cameraProjects= (List<CameraProject>) request.getAttribute("CameraProject");
-%>
+
+
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,7 +22,8 @@ List<CameraProject> cameraProjects= (List<CameraProject>) request.getAttribute("
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 <%
-	List<CameraProject> cameraProjects= (List<CameraProject>) request.getAttribute("CameraProject");
+List<CameraProject> cameraProjects1= (List<CameraProject>) request.getAttribute("CameraProject1");
+
 %>
 
 
@@ -40,12 +40,12 @@ List<CameraProject> cameraProjects= (List<CameraProject>) request.getAttribute("
                     <h3>Search Detection History</h3>
                     <p>Retrieve alarms history based on detection period and location</p>
                 </div>
-                <form class="item-button" action="" method="">
+                <form class="item-button" action="http://localhost:8081/pbl3/history" method="post">
                     <div class="button-onsite">
                         <div class="name-button">Onsite</div>
                         <div class="content-button">
                             <div class="selects">
-                                <select class="customSelect" id="customSelect1">
+                                <select class="customSelect" name="customSelect1a" id="customSelect1">
                                 </select>
                             </div>
                         </div>
@@ -53,15 +53,15 @@ List<CameraProject> cameraProjects= (List<CameraProject>) request.getAttribute("
                             <div class="name-button">Channel</div>
                             <div class="content-button">
                                 <div class="selects">
-                                    <select class=" customSelect" id="customSelect2">
+                                    <select class=" customSelect" name="customSelect2a" id="customSelect2">
                                     </select>
                                 </div>
 
                             </div>
                         </div>
                         <div class="date-time" id="date-picker">
-                            <span>From: <input id="from" type="text"></span>
-                            <span>To: <input id="to" type="text"></span>
+                            <span>From: <input id="from" name="fromDate" type="text"></span>
+                            <span>To: <input id="to" name="toDate" type="text"></span>
                         </div>
                         <div class="button-search">
                             <button type ="submit" onclick="Search()">Search<i class="fas fa-search"></i></button>
@@ -82,23 +82,37 @@ List<CameraProject> cameraProjects= (List<CameraProject>) request.getAttribute("
                             <th>Status</th>
                             <th>OnSite</th>
                             <th>Channel</th>
-                            <th>Time</th>
-                            <th>Error</th>
+<!--                             <th>Time</th>
+ -->                            <th>Error</th>
                             <th>View details</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td>1</td>
-                            <td>Unconfirmed</td>
-                            <td>Yes</td>
-                            <td>Twitter</td>
-                            <td>2023-05-16 10:30 AM</td>
-                            <td><img src="thumbnail1.jpg" alt="Thumbnail" width="50"></td>
-                            <td><a href="details1.html">View Details</a></td>
-                          </tr>
-                          
-                        </tbody>
+	                      
+							<%
+							List<CameraError> cameraError = (List<CameraError>) request.getAttribute("ErrorByDate");
+							if (cameraError != null) {
+							    for (int i = 0; i < cameraError.size(); i++) {
+							%>
+							        <tr>
+							            <td><%= (i + 1) %></td>
+							            <td><%= cameraError.get(i).getStastus() %></td>
+							            <td><%= cameraError.get(i).getProject_Name() %></td>
+							            <td><%= cameraError.get(i).getCamera_name() %></td>
+							            <td><%= cameraError.get(i).getError_type() %></td>
+							            <td><%= cameraError.get(i).getdescript() %></td>
+							        </tr>
+							<%
+							    }
+							} else {
+							%>
+							    <tr>
+							        <td colspan="6">No errors found.</td>
+							    </tr>
+							<%
+							}
+							%>
+                            </tbody>
                       </table>
                 </div>
             </div>
@@ -114,35 +128,16 @@ List<CameraProject> cameraProjects= (List<CameraProject>) request.getAttribute("
         .catch(error => console.error('Error fetching header:', error));
             
         
-<<<<<<< HEAD
         	
-        	
-        	
-        	const Data =[
-        		<%for(int i=0; i<cameraProjects.size();i++){%>
-        		{
-        			name:'<%= cameraProjects.get(i).getCamera_name()%>',
-        			area:'<%= cameraProjects.get(i).getProject_name() %>'
-        		},
-        		<% if(i < cameraProjects.size() - 1) { %>,<% } %>
-        		<%}%>
-        	];
-        	
-=======
-        
-        
-        
-        
->>>>>>> 4018ce4a765e587b55b8115b8ce028a16a32f1b9
 
 			const Data =[
-				<%for(int i=0;i < cameraProjects.size();i++){%>
+				<%for(int i=0;i < cameraProjects1.size();i++){%>
 				{
-					name: '<%= cameraProjects.get(i).getCamera_name() %>',
-		            area: '<%= cameraProjects.get(i).getProject_name() %>'
+					name: '<%= cameraProjects1.get(i).getCamera_name() %>',
+		            area: '<%= cameraProjects1.get(i).getProject_name() %>'
 					
 				}
-				<% if(i < cameraProjects.size() - 1) { %>,<% } %>
+				<% if(i < cameraProjects1.size() - 1) { %>,<% } %>
 	        <% } %>
 			];
 			

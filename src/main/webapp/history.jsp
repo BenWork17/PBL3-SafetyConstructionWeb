@@ -10,7 +10,10 @@
     
 <!DOCTYPE html>
 <html lang="en">
-
+<%
+List<CameraProject> cameraProjects= (List<CameraProject>) request.getAttribute("CameraProject");
+List<CameraError> cameraError = (List<CameraError>) request.getAttribute("ErrorByDate");
+%>
 
 
 
@@ -21,10 +24,7 @@
     <link rel="stylesheet" href="./css/history.css">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
-<%
-List<CameraProject> cameraProjects1= (List<CameraProject>) request.getAttribute("CameraProject1");
 
-%>
 
 
 
@@ -45,7 +45,7 @@ List<CameraProject> cameraProjects1= (List<CameraProject>) request.getAttribute(
                         <div class="name-button">Onsite</div>
                         <div class="content-button">
                             <div class="selects">
-                                <select class="customSelect" name="customSelect1a" id="customSelect1">
+                                <select class="customSelect" id="customSelect1">
                                 </select>
                             </div>
                         </div>
@@ -53,15 +53,15 @@ List<CameraProject> cameraProjects1= (List<CameraProject>) request.getAttribute(
                             <div class="name-button">Channel</div>
                             <div class="content-button">
                                 <div class="selects">
-                                    <select class=" customSelect" name="customSelect2a" id="customSelect2">
+                                    <select class=" customSelect" id="customSelect2">
                                     </select>
                                 </div>
 
                             </div>
                         </div>
                         <div class="date-time" id="date-picker">
-                            <span>From: <input id="from" name="fromDate" type="text"></span>
-                            <span>To: <input id="to" name="toDate" type="text"></span>
+                            <span>From: <input id="from" type="text"></span>
+                            <span>To: <input id="to" type="text"></span>
                         </div>
                         <div class="button-search">
                             <button type ="submit" onclick="Search()">Search<i class="fas fa-search"></i></button>
@@ -89,30 +89,25 @@ List<CameraProject> cameraProjects1= (List<CameraProject>) request.getAttribute(
                         </thead>
                         <tbody>
 	                      
-							<%
-							List<CameraError> cameraError = (List<CameraError>) request.getAttribute("ErrorByDate");
-							if (cameraError != null) {
-							    for (int i = 0; i < cameraError.size(); i++) {
-							%>
-							        <tr>
-							            <td><%= (i + 1) %></td>
-							            <td><%= cameraError.get(i).getStastus() %></td>
-							            <td><%= cameraError.get(i).getProject_Name() %></td>
-							            <td><%= cameraError.get(i).getCamera_name() %></td>
-							            <td><%= cameraError.get(i).getError_type() %></td>
-							            <td><%= cameraError.get(i).getdescript() %></td>
-							        </tr>
-							<%
-							    }
-							} else {
-							%>
-							    <tr>
-							        <td colspan="6">No errors found.</td>
-							    </tr>
-							<%
-							}
-							%>
-                            </tbody>
+ 						 <c:choose>
+                                <c:when test="${not empty cameraError}">
+                                    <c:forEach var="error" items="${cameraError}" varStatus="status">
+                                        <tr>
+                                            <td>${status.index + 1}</td>
+                                            <td>${error.status}</td>
+                                            <td>${error.project_Name}</td>
+                                            <td>${error.camera_name}</td>
+                                            <td>${error.error_type}</td>
+                                            <td>${error.descript}</td>
+                                        </tr>
+                                    </c:forEach>
+                                </c:when>
+                                <c:otherwise>
+                                    <tr>
+                                        <td colspan="6">No data available.</td>
+                                    </tr>
+                                </c:otherwise>
+                            </c:choose>
                       </table>
                 </div>
             </div>
@@ -131,13 +126,13 @@ List<CameraProject> cameraProjects1= (List<CameraProject>) request.getAttribute(
         	
 
 			const Data =[
-				<%for(int i=0;i < cameraProjects1.size();i++){%>
+				<%for(int i=0;i < cameraProjects.size();i++){%>
 				{
-					name: '<%= cameraProjects1.get(i).getCamera_name() %>',
-		            area: '<%= cameraProjects1.get(i).getProject_name() %>'
+					name: '<%= cameraProjects.get(i).getCamera_name() %>',
+		            area: '<%= cameraProjects.get(i).getProject_name() %>'
 					
 				}
-				<% if(i < cameraProjects1.size() - 1) { %>,<% } %>
+				<% if(i < cameraProjects.size() - 1) { %>,<% } %>
 	        <% } %>
 			];
 			

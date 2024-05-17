@@ -16,7 +16,7 @@ public class CameraErrorRepository {
 	public List<CameraError> getCameraAndError(String Camera_name,String Projet_Name) {
 		List<CameraError> list = new ArrayList<>();
 		Connection connection = sqlseverConnection.getConnection();
-		String query = "SELECT Cameras.Camera_ID,Cameras.Camera_name,Cameras.IP_address,Status,Cameras.Project_ID, Error_type, descript\r\n"
+		String query = "SELECT Cameras.Camera_ID,Cameras.Camera_name,Cameras.IP_address,Status,Project.Project_Name, Error_type, descript\r\n"
 				+ "FROM Cameras\r\n"
 				+ "INNER JOIN Alerts ON Cameras.Camera_ID = Alerts.Camera_ID\r\n"
 				+ "INNER JOIN Error ON Alerts.Error_ID = Error.Error_ID\r\n"
@@ -91,22 +91,22 @@ public class CameraErrorRepository {
 		}
 		return list;
 	}
-	
-	public static void main(String[] args) {
-		CameraErrorRepository cam = new CameraErrorRepository();
-		List<CameraError> list = cam.getAlertbyTimestamp("Camera1", "SiteA", "2023-05-01","2024-05-08");
-		for(CameraError o : list) {
-			System.out.println(o);
-		}
-	}
-
 
 //	public static void main(String[] args) {
 //		CameraErrorRepository cam = new CameraErrorRepository();
-//		List<CameraError> list = cam.getCameraAndError("Camera1" , "SiteA");
+//		List<CameraError> list = cam.getAlertbyTimestamp("Camera1", "SiteA", "2023-05-01","2024-05-08");
 //		for(CameraError o : list) {
 //			System.out.println(o);
 //		}
 //	}
+
+
+	public static void main(String[] args) {
+		CameraErrorRepository cam = new CameraErrorRepository();
+		List<CameraError> list = cam.getCameraAndError("Camera1" , "SiteA");
+		for(CameraError o : list) {
+			System.out.println(o);
+		}
+	}
 
 }

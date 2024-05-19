@@ -145,7 +145,7 @@
                             </div>
                         </div>
                     `;
-                    DATA=cam.filter(item=>item.Project_name==='SITE-A');
+                    DATA=cam.filter(item=>item.Project_name==='SiteA');
                     console.log(DATA) 
                     renderPage(DATA,'.cctv-view-content', '.previous', '.next', '.page-number');
                     break;

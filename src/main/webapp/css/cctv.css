@@ -215,3 +215,37 @@
     height: 80%;
     overflow-y: auto;
 }
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+/* .danger {
+    color: #fff;
+    background-color: #e74c3c;
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-weight: bold;
+} */
+
+.warning {
+    color: #fff;
+    background-color: #f1c40f;
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+strong {
+    font-weight: bold;
+}

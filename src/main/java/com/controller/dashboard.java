@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import service.CameraProjectService;
 import service.HistoryService;
+import service.dashboardService;
 
 /**
  * Servlet implementation class History
@@ -21,18 +22,18 @@ public class dashboard extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private HistoryService historyService = new HistoryService();
-	private CameraProjectService cameraProjectService = new CameraProjectService();
+	private dashboardService dashboardService = new dashboardService();
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+		req.setAttribute("detective", dashboardService.getDetective());
 		req.getRequestDispatcher("/dashboard.jsp").forward(req, resp);
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
 
 
 	}

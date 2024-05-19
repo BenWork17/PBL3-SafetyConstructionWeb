@@ -1,3 +1,9 @@
+<%@page import="java.util.List"%>
+<%@page import="com.google.gson.Gson"%>
+<%@page import="model.Detective"%>
+
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -69,37 +75,67 @@
             </div>
         </div >
         <!-- o nay phan vox lich su -->
-        <div class="box-histore">
-            <!-- div trais -->
-            <div class="detection-history">
-                <div class="title-detection-history">
-                    <h4>Detection History</h4>
-                </div>
-                <div class="list-detection-history">
-                    <div><p>Time</p><p>Detection</p></div>
-                    <div></div>
-                </div>
-            </div>
-            <div>
-                <p></p>
-            </div>
-            <!-- div phai -->
-            <div class="box-report">
-                <div class="monthly-report">
-                    <div class="title-monthly-report">
-                        <h4>Monthly Report</h4>
-                    </div>
-                    <div>
-                        <canvas id="my-chart"></canvas>
-                    </div>
-                </div>
-                <div class="view">
-                    <div class="view-detection-history"></div>
-                    <div class="view-statistics"></div>
-                </div>
-            </div>
-        </div>
-    </div>
+		<div class="box-histore">
+			<!-- div trais -->
+			<div class="detection-history">
+				<div class="title-detection-history">
+					<h4>Detection History</h4>
+				</div>
+				<div class="list-detection-history">
+					<table>
+						<thead>
+							<tr>
+								<th>Time</th>
+								<th>Detection</th>
+							</tr>
+						</thead>
+						<tbody>
+							<%
+							List<Detective> detective1 = (List<Detective>) request.getAttribute("detective");
+							if (detective1 != null) {
+								for (int i = 0; i < detective1.size(); i++) {
+							%>
+							<tr>
+								<td><%=detective1.get(i).getTimestamp()%></td>
+								<td><%=detective1.get(i).getDescripts()%></td>
+							</tr>
+
+							<%
+							}
+							} else {
+							%>
+							<tr>
+								<td colspan="3">No errors found.</td>
+							</tr>
+							<%
+							}
+							%>
+
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div>
+				<p></p>
+			</div>
+			<!-- div phai -->
+			<div class="box-report">
+				<div class="monthly-report">
+					<div class="title-monthly-report">
+						<h4>Monthly Report</h4>
+					</div>
+					<div>
+						<canvas id="my-chart"></canvas>
+					</div>
+				</div>
+				<div class="view">
+					<div class="view-detection-history"></div>
+					<div class="view-statistics"></div>
+				</div>
+			</div>
+		</div>
+	</div>
     <script src="./js/dashboard.js"></script>
     
 </body>

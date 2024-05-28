@@ -73,17 +73,17 @@ button {
     cursor: pointer;
 }
 
-button:nth-child(1) {
+.button_add {
     background-color: #FFA500;
     color: white;
 }
 
-button:nth-child(2) {
+.button_fix {
     background-color: #00BFFF;
     color: white;
 }
 
-button:nth-child(3) {
+.button_delete {
     background-color: #FF6347;
     color: white;
 }

@@ -41,21 +41,21 @@
                             <td>active</td>
                             <td>1</td>
                             <td>
-                                <button onclick="openModal()">Thêm mới</button>
-                                <button onclick="edit(this)">Sửa</button>
-                                <button onclick="deleteRow(this)">Xóa</button>
+                                <button class="button_add" onclick="openModal()">Thêm mới</button>
+                                <button class="button_fix" onclick="edit(this)">Sửa</button>
+                                <button class="button_delete" onclick="deleteRow(this)">Xóa</button>
                             </td>
                         </tr>
                         <tr>
-                            <td>2</td>
+                            <td>3</td>
                             <td>CH-02</td>
                             <td>https://www.youtube.com/embed/6lEp1Hb6l9A?si=GVtilqlMQb7E_NDj</td>
                             <td>active</td>
                             <td>2</td>
                             <td>
-                                <button onclick="openModal()">Thêm mới</button>
-                                <button onclick="edit(this)">Sửa</button>
-                                <button onclick="deleteRow(this)">Xóa</button>
+                                <button class="button_add" onclick="openModal()">Thêm mới</button>
+                                <button class="button_fix" onclick="edit(this)">Sửa</button>
+                                <button class="button_delete" onclick="deleteRow(this)">Xóa</button>
                             </td>
                         </tr>
                     </tbody>
@@ -109,9 +109,9 @@
                             <td>0123456789</td>
                             <td>role</td>
                             <td>
-                                <button onclick="openModal2()">Thêm mới</button>
-                                <button onclick="edit2(this)">Sửa</button>
-                                <button onclick="deleteRow2(this)">Xóa</button>
+                                <button class="button_add" onclick="openModal()">Thêm mới</button>
+                                <button class="button_fix" onclick="edit(this)">Sửa</button>
+                                <button class="button_delete" onclick="deleteRow(this)">Xóa</button>
                             </td>
                         </tr>
                     </tbody>

@@ -1,11 +1,10 @@
+<%@page import="model.CameraError"%>
+<%@page import="com.google.gson.Gson"%>
+<%@page import="model.CameraProject"%>
+<%@page import="java.util.List"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="java.util.List"%>
-<%@page import="model.CameraError"%>
-<%@page import="model.CameraProject"%>
-<%@page import="com.google.gson.Gson"%>
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,9 +17,9 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
-<%
-List<CameraProject> cameraProjects = (List<CameraProject>) request.getAttribute("CameraProject");
-%>
+	<%
+	List<CameraProject> cameraProjects3 = (List<CameraProject>) request.getAttribute("CameraProject_Statistics");
+	%>
 <body>
     <div id="header"></div>
     <div class="wrapper">
@@ -37,15 +36,15 @@ List<CameraProject> cameraProjects = (List<CameraProject>) request.getAttribute(
                     <form class="element-search" action="http://localhost:8081/pbl3/statistics" method="post">
                         <div class="button">
                             <div class="button1"><span>Onsite</span></div>
-                            <div class="button2">
-                                <select id="customSelect"></select>
+                            <div class="button2" >
+                                <select id="customSelect"  name="customSelect1a"></select>
                             </div>
                         </div>
                         <div class="date-time" id="date-picker">
-                            <span>From: <input id="from" type="text"></span>
-                            <span>To: <input id="to" type="text"></span>
+                            <span>From: <input id="from" type="text" name="fromDate"></span>
+                            <span>To: <input id="to" type="text" name="toDate"></span>
                         </div>
-                        <button type="submit" class="button-search" onclick="search()">Search<i class="fas fa-search"></i><span></span></button>
+                        <button type="submit" class="button-search" onclick="Search()">Search<i class="fas fa-search"></i><span></span></button>
                     </form>
                 </div>
                 <div class="all-detection-history">
@@ -69,7 +68,7 @@ List<CameraProject> cameraProjects = (List<CameraProject>) request.getAttribute(
                         <tbody>
 	                      
 							<%
-							List<CameraError> cameraError = (List<CameraError>) request.getAttribute("ErrorByDate");
+							List<CameraError> cameraError = (List<CameraError>) request.getAttribute("ErrorByDate_Statistics");
 							if (cameraError != null) {
 							    for (int i = 0; i < cameraError.size(); i++) {
 							%>
@@ -199,68 +198,27 @@ List<CameraProject> cameraProjects = (List<CameraProject>) request.getAttribute(
 	});
 
 	const Data =[
-		<%for(int i=0;i < cameraProjects.size();i++){%>
-		{
-			name: '<%= cameraProjects.get(i).getCamera_name() %>'
-		}
-		<% if(i < cameraProjects.size() - 1) { %>,<% } %>
-    <% } %>
-	];
+		<% if (cameraProjects3 != null) {
+		    for(int i = 0; i < cameraProjects3.size(); i++) { %>
+		    {
+		        name: '<%= cameraProjects3.get(i).getCamera_name() %>',
+		        area: '<%= cameraProjects3.get(i).getProject_name() %>'
+		    }
+		    <% if (i < cameraProjects3.size() - 1) { %>,<% } %>
+		<%   } 
+		} %>
+		];
 
+	
 	var customSelector = document.getElementById("customSelect");
 	Data.forEach(function (item) {
 	    var option = document.createElement("option");
-	    option.value = item.id;
+	    option.value = item.name;
 	    option.text = item.name;
 	    customSelector.appendChild(option);
 	});
 
-	function search() {
-	    var fromDate = new Date(document.getElementById("from").value);
-	    var toDate = new Date(document.getElementById("to").value);
 
-	    if (fromDate > toDate) {
-	        alert("End date must be greater than start date");
-	        return;
-	    }
-
-	    // Thực hiện tìm kiếm dựa trên fromDate và toDate
-	    // Viết mã tìm kiếm ở đây4
-	    // cho nay bao xu ly hay sao day
-
-	}
-
-	// Khởi tạo datepicker cho input "From" và "To"
-	document.addEventListener("DOMContentLoaded", function () {
-	    var fromDate, toDate;
-	    document.getElementById("from").addEventListener("click", function () {
-	        showDatePicker("from");
-	    });
-	    document.getElementById("to").addEventListener("click", function () {
-	        showDatePicker("to");
-	    });
-
-	    function showDatePicker(id) {
-	        var datePickerConfig = {
-	            dateFormat: "dd/mm/yy",
-	            onSelect: function (dateText) {
-	                if (id === "from") {
-	                    fromDate = new Date(dateText);
-	                    document.getElementById("from").value = dateText;
-	                } else if (id === "to") {
-	                    toDate = new Date(dateText);
-	                    if (fromDate && toDate && fromDate > toDate) {
-	                        alert("End date must be greater than start date");
-	                        document.getElementById("to").value = ""; // Clear the input
-	                    } else {
-	                        document.getElementById("to").value = dateText;
-	                    }
-	                }
-	            }
-	        };
-	        $(`#${id}`).datepicker(datePickerConfig).datepicker("show");
-	    }
-	});
 	function search() {
 	    var fromDate = document.getElementById("from").value;
 	    var toDate = document.getElementById("to").value;

@@ -4,14 +4,14 @@ import java.util.List;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-import model.Error;
-import repository.ErrorRepository;
+import model.CameraError;
+import repository.CameraErrorRepository;
 
 public class StatisticService {
-	private ErrorRepository errorRepository = new ErrorRepository();
+	private CameraErrorRepository cameraErrorRepository = new CameraErrorRepository();
 
-	public List<Error> getAlertbyTimestamp(String Camera_name, String Project_name, String Date_1, String Date_2) {
-		return errorRepository.getAlertbyTimestamp(Camera_name, Project_name, Date_1, Date_2);
+	public List<CameraError> getAlertbyTimestamp_Statistics(String Camera_name, String Date_1, String Date_2) {
+		return cameraErrorRepository.getAlertbyTimestamp_Statistics(Camera_name, Date_1, Date_2);
 	}
 
 	public static String convertDateFormat(String dateString) {

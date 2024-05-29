@@ -5,9 +5,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 import model.CameraError;
-import model.Error;
 import repository.CameraErrorRepository;
-import repository.ErrorRepository;
 
 public class HistoryService {
 	private CameraErrorRepository cameraErrorRepository = new CameraErrorRepository();

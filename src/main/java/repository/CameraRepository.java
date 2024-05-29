@@ -9,6 +9,8 @@ import java.util.List;
 
 import config.sqlseverConnection;
 import model.Camera;
+import model.CameraError;
+import model.CameraProject;
 
 public class CameraRepository {
 
@@ -41,4 +43,6 @@ public class CameraRepository {
 		}
 		return list;
 	}
+
+
 }

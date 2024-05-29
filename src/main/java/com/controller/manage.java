@@ -11,10 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 
 
 import service.CameraProjectService;
+import service.manageService;
 
 
-@WebServlet(name = "multi_cctv", urlPatterns = "/mutil_cctv")
-public class multi_cctv extends HttpServlet{
+@WebServlet(name = "manage", urlPatterns = "/manage")
+public class manage extends HttpServlet{
 	
 	/**
 	 * 
@@ -26,8 +27,10 @@ public class multi_cctv extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		manageService managerservice = new manageService();
 		req.setAttribute("CameraProject", cameraProjectService.getCameraProject());
-		req.getRequestDispatcher("/mutil_cctv.jsp").forward(req, resp);
+		req.setAttribute("User", managerservice.getUser());
+		req.getRequestDispatcher("/manage.jsp").forward(req, resp);
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

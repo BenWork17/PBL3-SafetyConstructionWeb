@@ -1,6 +1,12 @@
 package model;
 
 public class Users {
+	@Override
+	public String toString() {
+		return "Users [Users_ID=" + Users_ID + ", Users_name=" + Users_name + ", Full_name=" + Full_name + ", Email="
+				+ Email + ", Phone=" + Phone + ", Pass_word=" + Pass_word + ", Role_ID=" + Role_ID + "]";
+	}
+
 	private int Users_ID;
 	private String Users_name;
 	private String Full_name;

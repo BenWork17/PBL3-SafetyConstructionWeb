@@ -1,10 +1,14 @@
 package service;
 
+import java.lang.reflect.Array;
 import java.time.LocalDateTime;
+import java.time.Month;
 
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-
+import java.util.Map;
+import java.util.Arrays;
+import java.util.HashMap;
 import model.Detective;
 
 import repository.DetectiveRepository;
@@ -25,13 +29,6 @@ public class dashboardService {
             int weekday = getWeekday(line);
             detections[weekday]++;
         }
-
-        // In ra kết quả
-        System.out.println("Số lần phát hiện 'Detective' theo các thứ trong tuần:");
-        String[] daysOfWeek = {"Chủ Nhật", "Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sáu", "Thứ Bảy"};
-        for (int i = 0; i < detections.length; i++) {
-            System.out.println(daysOfWeek[i] + ": " + detections[i]);
-        }
 		return detections;
     }
 
@@ -41,6 +38,23 @@ public class dashboardService {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S");
         LocalDateTime timestamp = LocalDateTime.parse(timestampStr, formatter);
         return timestamp.getDayOfWeek().getValue() % 7; // Chủ Nhật là 0, Thứ Hai là 1, ...
+    }
+    
+    
+
+    
+  
+    public Map<String, int[]> getMonthlyReportData(List<Detective> detectives) {
+        Map<String, int[]> reportData = new HashMap<>();
+        for (Detective detective : detectives) {
+            String errorType = detective.getError_type();
+            LocalDateTime timestamp = LocalDateTime.parse(detective.getTimestamp(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S"));
+            Month month = timestamp.getMonth();
+
+            reportData.putIfAbsent(errorType, new int[12]);
+            reportData.get(errorType)[month.getValue() - 1]++;
+        }
+        return reportData;
     }
    
 }

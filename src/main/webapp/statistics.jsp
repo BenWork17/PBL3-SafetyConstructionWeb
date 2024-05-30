@@ -52,48 +52,51 @@
                         <h3>All Detection History</h3>
                         <span>Search :All CH& Period - 2004-04-14 to 2004-05-23</span>
                     </div>
-                <div class="inquiry">
-                	<table>
-                        <thead>
-                          <tr>
-                            <th>#</th>
-                            <th>Status</th>
-                            <th>OnSite</th>
-                            <th>Channel</th>
-<!--                             <th>Time</th>
- -->                            <th>Error</th>
-                            <th>View details</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-	                      
-							<%
-							List<CameraError> cameraError = (List<CameraError>) request.getAttribute("ErrorByDate_Statistics");
-							if (cameraError != null) {
-							    for (int i = 0; i < cameraError.size(); i++) {
-							%>
-							        <tr>
-							            <td><%= (i + 1) %></td>
-							            <td><%= cameraError.get(i).getStastus() %></td>
-							            <td><%= cameraError.get(i).getProject_Name() %></td>
-							            <td><%= cameraError.get(i).getCamera_name() %></td>
-							            <td><%= cameraError.get(i).getError_type() %></td>
-							            <td><%= cameraError.get(i).getdescript() %></td>
-							        </tr>
-							<%
-							    }
-							} else {
-							%>
-							    <tr>
-							        <td colspan="6">No errors found.</td>
-							    </tr>
-							<%
-							}
-							%>
-                            </tbody>
-                      </table>
-                </div>
-                </div>
+                    <div class="box-inquiry">
+	                    <div class="inquiry">
+		                	<table>
+		                        <thead>
+		                          <tr>
+		                            <th>#</th>
+		                            <th>Status</th>
+		                            <th>OnSite</th>
+		                            <th>Channel</th>
+		<!--                             <th>Time</th>
+		 -->                            <th>Error</th>
+		                            <th>View details</th>
+		                          </tr>
+		                        </thead>
+		                        <tbody>
+			                      
+									<%
+									List<CameraError> cameraError = (List<CameraError>) request.getAttribute("ErrorByDate_Statistics");
+									if (cameraError != null) {
+									    for (int i = 0; i < cameraError.size(); i++) {
+									%>
+									        <tr>
+									            <td><%= (i + 1) %></td>
+									            <td><%= cameraError.get(i).getStastus() %></td>
+									            <td><%= cameraError.get(i).getProject_Name() %></td>
+									            <td><%= cameraError.get(i).getCamera_name() %></td>
+									            <td><%= cameraError.get(i).getError_type() %></td>
+									            <td><%= cameraError.get(i).getdescript() %></td>
+									        </tr>
+									<%
+									    }
+									} else {
+									%>
+									    <tr>
+									        <td colspan="6">No errors found.</td>
+									    </tr>
+									<%
+									}
+									%>
+		                            </tbody>
+		                      </table>
+		                </div>
+                
+                    </div>
+				</div>
             </div>
             <div class="report">
                 <span>Detailed report in 'Detection History'</span>

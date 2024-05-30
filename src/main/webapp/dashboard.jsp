@@ -1,6 +1,8 @@
 <%@page import="java.util.List"%>
 <%@page import="com.google.gson.Gson"%>
 <%@page import="model.Detective"%>
+<%@page import="java.util.Map"%>
+<%@page import="java.util.HashMap"%>
 
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 
@@ -15,6 +17,10 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Document</title>
 </head>
+<%
+int[] detections = (int[]) request.getAttribute("detectiveStatic");
+String monthlyReportDataJson = (String) request.getAttribute("monthlyReportData");
+%>
 <body>
     <div id="header"></div>
     <div class="wrapper">
@@ -136,7 +142,207 @@
 			</div>
 		</div>
 	</div>
-    <script src="./js/dashboard.js"></script>
+    <script >
+
+    var detections = <%= java.util.Arrays.toString(detections) %>;
+    const canvases = document.querySelectorAll('.myChart-1, .myChart-2, .myChart-3');
+    canvases.forEach(canvas =>{
+        new Chart(canvas.getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                datasets: [{
+                    label: '',
+                    data: detections,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 205, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(128, 128, 128, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(201, 203, 207, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(255, 159, 64)',
+                        'rgb(255, 205, 86)',
+                        'rgb(75, 192, 192)',
+                        'rgb(54, 162, 235)',
+                        'rgb(128, 128, 128)',
+                        'rgb(153, 102, 255)',
+                        'rgb(201, 203, 207)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false 
+                    }
+                }
+            }
+        });
+    })
+
+
+/*     document.addEventListener('DOMContentLoaded', () => {
+        const ctx = document.getElementById('my-chart').getContext('2d');
+        const data = {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+            datasets: [
+                {
+                    label: 'Error_type1',
+                    data: [3, 6, 2, 3, 2, 1, 5, 6, 2, 1, 5, 6],
+                    backgroundColor: 'rgba(165, 42, 42, 0.2)',
+                    borderColor: 'rgb(165, 42, 42)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Error_type2',
+                    data: [4, 8, 1, 4, 3, 1, 6, 8, 2, 1, 5, 6],
+                    backgroundColor: 'rgba(128, 128, 128, 0.2)',
+                    borderColor: 'rgb(128, 128, 128)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Error_type3',
+                    data: [6, 12, 2, 6, 5, 1, 8, 10, 2, 1, 5, 6],
+                    backgroundColor: 'rgba(255, 159, 64, 0.2)',
+                    borderColor: 'rgb(255, 159, 64)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Error_type4',
+                    data: [9, 16, 4, 7, 3, 2, 9, 14, 2, 1, 5, 6],
+                    backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                    borderColor: 'rgb(153, 102, 255)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Error_type5',
+                    data: [5, 10, 3, 8, 4, 2, 10, 12, 2, 1, 5, 6],
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgb(75, 192, 192)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Error_type6',
+                    data: [8, 14, 5, 10, 6, 4, 15, 18, 2, 1, 5, 6],
+                    backgroundColor: 'rgba(255, 205, 86, 0.2)',
+                    borderColor: 'rgb(255, 205, 86)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Error_type7',
+                    data: [10, 15, 7, 12, 8, 5, 13, 20, 2, 1, 5, 6],
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgb(54, 162, 235)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Error_type8',
+                    data: [12, 19, 3, 5, 2, 3, 10, 15],
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    borderWidth: 1
+                }
+            ]
+        };
+        new Chart(ctx, {
+            type: 'bar',
+            data: data,
+            options: {
+                scales: {
+                    x: {
+                        stacked: true
+                    },
+                    y: {
+                        stacked: true,
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'bottom',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Stacked Column Chart with Annotations'
+                    }
+                }
+            }
+        });
+    });
+ */
+ 
+ 
+ 
+ document.addEventListener('DOMContentLoaded', () => {
+     const ctx = document.getElementById('my-chart').getContext('2d');
+     const monthlyReportData = JSON.parse('<%= monthlyReportDataJson %>');
+
+     const labels = Object.keys(monthlyReportData);
+     const datasets = Object.keys(monthlyReportData).map(errorType => ({
+         label: errorType,
+         data: monthlyReportData[errorType],
+         backgroundColor: getRandomColor(),
+         borderColor: getRandomColor(),
+         borderWidth: 1
+     }));
+
+     new Chart(ctx, {
+         type: 'bar',
+         data: {
+             labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+             datasets: datasets
+         },
+         options: {
+             scales: {
+                 x: {
+                     stacked: true
+                 },
+                 y: {
+                     stacked: true,
+                     beginAtZero: true
+                 }
+             },
+             plugins: {
+                 legend: {
+                     display: true,
+                     position: 'bottom',
+                 },
+                 title: {
+                     display: true,
+                     text: 'Stacked Column Chart with Annotations'
+                 }
+             }
+         }
+     });
+ });
+ function getRandomColor() {
+     const r = Math.floor(Math.random() * 255);
+     const g = Math.floor(Math.random() * 255);
+     const b = Math.floor(Math.random() * 255);
+     return `rgba(${r}, ${g}, ${b}, 0.6)`;
+ } 
+ 
+    fetch('./header.jsp')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('header').innerHTML = data;
+                })
+                .catch(error => console.error('Error fetching header:', error));
+
+</script>
     
 </body>
 </html>

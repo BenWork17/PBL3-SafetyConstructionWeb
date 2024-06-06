@@ -44,6 +44,62 @@ public class CameraProjectRepository {
 		}
 		return list;
 	}
+	public int addCameraProject(String Camera_name, String IP_address,String Status,String Project_Name) {
+		Connection connection = sqlseverConnection.getConnection();
+		String query = "SET @siteB_id = (SELECT Project_ID FROM Project WHERE Project_name = ?)\r\n"
+				+ "INSERT INTO Cameras (Camera_name, IP_address, Status, Project_ID) VALUES\r\n"
+				+ "(?, ?, ?, @siteA_id)";
+		int isAdd =0;
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, Project_Name);
+			preparedStatement.setString(2, Camera_name);
+			preparedStatement.setString(3, IP_address);
+			preparedStatement.setString(4, Status);
+
+			isAdd = preparedStatement.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null) {
+					connection.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return isAdd;
+		
+	}
+	public int DeleteCameraProjectByID(int id) {
+		Connection connection = sqlseverConnection.getConnection();
+		String query = "DELETE FROM Cameras WHERE Cameras_ID = ?";
+		
+		int isDelete =0;
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1, id);
+			isDelete = preparedStatement.executeUpdate();
+
+
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null) {
+					connection.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return isDelete;
+		
+	}
 //	public List<CameraProject> getCameraAndProjectByProjectName(String Project_name) {
 //		List<CameraProject> list = new ArrayList<>();
 //		Connection connection = sqlseverConnection.getConnection();

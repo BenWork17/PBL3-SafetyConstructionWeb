@@ -85,12 +85,12 @@ public class DetectiveRepository {
 		return list;
 	}
 
-	public static void main(String[] args) {
-		DetectiveRepository cam = new DetectiveRepository();
-		List<Detective> detectives = cam.getDetective();
-		List<Detective> list = cam.getDetectiveByErrorType("body");
-		for (Detective o : list) {
-			System.out.println(o);
-		}
-	}
+//	public static void main(String[] args) {
+//		DetectiveRepository cam = new DetectiveRepository();
+//		List<Detective> detectives = cam.getDetective();
+//		List<Detective> list = cam.getDetectiveByErrorType("body");
+//		for (Detective o : list) {
+//			System.out.println(o);
+//		}
+//	}
 }

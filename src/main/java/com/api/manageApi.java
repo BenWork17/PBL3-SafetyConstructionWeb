@@ -13,7 +13,7 @@ import service.manageService;
 /**
  * Servlet implementation class manageApi
  */
-@WebServlet(name = "adduser", urlPatterns = { "/api/deleteuser", "/api/adduser" , "/api/modifyuser" })
+@WebServlet(name = "adduser", urlPatterns = { "/api/deleteuser", "/api/adduser" , "/api/modifyuser", "/api/addcamera", "/api/deletecamera" })
 public class manageApi extends HttpServlet {
 	/**
 	 * 
@@ -73,6 +73,19 @@ public class manageApi extends HttpServlet {
 				e.printStackTrace(); // hoặc log lỗi tùy thuộc vào hệ thống logging của bạn
 			}
 			boolean ismodify = manageservice.modifyUser(userid,username1,fullname1, email1, phone1, password1, roleid1);
+			break;
+		case "/api/deletecamera":
+			int idcamera = Integer.parseInt(req.getParameter("idcamera"));
+			
+			boolean isdelete1 = manageservice.deletCameraProjectByID(idcamera);
+			break;
+		case "/api/addcamera":
+			String cameraname = req.getParameter("cameraame");
+			String ipadress = req.getParameter("ipadress");
+			String status = req.getParameter("status");
+			String projectname = req.getParameter("projectname");
+
+			boolean isAdd1 = manageservice.addCameraProject(cameraname, ipadress, status, projectname);
 			break;
 		}
 

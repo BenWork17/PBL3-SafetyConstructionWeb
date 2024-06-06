@@ -32,7 +32,6 @@ public class login extends HttpServlet {
 		String password = req.getParameter("password");
 		boolean isLogin = loginService.checkLogin(username, password);
 		if (isLogin) {
-			
 			List<Users> user= profileService.getUserbyUsernameAndPassword(username, password);
 			HttpSession session =req.getSession();
 			session.setAttribute("profile", user);

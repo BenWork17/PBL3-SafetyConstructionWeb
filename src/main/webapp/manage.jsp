@@ -43,7 +43,7 @@ List<CameraProject> cameraProject=(List<CameraProject>) request.getAttribute("Ca
                     </thead>
                     <tbody>
                     <%for(int i=0;i<cameraProject.size();i++){ %>
-                        <tr>
+                        <tr >
                             <td><%= (i+1) %></td>
                             <td><%= cameraProject.get(i).getCamera_name() %></td>
                             <td><%= cameraProject.get(i).getIP_address() %></td>
@@ -99,9 +99,9 @@ List<CameraProject> cameraProject=(List<CameraProject>) request.getAttribute("Ca
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="tbody_class">
                     <%for(int i=0;i<user.size();i++) {%>
-                        <tr>
+                        <tr class="tr_class">
                             <td><%=(i+1) %></td>
                             <td><%= user.get(i).getUsers_name() %></td>
                             <td><%= user.get(i).getFull_name() %></td>
@@ -111,7 +111,7 @@ List<CameraProject> cameraProject=(List<CameraProject>) request.getAttribute("Ca
                             <td>
                                 <button class="button_add" onclick="openModal2()">Thêm mới</button>
                                 <button class="button_fix" onclick="edit2(this)">Sửa</button>
-                                <button class="button_delete btn-xoa"  id_user="<%= user.get(i).getUsers_ID() %>">Xóa</button>
+                                <button class="button_delete "  id_user="<%= user.get(i).getUsers_ID() %>">Xóa</button>
                             </td>
                         </tr>
                         <%} %>
@@ -120,20 +120,22 @@ List<CameraProject> cameraProject=(List<CameraProject>) request.getAttribute("Ca
                 <div id="modal2" class="modal">
                     <div class="modal-content">
                         <span class="close" onclick="closeModal2()">&times;</span>
-                        <h2 id="modalTitle2">Thêm Người Dùng</h2>
+                        <h2 id="modalTitle2">Add Users</h2>
                         <form id="New_User_Form">
                             <input type="hidden" id="editIndex2">
                             <label for="Users_name">Users_name:</label>
-                            <input type="text" id="Users_name" name="Users_name" required><br>
+                            <input type="text" id="Users_name" name="username" required><br>
                             <label for="Full_name">Full_name:</label>
-                            <input type="text" id="Full_name" name="Full_name" required><br>
+                            <input type="text" id="Full_name" name="fullname" required><br>
                             <label for="Email">Email:</label>
-                            <input type="text" id="Email" name="Email" required><br>
+                            <input type="text" id="Email" name="email" required><br>
                             <label for="Phone">Phone:</label>
-                            <input type="text" id="Phone" name="Phone" required><br>
+                            <input type="text" id="Phone" name="phone" required><br>
+                            <label for="Phone">Password:</label>
+                            <input type="text" id="Password" name="password" required><br>
                             <label for="Role">Role:</label>
-                            <input type="text" id="Role" name="Role" required><br>
-                            <button type="button" onclick="saveUser()">Lưu</button>
+                            <input type="text" id="Role" name="roleid" required><br>
+                            <button type="submit"  id="btn_add" onclick="saveUser()">Save</button>
                         </form>
                     </div>
                 </div>
@@ -142,29 +144,52 @@ List<CameraProject> cameraProject=(List<CameraProject>) request.getAttribute("Ca
     </div>
      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
-<!--     <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="plugins/bower_components/sidebar-nav/dist/side-nav.min.js"></script>
-    <script src="js/jquery.slimscroll.js"></script>
-    <script src="js/jquery.dataTables.js"></script>
-    <script src="js/waves.js"></script>
-    <script src="js/custom.min.js"></script> -->
+
     <script >
     	$(document).ready(function(){
-    		$('.btn-xoa').click(function(){
+    		$('.button_delete').click(function(){
     			var id = $(this).attr("id_user")
+    			var row =$(this).closest('.tr_class')
     			$.ajax({
     				method:"POST",
-    				url:"http://localhost:8081/pbl3/api/manage/delete",
+    				url:"http://localhost:8081/pbl3/api/deleteuser",
     				data:{id:id}
-    			}).done(function(msg){
-    				console.log(msg);
+    			}).done(function(data){
+    					row.remove()
+    				
+    			});
+    			
+    		})
+    		
+    		$('#btn_add').click(function(e){
+    			e.preventDefault()
+    			var user_name = $('#Users_name').val()
+    			var full_name = $('#Full_name').val()
+    			var email = $('#Email').val()
+				var phone = $('#Phone').val()
+    			var password = $('#Password').val()
+    			var role = $('#Role').val()
+    			var row =$(this).closest('.tbody_class')
+    			$.ajax({
+    				method:"POST",
+    				url:"http://localhost:8081/pbl3/api/adduser",
+    				data:{
+    					username:user_name,
+    					fullname:full_name,
+    					email:email,
+    					phone:phone,
+    					password:password,
+    					roleid:role
+    				}
+    			}).done(function(data){
+    				row.remove()
     			});
     			
     		})
     		
     	})
     </script>
+
     <script>
         fetch('./header.jsp')
             .then(response => response.text())
@@ -182,25 +207,6 @@ List<CameraProject> cameraProject=(List<CameraProject>) request.getAttribute("Ca
         function closeModal() {
             document.getElementById('modal').style.display = 'none';
         }
-
-        function edit(button) {
-            const row = button.parentNode.parentNode;
-            const cells = row.getElementsByTagName('td');
-            document.getElementById('editIndex').value = row.rowIndex;
-            document.getElementById('Camera_name').value = cells[1].textContent;
-            document.getElementById('IP_address').value = cells[2].textContent;
-            document.getElementById('Status').value = cells[3].textContent;
-            document.getElementById('Project').value = cells[4].textContent;
-            document.getElementById('modalTitle').textContent = 'Sửa Camera';
-            document.getElementById('modal').style.display = 'block';
-        }
-
-
-/*         function deleteRow(button) {
-            const row = button.parentNode.parentNode;
-            row.parentNode.removeChild(row);
-            alert('Row deleted');
-        } */
 
         function openModal2() {
             document.getElementById('modal2').style.display = 'block';
@@ -224,14 +230,27 @@ List<CameraProject> cameraProject=(List<CameraProject>) request.getAttribute("Ca
             document.getElementById('modalTitle2').textContent = 'Sửa Người Dùng';
             document.getElementById('modal2').style.display = 'block';
         }
+        function saveUser() {
+        const index = document.getElementById('editIndex2').value;
+        const table = document.getElementById('userTable').getElementsByTagName('tbody')[0];
+        const newRow = index ? table.rows[index - 1] : table.insertRow();
+        newRow.innerHTML = `
+            <td>${index || table.rows.length}</td>
+            <td>${document.getElementById('Users_name').value}</td>
+            <td>${document.getElementById('Full_name').value}</td>
+            <td>${document.getElementById('Email').value}</td>
+            <td>${document.getElementById('Phone').value}</td>
+            <td>${document.getElementById('Role').value}</td>
+            <td>
+                <button onclick="openModal2()">Thêm mới</button>
+                <button onclick="edit2(this)">Sửa</button>
+                <button onclick="deleteRow2(this)">Xóa</button>
+            </td>
+        `;
+        closeModal2();
+    	}
+    
 
-
-
-/*         function deleteRow2(button) {
-            const row = button.parentNode.parentNode;
-            row.parentNode.removeChild(row);
-            alert('Row deleted');
-        } */
     </script>
 </body>
 </html>

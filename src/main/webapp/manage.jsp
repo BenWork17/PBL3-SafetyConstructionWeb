@@ -52,7 +52,7 @@ List<CameraProject> cameraProject=(List<CameraProject>) request.getAttribute("Ca
                             <td>
                                 <button class="button_add" onclick="openModal()">Thêm mới</button>
                                 <button class="button_fix" onclick="edit(this)">Sửa</button>
-                                <button class="button_delete" onclick="deleteRow(this)">Xóa</button>
+                                <button class="button_delete "  >Xóa</button>
                             </td>
                         </tr>
                         <%} %>
@@ -109,9 +109,9 @@ List<CameraProject> cameraProject=(List<CameraProject>) request.getAttribute("Ca
                             <td><%= user.get(i).getPhone() %></td>
                             <td><%= user.get(i).getRole_ID() %></td>
                             <td>
-                                <button class="button_add" onclick="openModal()">Thêm mới</button>
-                                <button class="button_fix" onclick="edit(this)">Sửa</button>
-                                <button class="button_delete" onclick="deleteRow(this)">Xóa</button>
+                                <button class="button_add" onclick="openModal2()">Thêm mới</button>
+                                <button class="button_fix" onclick="edit2(this)">Sửa</button>
+                                <button class="button_delete btn-xoa"  id_user="<%= user.get(i).getUsers_ID() %>">Xóa</button>
                             </td>
                         </tr>
                         <%} %>
@@ -140,6 +140,31 @@ List<CameraProject> cameraProject=(List<CameraProject>) request.getAttribute("Ca
             </div>
         </div>
     </div>
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+<!--     <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="plugins/bower_components/sidebar-nav/dist/side-nav.min.js"></script>
+    <script src="js/jquery.slimscroll.js"></script>
+    <script src="js/jquery.dataTables.js"></script>
+    <script src="js/waves.js"></script>
+    <script src="js/custom.min.js"></script> -->
+    <script >
+    	$(document).ready(function(){
+    		$('.btn-xoa').click(function(){
+    			var id = $(this).attr("id_user")
+    			$.ajax({
+    				method:"POST",
+    				url:"http://localhost:8081/pbl3/api/manage/delete",
+    				data:{id:id}
+    			}).done(function(msg){
+    				console.log(msg);
+    			});
+    			
+    		})
+    		
+    	})
+    </script>
     <script>
         fetch('./header.jsp')
             .then(response => response.text())
@@ -171,11 +196,11 @@ List<CameraProject> cameraProject=(List<CameraProject>) request.getAttribute("Ca
         }
 
 
-        function deleteRow(button) {
+/*         function deleteRow(button) {
             const row = button.parentNode.parentNode;
             row.parentNode.removeChild(row);
             alert('Row deleted');
-        }
+        } */
 
         function openModal2() {
             document.getElementById('modal2').style.display = 'block';
@@ -202,11 +227,11 @@ List<CameraProject> cameraProject=(List<CameraProject>) request.getAttribute("Ca
 
 
 
-        function deleteRow2(button) {
+/*         function deleteRow2(button) {
             const row = button.parentNode.parentNode;
             row.parentNode.removeChild(row);
             alert('Row deleted');
-        }
+        } */
     </script>
 </body>
 </html>

@@ -14,6 +14,9 @@ public class manageService {
 	public boolean deleteUserById(int id) {
 		return usersRepository.DeleteUserByID(id) > 0 ? true :false;
 	}
+	public boolean addUser(String username, String fullname, String email , String phone , String password, int role_id ){
+		return usersRepository.addUser(username, fullname , email,phone,password,role_id ) > 0 ? true :false;
+	}
 
 
 }

@@ -77,7 +77,8 @@ public class UsersRepository {
 	}
 	public int DeleteUserByID(int id) {
 		Connection connection = sqlseverConnection.getConnection();
-		String query = "DELETE FROM Users WHERE User_ID = ?";
+		String query = "DELETE FROM Users WHERE Users_ID = ?";
+		
 		int isDelete =0;
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -101,6 +102,34 @@ public class UsersRepository {
 		return isDelete;
 		
 	}
+	public int addUser(String username, String fullname, String email , String phone , String password, int role_id) {
+		Connection connection = sqlseverConnection.getConnection();
+		String query = "INSERT INTO Users (Users_name, Full_name,Email,Phone,Pass_word,Role_ID) VALUES(? , ?, ?, ?, ? , ?)";
+		int isAdd =0;
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, username);
+			preparedStatement.setString(2, fullname);
+			preparedStatement.setString(3, email);
+			preparedStatement.setString(4, phone);
+			preparedStatement.setString(5, password);
+			preparedStatement.setInt(6, role_id);
+			isAdd = preparedStatement.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null) {
+					connection.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return isAdd;
+		
+	}
 	
 //	public static void main(String[] args) {
 //		UsersRepository cam = new UsersRepository();
@@ -109,5 +138,11 @@ public class UsersRepository {
 //			System.out.println(o);
 //		}
 //	}
+	public static void main(String[] args) {
+		UsersRepository cam = new UsersRepository();
+		cam.DeleteUserByID(11);
+		System.out.println("hello");
+
+	}
 
 }

@@ -130,6 +130,43 @@ public class UsersRepository {
 		return isAdd;
 		
 	}
+	public int modifyuser(int userid,String username, String fullname, String email , String phone , String password, int role_id) {
+		Connection connection = sqlseverConnection.getConnection();
+		String query = "  UPDATE Users\r\n"
+				+ "SET Users_name = ?,\r\n"
+				+ "    Full_name =?,\r\n"
+				+ "    Email = ?,\r\n"
+				+ "    Phone = ?,\r\n"
+				+ "    Pass_word = ?\r\n"
+				+ "    Role_ID = ?\r\n"
+				+ "WHERE Users_ID = ?;\r\n"
+				+ "";
+		int isModify =0;
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, username);
+			preparedStatement.setString(2, fullname);
+			preparedStatement.setString(3, email);
+			preparedStatement.setString(4, phone);
+			preparedStatement.setString(5, password);
+			preparedStatement.setInt(6, role_id);
+			preparedStatement.setInt(7, userid);
+			isModify = preparedStatement.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null) {
+					connection.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return isModify;
+		
+	}
 	
 //	public static void main(String[] args) {
 //		UsersRepository cam = new UsersRepository();

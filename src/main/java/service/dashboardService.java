@@ -8,7 +8,6 @@ import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
-import java.util.Arrays;
 import java.util.HashMap;
 import model.Detective;
 
@@ -17,6 +16,9 @@ import repository.DetectiveRepository;
 
 public class dashboardService {
 	private DetectiveRepository detectiveRepository =new DetectiveRepository();
+	public List<Detective> getDetectiveByErrortype(String Errortype) {
+		return detectiveRepository.getDetectiveByErrorType(Errortype);
+	}
 
 	public List<Detective> getDetective() {
 		return detectiveRepository.getDetective();

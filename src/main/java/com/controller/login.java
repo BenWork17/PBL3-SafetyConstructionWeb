@@ -35,7 +35,7 @@ public class login extends HttpServlet {
 			List<Users> user= profileService.getUserbyUsernameAndPassword(username, password);
 			HttpSession session =req.getSession();
 			session.setAttribute("profile", user);
-			resp.sendRedirect(req.getContextPath() + "/dashboard.jsp");
+			resp.sendRedirect(req.getContextPath() + "/dashboard");
 		} else {
 			req.getRequestDispatcher("/login.jsp").forward(req, resp);
 		}

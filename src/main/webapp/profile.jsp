@@ -1,3 +1,5 @@
+<%@page import="model.Users"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -8,22 +10,37 @@
     <title>Document</title>
     <link rel="stylesheet" href="./css/profile.css">
 </head>
+
+<%
+List<Users> user =(List<Users>) session.getAttribute("profile");
+Users user1=null;
+if(user!=null&& !user.isEmpty()){
+	 user1=user.get(0);
+}
+else{
+	System.out.print("loi null");
+}
+%>
 <body>
     <div id="header"></div>
     <div class="wrapper">
         <div class="user-info">
             <h1>User Information</h1>
             <hr>
-            <p><strong>Username:</strong> <span id="username">Nguyen Van A</span></p>
-            <hr>
-            <p><strong>Full Name:</strong> <span id="full-name">Nguyễn Văn A</span></p>
-            <hr>
-            <p><strong>Email:</strong> <span id="email">Nguyễn Văn A</span></p>
-            <hr>
-            <p><strong>Phone:</strong> <span id="phone">0388789998</span></p>
-            <hr>
-            <p><strong>Role:</strong> <span id="role">Admin</span></p>
-            <hr>
+            <% if (user != null) { %>
+                <p><strong>Username:</strong> <span id="username"><%= user1.getUsers_name() %></span></p>
+                <hr>
+                <p><strong>Full Name:</strong> <span id="full-name"><%= user1.getFull_name() %></span></p>
+                <hr>
+                <p><strong>Email:</strong> <span id="email"><%= user1.getEmail() %></span></p>
+                <hr>
+                <p><strong>Phone:</strong> <span id="phone"><%= user1.getPhone() %></span></p>
+                <hr>
+                <p><strong>Role:</strong> <span id="role"><%= user1.getRole_ID() == 1 ? "Admin" : "User" %></span></p>
+                <hr>
+            <% } else { %>
+                <p>User not found.</p>
+            <% } %>
             <button id="logout-button">Log Out</button>
         </div>
     </div>

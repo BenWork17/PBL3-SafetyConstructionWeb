@@ -1,3 +1,6 @@
+<%@page import="model.CameraProject"%>
+<%@page import="model.Users"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -11,6 +14,11 @@
     
     <title>Document</title>
 </head>
+<%
+List<Users> user=(List<Users>) request.getAttribute("User");
+
+List<CameraProject> cameraProject=(List<CameraProject>) request.getAttribute("CameraProject");
+%>
 <body>
     <div id="header"></div>
     <div class="wrapper">
@@ -34,30 +42,21 @@
                         </tr>
                     </thead>
                     <tbody>
+                    <%for(int i=0;i<cameraProject.size();i++){ %>
                         <tr>
-                            <td>1</td>
-                            <td>CH-01</td>
-                            <td>https://www.youtube.com/embed/6lEp1Hb6l9A?si=GVtilqlMQb7E_NDj</td>
-                            <td>active</td>
-                            <td>1</td>
+                            <td><%= (i+1) %></td>
+                            <td><%= cameraProject.get(i).getCamera_name() %></td>
+                            <td><%= cameraProject.get(i).getIP_address() %></td>
+                            <td><%= cameraProject.get(i).getStastus() %></td>
+                            <td><%= cameraProject.get(i).getProject_name() %></td>
                             <td>
                                 <button class="button_add" onclick="openModal()">Thêm mới</button>
                                 <button class="button_fix" onclick="edit(this)">Sửa</button>
                                 <button class="button_delete" onclick="deleteRow(this)">Xóa</button>
                             </td>
                         </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>CH-02</td>
-                            <td>https://www.youtube.com/embed/6lEp1Hb6l9A?si=GVtilqlMQb7E_NDj</td>
-                            <td>active</td>
-                            <td>2</td>
-                            <td>
-                                <button class="button_add" onclick="openModal()">Thêm mới</button>
-                                <button class="button_fix" onclick="edit(this)">Sửa</button>
-                                <button class="button_delete" onclick="deleteRow(this)">Xóa</button>
-                            </td>
-                        </tr>
+                        <%} %>
+
                     </tbody>
                 </table>
 
@@ -101,19 +100,21 @@
                         </tr>
                     </thead>
                     <tbody>
+                    <%for(int i=0;i<user.size();i++) {%>
                         <tr>
-                            <td>1</td>
-                            <td>nguyenvana</td>
-                            <td>Nguyễn Văn A</td>
-                            <td>NguyenVanA@gmail.com</td>
-                            <td>0123456789</td>
-                            <td>role</td>
+                            <td><%=(i+1) %></td>
+                            <td><%= user.get(i).getUsers_name() %></td>
+                            <td><%= user.get(i).getFull_name() %></td>
+                            <td><%= user.get(i).getEmail() %></td>
+                            <td><%= user.get(i).getPhone() %></td>
+                            <td><%= user.get(i).getRole_ID() %></td>
                             <td>
                                 <button class="button_add" onclick="openModal()">Thêm mới</button>
                                 <button class="button_fix" onclick="edit(this)">Sửa</button>
                                 <button class="button_delete" onclick="deleteRow(this)">Xóa</button>
                             </td>
                         </tr>
+                        <%} %>
                     </tbody>
                 </table>
                 <div id="modal2" class="modal">

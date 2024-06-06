@@ -75,7 +75,7 @@ public class CameraProjectRepository {
 	}
 	public int DeleteCameraProjectByID(int id) {
 		Connection connection = sqlseverConnection.getConnection();
-		String query = "DELETE FROM Cameras WHERE Cameras_ID = ?";
+		String query = "DELETE FROM Cameras WHERE Camera_ID = ?";
 		
 		int isDelete =0;
 		try {

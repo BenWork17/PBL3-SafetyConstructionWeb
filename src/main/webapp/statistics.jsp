@@ -19,6 +19,8 @@
 </head>
 	<%
 	List<CameraProject> cameraProjects3 = (List<CameraProject>) request.getAttribute("CameraProject_Statistics");
+    List<CameraError> cameraErrors = (List<CameraError>) request.getAttribute("ErrorByDate_Statistics");
+
 	%>
 <body>
     <div id="header"></div>
@@ -109,7 +111,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script >
-	document.addEventListener('DOMContentLoaded', () => {
+	/* document.addEventListener('DOMContentLoaded', () => {
 	    const ctx = document.getElementById('my-chart').getContext('2d');
 	    const data = {
 	        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
@@ -198,7 +200,12 @@
 	            }
 	        }
 	    });
-	});
+	}); */
+	
+	
+	
+	
+	
 
 	const Data =[
 		<% if (cameraProjects3 != null) {

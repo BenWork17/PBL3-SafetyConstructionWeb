@@ -3,6 +3,8 @@ package service;
 import java.util.List;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
+import java.util.Map;
 
 import model.CameraError;
 import repository.CameraErrorRepository;
@@ -21,5 +23,26 @@ public class StatisticService {
 		String formattedDate = date.format(outputFormatter);
 		return formattedDate;
 	}
+	
+	
+	/*
+	 * public Map<String, int[]> getMonthlyReportData(String cameraName, String
+	 * fromDate, String toDate) { List<CameraError> errors =
+	 * getAlertbyTimestamp_Statistics(cameraName, fromDate, toDate); Map<String,
+	 * int[]> errorTypeCounts = new HashMap<>();
+	 * 
+	 * for (CameraError error : errors) { String errorType = error.getError_type();
+	 * // Assuming timestamp is properly formatted String timestamp =
+	 * error.getTimestamp(); // You need to ensure that `CameraError` has this field
+	 * and method
+	 * 
+	 * String month = timestamp.substring(0, 7); // Get YYYY-MM from the timestamp
+	 * errorTypeCounts.putIfAbsent(errorType, new int[12]);
+	 * 
+	 * int monthIndex = Integer.parseInt(timestamp.substring(5, 7)) - 1;
+	 * errorTypeCounts.get(errorType)[monthIndex]++; }
+	 * 
+	 * return errorTypeCounts; }
+	 */
 
 }

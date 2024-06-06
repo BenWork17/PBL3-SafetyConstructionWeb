@@ -8,10 +8,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import jakarta.servlet.http.HttpSession;
 import service.loginService;
 
 @WebServlet(name = "login", urlPatterns = { "/login" })
 public class login extends HttpServlet {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private loginService loginService = new loginService();
 
 	@Override
@@ -27,8 +32,10 @@ public class login extends HttpServlet {
 		String password = req.getParameter("password");
 		boolean isLogin = loginService.checkLogin(username, password);
 		if (isLogin) {
-			resp.sendRedirect(req.getContextPath() + "/dashboard.jsp");
-		} else {
+//			HttpSession session = (HttpSession) req.getSession();
+//			session.setAttribute("acc", loginService.getUserByUsernamAndPassword(username, password));
+			resp.sendRedirect(req.getContextPath() + "/dashboard");
+			} else {
 			req.getRequestDispatcher("/login.jsp").forward(req, resp);
 		}
 

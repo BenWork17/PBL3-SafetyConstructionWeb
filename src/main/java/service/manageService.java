@@ -11,6 +11,9 @@ public class manageService {
 	public List<Users> getUser() {
 		return usersRepository.getUser();
 	}
+	public boolean deleteUserById(int id) {
+		return usersRepository.DeleteUserByID(id) > 0 ? true :false;
+	}
 
 
 }

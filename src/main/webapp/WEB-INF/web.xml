@@ -10,8 +10,18 @@
   	<description></description>
   	<servlet-class>com.controller.History</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>manageApi</servlet-name>
+  	<display-name>manageApi</display-name>
+  	<description></description>
+  	<servlet-class>com.api.manageApi</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>History</servlet-name>
   	<url-pattern>/History</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>manageApi</servlet-name>
+  	<url-pattern>/manageApi</url-pattern>
   </servlet-mapping>
 </web-app>

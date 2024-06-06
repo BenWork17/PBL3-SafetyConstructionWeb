@@ -75,6 +75,33 @@ public class UsersRepository {
 		}
 		return list;
 	}
+	public int DeleteUserByID(int id) {
+		Connection connection = sqlseverConnection.getConnection();
+		String query = "DELETE FROM Users WHERE User_ID = ?";
+		int isDelete =0;
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1, id);
+			isDelete = preparedStatement.executeUpdate();
+
+
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null) {
+					connection.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return isDelete;
+		
+	}
+	
 //	public static void main(String[] args) {
 //		UsersRepository cam = new UsersRepository();
 //		List<Users> list = cam.getUser();

@@ -132,7 +132,7 @@ List<CameraProject> cameraProject11=(List<CameraProject>) request.getAttribute("
 				</div>
             </div>
             <!-- content bottom -->
-            <div class="content-bottom">
+<!--             <div class="content-bottom">
                 <div class="zone">
                     <div class="title-zone">
                         <h3>Work Zone</h3>
@@ -146,7 +146,7 @@ List<CameraProject> cameraProject11=(List<CameraProject>) request.getAttribute("
                     <hr>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
     <script>
     fetch('./header.jsp')

@@ -22,10 +22,10 @@
             <div class="logo-name">SSIMS.AI</div>
         </div>
         <div class="search">
-            <input type="text" placeholder="Search"/>
+           <!--  <input type="text" placeholder="Search"/> -->
         </div>
-        <div class="notification" onclick="changeColor(this,'i')"><a href="#"><i class="fas fa-bell"></i></a></div>
-    </div>
+        	 <div class="notification" onclick="changeColor(this,'i')"><a href="#"><i class="fas fa-bell"></i></a></div>
+   </div>
     <div class="box-menu">
 
         <div class="box-top">
@@ -93,7 +93,6 @@
                         </svg>
                     </a>
                 </li>
-
             </ul>
         </div>
         <!-- dungf ddeer chinhr mauf khi clivk cacs i -->

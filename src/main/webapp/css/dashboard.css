@@ -76,6 +76,7 @@
     width: 50%;
     margin:10px;
     background-color: white;
+    border-radius: 5px;
 }
 
 
@@ -86,6 +87,15 @@
 }
 .box-report {
     padding:16px;
+}
+.title-detection-history{
+	height: auto;
+	width: auto;
+}
+.list-detection-history{
+	height: 90%;
+	width:100%;
+	overflow-y: auto;
 }
 
 

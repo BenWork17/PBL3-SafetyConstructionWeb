@@ -43,7 +43,7 @@ List<CameraProject> cameraProject=(List<CameraProject>) request.getAttribute("Ca
                     </thead>
                     <tbody>
                     <%for(int i=0;i<cameraProject.size();i++){ %>
-                        <tr >
+                        <tr class="tr_class1">
                             <td><%= (i+1) %></td>
                             <td><%= cameraProject.get(i).getCamera_name() %></td>
                             <td><%= cameraProject.get(i).getIP_address() %></td>
@@ -51,8 +51,7 @@ List<CameraProject> cameraProject=(List<CameraProject>) request.getAttribute("Ca
                             <td><%= cameraProject.get(i).getProject_name() %></td>
                             <td>
                                 <button class="button_add" onclick="openModal()">Thêm mới</button>
-                                <button class="button_fix" onclick="edit(this)">Sửa</button>
-                                <button class="button_delete "  >Xóa</button>
+                                <button class="button_delete button_delete1 "  id_cam="<%= cameraProject.get(i).getCamera_ID() %>"  >Xóa</button>
                             </td>
                         </tr>
                         <%} %>
@@ -63,21 +62,20 @@ List<CameraProject> cameraProject=(List<CameraProject>) request.getAttribute("Ca
                 <div id="modal" class="modal">
                     <div class="modal-content">
                         <span class="close" onclick="closeModal()">&times;</span>
-                        <h2 id="modalTitle">Thêm Camera</h2>
+                        <h2 id="modalTitle">Add Camera</h2>
                         <form id="New_Product_Form">
                             <input type="hidden" id="editIndex">
                             <label for="Camera_name">Camera Name:</label>
-                            <input type="text" id="Camera_name" name="Camera_name" required><br>
+                            <input type="text" id="Camera_name" name="cameraame" required><br>
                             <label for="IP_address">IP_address:</label>
-                            <input type="text" id="IP_address" name="IP_address" required><br>
+                            <input type="text" id="IP_address" name="ipadress" required><br>
                             <label for="Status">Status:</label>
-                            <input type="text" id="Status" name="Status" required><br>
+                            <input type="text" id="Status" name="status" required><br>
                             <label for="Project">Project:</label>
-                            <input type="text" id="Project" name="Project" required><br>
-                            <label for="productImage">Hình Sản Phẩm:</label>
-                            <input type="file" id="productImage" name="productImage"><br>
-                            <button type="button" onclick="saveProduct()">Lưu</button>
+                            <input type="text" id="Project" name="projectname" required><br>
+                            <button type="submit" id="btn_add_cam" onclick="saveProduct()">Save</button>
                         </form>
+                        
                     </div>
                 </div>
             </div>
@@ -161,6 +159,20 @@ List<CameraProject> cameraProject=(List<CameraProject>) request.getAttribute("Ca
     			
     		})
     		
+    		$('.button_delete1').click(function(){
+    			var id = $(this).attr("id_cam")
+    			var row =$(this).closest('.tr_class1')
+    			$.ajax({
+    				method:"POST",
+    				url:"http://localhost:8081/pbl3/api/deletecamera",
+    				data:{id:id}
+    			}).done(function(data){
+    					row.remove()
+    				
+    			});
+    			
+    		})
+    		
     		$('#btn_add').click(function(e){
     			e.preventDefault()
     			var user_name = $('#Users_name').val()
@@ -182,7 +194,28 @@ List<CameraProject> cameraProject=(List<CameraProject>) request.getAttribute("Ca
     					roleid:role
     				}
     			}).done(function(data){
-    				row.remove()
+    				
+    			});
+    			
+    		})
+    		
+    		$('#btn_add_cam').click(function(ev){
+    			ev.preventDefault()
+    			var camera_name = $('#Camera_name').val()
+    			var ip_adress = $('#IP_address').val()
+    			var status = $('#Status').val()
+				var project_name = $('#Project').val()
+    			$.ajax({
+    				method:"POST",
+    				url:"http://localhost:8081/pbl3/api/addcamera",
+    				data:{
+    					cameraame:camera_name,
+    					ipadress:ip_adress,
+    					status:status,
+    					projectname:project_name
+    				}
+    			}).done(function(data){
+    				
     			});
     			
     		})
@@ -218,6 +251,7 @@ List<CameraProject> cameraProject=(List<CameraProject>) request.getAttribute("Ca
             document.getElementById('modal2').style.display = 'none';
         }
 
+        
         function edit2(button) {
             const row = button.parentNode.parentNode;
             const cells = row.getElementsByTagName('td');
@@ -230,6 +264,9 @@ List<CameraProject> cameraProject=(List<CameraProject>) request.getAttribute("Ca
             document.getElementById('modalTitle2').textContent = 'Sửa Người Dùng';
             document.getElementById('modal2').style.display = 'block';
         }
+        
+        
+        
         function saveUser() {
         const index = document.getElementById('editIndex2').value;
         const table = document.getElementById('userTable').getElementsByTagName('tbody')[0];
@@ -242,13 +279,33 @@ List<CameraProject> cameraProject=(List<CameraProject>) request.getAttribute("Ca
             <td>${document.getElementById('Phone').value}</td>
             <td>${document.getElementById('Role').value}</td>
             <td>
-                <button onclick="openModal2()">Thêm mới</button>
-                <button onclick="edit2(this)">Sửa</button>
-                <button onclick="deleteRow2(this)">Xóa</button>
+	            <button class="button_add" onclick="openModal2()">Thêm mới</button>
+	            <button class="button_fix" onclick="edit2(this)">Sửa</button>
+	            <button class="button_delete "  %>">Xóa</button>
             </td>
         `;
         closeModal2();
     	}
+        
+        
+        function saveProduct() {
+            const index = document.getElementById('editIndex').value;
+            const table = document.getElementById('productTable').getElementsByTagName('tbody')[0];
+            const newRow = index ? table.rows[index - 1] : table.insertRow();
+            newRow.innerHTML = `
+                <td>${index || table.rows.length}</td>
+                <td>${document.getElementById('Camera_name').value}</td>
+                <td>${document.getElementById('IP_address').value}</td>
+                <td>${document.getElementById('Status').value}</td>
+                <td>${document.getElementById('Project').value}</td>
+                <td>
+                    <button class="button_add" onclick="openModal()">Thêm mới</button>
+                    <button onclick="edit(this)">Sửa</button>
+                    <button onclick="deleteRow(this)">Xóa</button>
+                </td>
+            `;
+            closeModal();
+        }
     
 
     </script>

@@ -85,7 +85,7 @@ public class manageApi extends HttpServlet {
 			boolean isdelete1 = manageservice.deletCameraProjectByID(idcamera);
 			break;
 		case "/api/addcamera":
-			String cameraname = req.getParameter("cameraame");
+			String cameraname = req.getParameter("cameraname");
 			String ipadress = req.getParameter("ipadress");
 			String status = req.getParameter("status");
 			String projectname = req.getParameter("projectname");

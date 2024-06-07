@@ -19,6 +19,8 @@
 </head>
 	<%
 	List<CameraProject> cameraProjects3 = (List<CameraProject>) request.getAttribute("CameraProject_Statistics");
+    List<CameraError> cameraErrors = (List<CameraError>) request.getAttribute("ErrorByDate_Statistics");
+
 	%>
 <body>
     <div id="header"></div>
@@ -199,6 +201,11 @@
 	        }
 	    });
 	});
+	
+	
+	
+	
+	
 
 	const Data =[
 		<% if (cameraProjects3 != null) {

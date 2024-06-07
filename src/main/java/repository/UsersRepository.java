@@ -178,7 +178,6 @@ public class UsersRepository {
 	public static void main(String[] args) {
 		UsersRepository cam = new UsersRepository();
 		System.out.println(cam.modifyuser(30, "ngu","ngu","ngu@gmail.com","0902565458","1",1));
-
 	}
 
 }

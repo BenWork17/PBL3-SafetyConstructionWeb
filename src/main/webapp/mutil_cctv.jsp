@@ -165,7 +165,7 @@
                             </div>
                         </div>
                     `;
-                    DATA=cam.filter(item=>item.Project_name==='SITE-B');
+                    DATA=cam.filter(item=>item.Project_name==='SiteB');
                     renderPage(DATA,'.cctv-view-content', '.previous', '.next', '.page-number');
                     break;
                 case 'underground-vertical-zone':
@@ -184,7 +184,7 @@
                             </div>
                         </div>
                     `;
-                    DATA=data.filter(item=>item.Project_ID===3);
+                    DATA=data.filter(item=>item.Project_name==='Underground');
                     renderPage(DATA,'.cctv-view-content', '.previous', '.next', '.page-number');
                     break;
                 case'show-bookmark':

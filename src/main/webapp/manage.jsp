@@ -73,7 +73,7 @@ List<CameraProject> cameraProject=(List<CameraProject>) request.getAttribute("Ca
                             <input type="text" id="Status" name="status" required><br>
                             <label for="Project">Project:</label>
                             <input type="text" id="Project" name="projectname" required><br>
-                            <button type="submit" id="btn_add_cam" onclick="saveProduct()">Save</button>
+                            <button type="submit" id="btn_add_cam" onclick="saveProduct(this)">Save</button>
                         </form>
                         
                     </div>
@@ -109,7 +109,7 @@ List<CameraProject> cameraProject=(List<CameraProject>) request.getAttribute("Ca
                             <td>
                                 <button class="button_add" onclick="openModal2()">Thêm mới</button>
                                 <button class="button_fix" onclick="edit2(this)">Sửa</button>
-                                <button class="button_delete "  id_user="<%= user.get(i).getUsers_ID() %>">Xóa</button>
+                                <button class="button_delete " onclick="deleteRow2(this)" id_user="<%= user.get(i).getUsers_ID() %>">Xóa</button>
                             </td>
                         </tr>
                         <%} %>
@@ -133,7 +133,7 @@ List<CameraProject> cameraProject=(List<CameraProject>) request.getAttribute("Ca
                             <input type="text" id="Password" name="password" required><br>
                             <label for="Role">Role:</label>
                             <input type="text" id="Role" name="roleid" required><br>
-                            <button type="submit"  id="btn_add" onclick="saveUser()">Save</button>
+                            <button type="submit"  id="btn_add" onclick="saveUser(event)">Save</button>
                         </form>
                     </div>
                 </div>
@@ -173,7 +173,7 @@ List<CameraProject> cameraProject=(List<CameraProject>) request.getAttribute("Ca
     			
     		})
     		
-    		$('#btn_add').click(function(e){
+/*     		$('#btn_add').click(function(e){
     			e.preventDefault()
     			var user_name = $('#Users_name').val()
     			var full_name = $('#Full_name').val()
@@ -198,7 +198,7 @@ List<CameraProject> cameraProject=(List<CameraProject>) request.getAttribute("Ca
     			});
     			
     		})
-    		
+    		 */
     		$('#btn_add_cam').click(function(ev){
     			ev.preventDefault()
     			var camera_name = $('#Camera_name').val()
@@ -236,17 +236,16 @@ List<CameraProject> cameraProject=(List<CameraProject>) request.getAttribute("Ca
             document.getElementById('New_Product_Form').reset();
             document.getElementById('editIndex').value = '';
         }
-
-        function closeModal() {
-            document.getElementById('modal').style.display = 'none';
-        }
-
         function openModal2() {
             document.getElementById('modal2').style.display = 'block';
             document.getElementById('New_User_Form').reset();
             document.getElementById('editIndex2').value = '';
         }
 
+        
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
         function closeModal2() {
             document.getElementById('modal2').style.display = 'none';
         }
@@ -267,26 +266,83 @@ List<CameraProject> cameraProject=(List<CameraProject>) request.getAttribute("Ca
         
         
         
-        function saveUser() {
-        const index = document.getElementById('editIndex2').value;
-        const table = document.getElementById('userTable').getElementsByTagName('tbody')[0];
-        const newRow = index ? table.rows[index - 1] : table.insertRow();
-        newRow.innerHTML = `
-            <td>${index || table.rows.length}</td>
-            <td>${document.getElementById('Users_name').value}</td>
-            <td>${document.getElementById('Full_name').value}</td>
-            <td>${document.getElementById('Email').value}</td>
-            <td>${document.getElementById('Phone').value}</td>
-            <td>${document.getElementById('Role').value}</td>
-            <td>
-	            <button class="button_add" onclick="openModal2()">Thêm mới</button>
-	            <button class="button_fix" onclick="edit2(this)">Sửa</button>
-	            <button class="button_delete "  %>">Xóa</button>
-            </td>
-        `;
-        closeModal2();
-    	}
+        function saveUser(event) {
+            event.preventDefault();
+            var user_name = $('#Users_name').val();
+            var full_name = $('#Full_name').val();
+            var email = $('#Email').val();
+            var phone = $('#Phone').val();
+            var password = $('#Password').val();
+            var role = $('#Role').val();
+
+            $.ajax({
+                method: "POST",
+                url: "http://localhost:8081/pbl3/api/adduser",
+                data: {
+                    username: user_name,
+                    fullname: full_name,
+                    email: email,
+                    phone: phone,
+                    password: password,
+                    roleid: role
+                }
+            }).done(function(data) {
+                // Append the new user to the table
+                $('#userTable tbody').append(`
+                    <tr class="tr_class">
+                        <td>${$('#userTable tbody tr').length + 1}</td>
+                        <td>${user_name}</td>
+                        <td>${full_name}</td>
+                        <td>${email}</td>
+                        <td>${phone}</td>
+                        <td>${role}</td>
+                        <td>
+                            <button class="button_add" onclick="openModal2()">Thêm mới</button>
+                            <button class="button_fix" onclick="edit2(this)">Sửa</button>
+                            <button class="button_delete" onclick="deleteRow2(this)" id_user="${data.userId}">Xóa</button>
+                        </td>
+                    </tr>
+                `);
+                closeModal2(); // Close the modal after saving
+            });
+        }
         
+        
+        function saveCamera(event) {
+            event.preventDefault();
+            var camera_name = $('#Camera_name').val();
+            var ip_address = $('#IP_address').val();
+            var status = $('#Status').val();
+            var project = $('#Project').val();
+
+            $.ajax({
+                method: "POST",
+                url: "http://localhost:8081/pbl3/api/addcamera",
+                data: {
+                	cameraame: camera_name,
+                    ipadress: ip_address,
+                    status: status,
+                    projectname: project
+                }
+            }).done(function(data) {
+                // Append the new camera to the table
+                $('#productTable tbody').append(`
+                    <tr class="tr_class1">
+                        <td>${$('#productTable tbody tr').length + 1}</td>
+                        <td>${camera_name}</td>
+                        <td>${ip_address}</td>
+                        <td>${status}</td>
+                        <td>${project}</td>
+                        <td>
+                            <button class="button_add" onclick="openModal()">Thêm mới</button>
+                            <button class="button_delete button_delete1" id_cam="${data.cameraId}">Xóa</button>
+                        </td>
+                    </tr>
+                `);
+                closeModal(); // Close the modal after saving
+            });
+        }
+
         
         function saveProduct() {
             const index = document.getElementById('editIndex').value;
@@ -307,6 +363,13 @@ List<CameraProject> cameraProject=(List<CameraProject>) request.getAttribute("Ca
             closeModal();
         }
     
+        
+        function deleteRow2(button) {
+            const row = button.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+            alert('Row deleted');
+        }
+
 
     </script>
 </body>

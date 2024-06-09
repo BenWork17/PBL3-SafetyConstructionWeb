@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
 
 @WebFilter("/*")
 public class LoginFilter implements Filter {
-    private static final List<String> EXCLUDED_PATHS = Arrays.asList("/login", "/css/", "/js/", "/images/");
+    private static final List<String> EXCLUDED_PATHS = Arrays.asList("/login", ".../webapp/css/login.css", "/js/", "/images/");
  
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -31,9 +31,7 @@ public class LoginFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse resp = (HttpServletResponse) response;
         HttpSession session = req.getSession(false);
-
         String loginURI = req.getContextPath() + "/login";
-
         boolean loggedIn = session != null && session.getAttribute("profile") != null;
         boolean loginRequest = req.getRequestURI().equals(loginURI);
 

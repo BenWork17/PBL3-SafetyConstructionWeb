@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./css/profile.css">
+    
 </head>
 
 <%
@@ -41,9 +42,11 @@ else{
             <% } else { %>
                 <p>User not found.</p>
             <% } %>
-            <button id="logout-button">Log Out</button>
+            <button id="logout-button" >Log Out</button>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
     <script>
         fetch('./header.jsp')
             .then(response => response.text())
@@ -51,6 +54,23 @@ else{
                 document.getElementById('header').innerHTML = data;
             })
             .catch(error => console.error('Error fetching header:', error));
+        
+        
+        $(document).ready(function() {
+            $('#logout-button').click(function() {
+                $.ajax({
+                    url: 'logout',
+                    method: 'GET',
+                    success: function(response) {
+                        window.location.href = 'login.jsp'; 
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error:', error);
+                        alert('Logout failed');
+                    }
+                });
+            });
+        });
 
     </script>
 </body>

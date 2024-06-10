@@ -46,9 +46,10 @@ public class CameraProjectRepository {
 	}
 	public int addCameraProject(String Camera_name, String IP_address,String Status,String Project_Name) {
 		Connection connection = sqlseverConnection.getConnection();
-		String query = "SET @siteB_id = (SELECT Project_ID FROM Project WHERE Project_name = ?)\r\n"
+		String query = "DECLARE @site_id INT\r\n"
+				+ "SET @site_id = (SELECT Project_ID FROM Project WHERE Project_name = ?)\r\n"
 				+ "INSERT INTO Cameras (Camera_name, IP_address, Status, Project_ID) VALUES\r\n"
-				+ "(?, ?, ?, @siteA_id)";
+				+ "(?, ?, ?, @site_id)";
 		int isAdd =0;
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(query);

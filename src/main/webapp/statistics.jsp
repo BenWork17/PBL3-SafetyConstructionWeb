@@ -108,10 +108,12 @@
             </div>
         </div>
     </div>
+    <script src="./common/heardcm.js"></script>
+    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script >
-	/* document.addEventListener('DOMContentLoaded', () => {
+	document.addEventListener('DOMContentLoaded', () => {
 	    const ctx = document.getElementById('my-chart').getContext('2d');
 	    const data = {
 	        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
@@ -200,7 +202,7 @@
 	            }
 	        }
 	    });
-	}); */
+	});
 	
 	
 	

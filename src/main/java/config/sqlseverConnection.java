@@ -1,4 +1,5 @@
 
+
 package config;
 
 import java.sql.Connection;
@@ -12,7 +13,6 @@ public class sqlseverConnection {
             String url = "jdbc:sqlserver://WIND\\SQLEXPRESS:1433;databaseName=pbl3;encrypt=true;trustServerCertificate=true";
             String username = "sa";
             String password = "0282580";
-
             return DriverManager.getConnection(url,username,password);
         }catch(Exception e){
             e.printStackTrace();

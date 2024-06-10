@@ -80,7 +80,7 @@
         </div>
     </div>
     
-    
+    <script src="./common/heardcm.js"></script>
     <script>
     fetch('./header.jsp')
     .then(response => response.text())
@@ -146,7 +146,7 @@
                             </div>
                         </div>
                     `;
-                    DATA=cam.filter(item=>item.Project_name==='SITE-A');
+                    DATA=cam.filter(item=>item.Project_name==='SiteA');
                     console.log(DATA) 
                     renderPage(DATA,'.cctv-view-content', '.previous', '.next', '.page-number');
                     break;
@@ -166,7 +166,8 @@
                             </div>
                         </div>
                     `;
-                    DATA=cam.filter(item=>item.Project_name==='SITE-D');
+
+                    DATA=cam.filter(item=>item.Project_name==='SiteB');
                     renderPage(DATA,'.cctv-view-content', '.previous', '.next', '.page-number');
                     break;
                 case 'underground-vertical-zone':
@@ -185,7 +186,7 @@
                             </div>
                         </div>
                     `;
-                    DATA=cam.filter(item=>item.Project_name==='SITE-B');
+                    DATA=cam.filter(item=>item.Project_name==='Underground');
                     renderPage(DATA,'.cctv-view-content', '.previous', '.next', '.page-number');
                     break;
                 case'show-bookmark':

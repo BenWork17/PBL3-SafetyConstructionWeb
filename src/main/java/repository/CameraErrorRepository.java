@@ -52,6 +52,50 @@ public class CameraErrorRepository {
 		}
 		return list;
 	}
+	public List<CameraError> getTop10CameraAndError() {
+		List<CameraError> list = new ArrayList<>();
+		Connection connection = sqlseverConnection.getConnection();
+		String query = "SELECT TOP 10 \r\n"
+				+ "    Cameras.Camera_ID,\r\n"
+				+ "    Cameras.Camera_name,\r\n"
+				+ "    Cameras.IP_address,\r\n"
+				+ "    Status,\r\n"
+				+ "    Project.Project_Name,\r\n"
+				+ "    Error.Error_type,\r\n"
+				+ "    Error.descript,\r\n"
+				+ "    Alerts.Timestamp\r\n"
+				+ "FROM Cameras\r\n"
+				+ "INNER JOIN Alerts ON Cameras.Camera_ID = Alerts.Camera_ID\r\n"
+				+ "INNER JOIN Error ON Alerts.Error_ID = Error.Error_ID\r\n"
+				+ "INNER JOIN Project ON Project.Project_ID = Cameras.Project_ID\r\n"
+				+ "ORDER BY Alerts.Timestamp DESC;\r\n";
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				CameraError cameraError = new CameraError();
+				cameraError.setCamera_ID(resultSet.getInt("Camera_ID"));
+				cameraError.setCamera_name(resultSet.getString("Camera_name"));
+				cameraError.setIP_address(resultSet.getString("IP_address"));
+				cameraError.setStastus(resultSet.getString("Status"));
+				cameraError.setProject_Name(resultSet.getString("Project_Name"));
+				cameraError.setError_type(resultSet.getString("Error_type"));
+				cameraError.setdescript(resultSet.getString("descript"));
+				list.add(cameraError);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null) {
+					connection.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
 	public List<CameraError> getAlertbyTimestamp(String cameraname, String Project_name, String Date_1, String Date_2) {
 		List<CameraError> list = new ArrayList<>();
 		Connection connection = sqlseverConnection.getConnection();
@@ -145,7 +189,7 @@ public class CameraErrorRepository {
 
 	public static void main(String[] args) {
 		CameraErrorRepository cam = new CameraErrorRepository();
-		List<CameraError> list = cam.getAlertbyTimestamp_Statistics("CH-01","2020-05-01","2024-05-08");
+		List<CameraError> list = cam.getTop10CameraAndError();
 		for(CameraError o : list) {
 			System.out.println(o);
 		}

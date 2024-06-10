@@ -117,6 +117,7 @@ List<CameraProject> cameraProjects1= (List<CameraProject>) request.getAttribute(
                 </div>
             </div>
         </div>
+        <script src="./common/heardcm.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script >

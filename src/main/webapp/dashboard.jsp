@@ -137,6 +137,7 @@ String monthlyReportDataJson = (String) request.getAttribute("monthlyReportData"
             </div>
         </div>
     </div>
+    <script src="./common/heardcm.js"></script>
     <script>
 
     var detections1 = <%= java.util.Arrays.toString(detections1) %>;

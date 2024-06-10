@@ -65,7 +65,9 @@ List<CameraProject> cameraProject11=(List<CameraProject>) request.getAttribute("
                 <div class="box-history">
                     <div class="box-date-time">
                         <div class="loca-da-ti">
-                            <div class="location" id="location"></div>
+                            <div class="location" id="location">
+                            
+                            </div>
                             <div class="date-time">
                                 <div class="date">
                                     <p class="title-element">Date:</p>
@@ -79,7 +81,7 @@ List<CameraProject> cameraProject11=(List<CameraProject>) request.getAttribute("
                                 <div class="time">
                                     <p class="title-element">Time:</p>
                                     <p class="time-element" id="hour"></p>
-<p class="title-element">:</p>
+									<p class="title-element">:</p>
                                     <p class="time-element" id="minute"></p>
                                     <p class="title-element">:</p>
                                     <p class="time-element" id="second"></p>
@@ -148,6 +150,7 @@ List<CameraProject> cameraProject11=(List<CameraProject>) request.getAttribute("
             </div>
         </div> -->
     </div>
+    <script src="./common/heardcm.js"></script>
     <script>
     fetch('./header.jsp')
     .then(response => response.text())
@@ -176,7 +179,7 @@ List<CameraProject> cameraProject11=(List<CameraProject>) request.getAttribute("
     <% } %>
 
     var customSelector1 = document.getElementById("customSelect1");
-Data.forEach(function (item) {
+		Data.forEach(function (item) {
         var option = document.createElement("option");
         option.value = item.name;
         option.text = item.name;
@@ -190,46 +193,37 @@ Data.forEach(function (item) {
         customSelector2.appendChild(option);
     })
 
-/*     const html = listHistory.map(item => {
-        return `
-        <div class="history-list-item">
-            <div class="history-list-item-name">
-                <p>${item.name}</p>
-            </div>
-            <div class="history-list-item-price">
-                <p>${item.price}</p>
-            </div>
-        </div>
-        `
-    }) */
 
-    document.querySelector('.history-list').innerHTML = html.join('')
-    function updateTime() {
-        var now = new Date();
-        document.getElementById("date").textContent = now.getDate();
-        document.getElementById("month").textContent = now.getMonth() + 1;
-        document.getElementById("year").textContent = now.getFullYear();
-        document.getElementById("hour").textContent = now.getHours();
-        document.getElementById("minute").textContent = now.getMinutes();
-        document.getElementById("second").textContent = now.getSeconds();
+
+    function updateDateTime() {
+        const now = new Date();
+        document.getElementById('date').textContent = now.getDate().toString().padStart(2, '0');
+        document.getElementById('month').textContent = (now.getMonth() + 1).toString().padStart(2, '0');
+        document.getElementById('year').textContent = now.getFullYear();
+        document.getElementById('hour').textContent = now.getHours().toString().padStart(2, '0');
+        document.getElementById('minute').textContent = now.getMinutes().toString().padStart(2, '0');
+        document.getElementById('second').textContent = now.getSeconds().toString().padStart(2, '0');
     }
-    setInterval(updateTime, 1000);
-    window.onload = getLocation;
+   /*  
+    function updateLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(position => {
+                const { latitude, longitude } = position.coords;
+                document.getElementById('location').textContent = `Latitude: ${latitude}, Longitude: ${longitude}`;
+            }, error => {
+                console.error('Error getting location:', error);
+                document.getElementById('location').textContent = 'Unable to retrieve location.';
+            });
+        } else {
+            console.error('Geolocation is not supported by this browser.');
+            document.getElementById('location').textContent = 'Geolocation is not supported by this browser.';
+        }
+    } */
 
-
-
-    // Truy cập luồng video từ camera
-    navigator.mediaDevices.getUserMedia({ video: true })
-        .then(function (stream) {
-            var videoElement = document.getElementById('video');
-            videoElement.srcObject = stream;
-        })
-        .catch(function (error) {
-            console.log('Lỗi: ' + error);
-        });
-        
-        
+    setInterval(updateDateTime, 1000);
+  /*   updateLocation(); */
 
     </script>
 </body>
 </html>
+

@@ -139,8 +139,8 @@ public class UsersRepository {
 				+ "    Phone = ?,\r\n"
 				+ "    Pass_word = ?,\r\n"
 				+ "    Role_ID = ?\r\n"
-				+ "WHERE Users_ID = ?;\r\n"
-				+ "";
+				+ "WHERE Users_ID = ?;\r\n";
+			
 		int isModify =0;
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -177,9 +177,7 @@ public class UsersRepository {
 //	}
 	public static void main(String[] args) {
 		UsersRepository cam = new UsersRepository();
-		cam.DeleteUserByID(11);
-		System.out.println("hello");
-
+		System.out.println(cam.modifyuser(30, "ngu","ngu","ngu@gmail.com","0902565458","1",1));
 	}
 
 }

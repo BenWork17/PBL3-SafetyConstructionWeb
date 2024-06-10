@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
+<%
+List<CameraError> cam_error=(List<CameraError>) session.getAttribute("top10");
+%>
 <body>
     <div class="box-search">
         <div class="box-logo">
@@ -24,7 +27,28 @@
         <div class="search">
            <!--  <input type="text" placeholder="Search"/> -->
         </div>
-        	 <div class="notification" onclick="changeColor(this,'i')"><a href="#"><i class="fas fa-bell"></i></a></div>
+	        <div class="notification" onclick="toggleNotificationList()"><i class="fas fa-bell"></i></a>
+	            <div class="notification-list">
+	                 <table>
+	                    <thead>
+	                        <tr>
+	                            <th>SITE</th>
+	                            <th>TYPE ERROR</th>
+	                            <th>DESCRIPT</th>
+	                        </tr>
+	                    </thead>
+	                    <tbody>
+	                    <%for(int i=0;i<cam_error.size();i++) {%>
+	                        <tr>
+	                            <td><%= cam_error.get(i).getProject_Name() %></td>
+	                            <td><%= cam_error.get(i).getError_type() %></td>
+	                            <td><%= cam_error.get(i).getdescript() %></td>
+	                        </tr>
+	                     <% }%>
+	                    </tbody>
+	                </table>
+	            </div>
+	        </div>
    </div>
     <div class="box-menu">
 
@@ -95,6 +119,7 @@
                 </li>
             </ul>
         </div>
+        <script src="./common/heardcm.js"></script>
         <!-- dungf ddeer chinhr mauf khi clivk cacs i -->
         <script>
             function changeColor(element,element_type) {

@@ -36,6 +36,8 @@ public class login extends HttpServlet {
 			HttpSession session =req.getSession();
 			session.setAttribute("profile", user);
 			session.setAttribute("role", user.get(0).getRole_ID());
+			session.setAttribute("top10", loginService.getTop10CameraError());
+
 			resp.sendRedirect(req.getContextPath() + "/dashboard");
 		} else {
 			req.getRequestDispatcher("/login.jsp").forward(req, resp);

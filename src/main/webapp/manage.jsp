@@ -281,7 +281,7 @@ List<CameraProject> cameraProject=(List<CameraProject>) request.getAttribute("Ca
             <td>
 	            <button class="button_add" onclick="openModal2()">Thêm mới</button>
 	            <button class="button_fix" onclick="edit2(this)">Sửa</button>
-	            <button class="button_delete "  %>">Xóa</button>
+	            <button class="button_delete "  >Xóa</button>
             </td>
         `;
         closeModal2();

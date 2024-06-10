@@ -37,8 +37,5 @@ public class Statistics extends HttpServlet {
         toDate = statisticService.convertDateFormat(toDate);
         req.setAttribute("ErrorByDate_Statistics", statisticService.getAlertbyTimestamp_Statistics(Camera_Name, fromDate, toDate));
         req.getRequestDispatcher("/statistics.jsp").forward(req, resp); 
-        
-
-
 	}
 }

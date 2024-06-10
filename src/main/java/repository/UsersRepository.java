@@ -137,7 +137,7 @@ public class UsersRepository {
 				+ "    Full_name =?,\r\n"
 				+ "    Email = ?,\r\n"
 				+ "    Phone = ?,\r\n"
-				+ "    Pass_word = ?\r\n"
+				+ "    Pass_word = ?,\r\n"
 				+ "    Role_ID = ?\r\n"
 				+ "WHERE Users_ID = ?;\r\n"
 				+ "";

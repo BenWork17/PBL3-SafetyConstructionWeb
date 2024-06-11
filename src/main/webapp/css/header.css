@@ -62,6 +62,9 @@
 }
 
 
+
+
+
 /* thong bao */
 .notification{
     width:auto;
@@ -70,6 +73,14 @@
     align-items: center;
     justify-content: center;
     margin-left:85px;
+}
+.H_nofi{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    color: red;
+    background-color: rgb(194, 190, 194);
 }
 .notification i{
     width: 100%;
@@ -84,7 +95,7 @@
     display: none;
     position: absolute;
     top: 40px;
-    right: 0;
+    right: 40px;
     background-color: rgb(253, 253, 253);
     color: black;
     border: 1px solid #ccc;
@@ -112,12 +123,11 @@
 .notification .notification-list table td {
     padding: 10px;
     text-align: left;
-    border-bottom: 1px solid #a34747;
+    border-bottom: 1px solid #c54141;
 }
-.notification .notification-list table th{
-    background-color: rgb(241, 131, 230);
+.notification .notification-list table th {
+    background-color: rgb(217, 213, 217);
 }
-
 
 
 

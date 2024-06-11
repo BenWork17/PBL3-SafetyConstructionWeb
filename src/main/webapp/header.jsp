@@ -28,7 +28,9 @@ List<CameraError> cam_error=(List<CameraError>) session.getAttribute("top10");
            <!--  <input type="text" placeholder="Search"/> -->
         </div>
 	        <div class="notification" onclick="toggleNotificationList()"><i class="fas fa-bell"></i></a>
-	            <div class="notification-list">
+	            <div class="notification-list">                
+	            <h3 class="H_nofi">Motification</h3>
+                <hr>
 	                 <table>
 	                    <thead>
 	                        <tr>

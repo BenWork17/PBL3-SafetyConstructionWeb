@@ -17,7 +17,7 @@ public class CameraErrorRepository {
 	public List<CameraError> getCameraAndError(String Camera_name,String Projet_Name) {
 		List<CameraError> list = new ArrayList<>();
 		Connection connection = sqlseverConnection.getConnection();
-		String query = "SELECT Cameras.Camera_ID,Cameras.Camera_name,Cameras.IP_address,Status,Project.Project_Name, Error_type, descript\r\n"
+		String query = "SELECT Cameras.Camera_ID,Cameras.Camera_name,Cameras.IP_address,Status,Project.Project_Name, Error_type, descript,Timestamp\r\n"
 				+ "FROM Cameras\r\n"
 				+ "INNER JOIN Alerts ON Cameras.Camera_ID = Alerts.Camera_ID\r\n"
 				+ "INNER JOIN Error ON Alerts.Error_ID = Error.Error_ID\r\n"
@@ -37,6 +37,7 @@ public class CameraErrorRepository {
 				cameraError.setProject_Name(resultSet.getString("Project_Name"));
 				cameraError.setError_type(resultSet.getString("Error_type"));
 				cameraError.setdescript(resultSet.getString("descript"));
+				cameraError.setTimesptamp(resultSet.getString("Timestamp"));
 				list.add(cameraError);
 			}
 		} catch (SQLException e) {
@@ -81,6 +82,7 @@ public class CameraErrorRepository {
 				cameraError.setProject_Name(resultSet.getString("Project_Name"));
 				cameraError.setError_type(resultSet.getString("Error_type"));
 				cameraError.setdescript(resultSet.getString("descript"));
+				cameraError.setTimesptamp(resultSet.getString("Timestamp"));
 				list.add(cameraError);
 			}
 		} catch (SQLException e) {

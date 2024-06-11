@@ -5,18 +5,27 @@ public class CameraError {
 	public String toString() {
 		return "CameraError [Camera_ID=" + Camera_ID + ", Camera_name=" + Camera_name + ", IP_address=" + IP_address
 				+ ", Stastus=" + Stastus + ", Project_ID=" + Project_Name + ", Error_type="
-				+ Error_type + ", Descript=" + descript + "]";
+				+ Error_type + ", Descript=" + descript + ", Timesptamp=" + Timesptamp +"]";
 	}
 
 	private int Camera_ID;
+
 	private String Camera_name;
 	private String IP_address;
 	private String Stastus;
 	private String Project_Name;
 	private String Error_type;
 	private String descript;
+	private String Timesptamp;
 
 
+	public String getTimesptamp() {
+		return Timesptamp;
+	}
+
+	public void setTimesptamp(String timesptamp) {
+		Timesptamp = timesptamp;
+	}
 
 	public String getError_type() {
 		return Error_type;

@@ -14,7 +14,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document </title>
     <link rel="stylesheet" href="./css/statistics.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 	<%
@@ -109,101 +108,61 @@
         </div>
     </div>
     <script src="./common/heardcm.js"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script >
 	document.addEventListener('DOMContentLoaded', () => {
-	    const ctx = document.getElementById('my-chart').getContext('2d');
-	    const data = {
-	        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
-	        datasets: [
-	            {
-	                label: 'Brown',
-	                data: [3, 6, 2, 3, 2, 1, 5, 6],
-	                backgroundColor: 'rgba(165, 42, 42, 0.2)',
-	                borderColor: 'rgb(165, 42, 42)',
-	                borderWidth: 1
-	            },
-	            {
-	                label: 'Gray',
-	                data: [4, 8, 1, 4, 3, 1, 6, 8],
-	                backgroundColor: 'rgba(128, 128, 128, 0.2)',
-	                borderColor: 'rgb(128, 128, 128)',
-	                borderWidth: 1
-	            },
-	            {
-	                label: 'Orange',
-	                data: [6, 12, 2, 6, 5, 1, 8, 10],
-	                backgroundColor: 'rgba(255, 159, 64, 0.2)',
-	                borderColor: 'rgb(255, 159, 64)',
-	                borderWidth: 1
-	            },
-	            {
-	                label: 'Purple',
-	                data: [9, 16, 4, 7, 3, 2, 9, 14],
-	                backgroundColor: 'rgba(153, 102, 255, 0.2)',
-	                borderColor: 'rgb(153, 102, 255)',
-	                borderWidth: 1
-	            },
-	            {
-	                label: 'Green',
-	                data: [5, 10, 3, 8, 4, 2, 10, 12],
-	                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-	                borderColor: 'rgb(75, 192, 192)',
-	                borderWidth: 1
-	            },
-	            {
-	                label: 'Yellow',
-	                data: [8, 14, 5, 10, 6, 4, 15, 18],
-	                backgroundColor: 'rgba(255, 205, 86, 0.2)',
-	                borderColor: 'rgb(255, 205, 86)',
-	                borderWidth: 1
-	            },
-	            {
-	                label: 'Blue',
-	                data: [10, 15, 7, 12, 8, 5, 13, 20],
-	                backgroundColor: 'rgba(54, 162, 235, 0.2)',
-	                borderColor: 'rgb(54, 162, 235)',
-	                borderWidth: 1
-	            },
-	            {
-	                label: 'Red',
-	                data: [12, 19, 3, 5, 2, 3, 10, 15],
-	                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-	                borderColor: 'rgb(255, 99, 132)',
-	                borderWidth: 1
-	            }
-	        ]
-	    };
-
-	    new Chart(ctx, {
-	        type: 'bar',
-	        data: data,
-	        options: {
-	            scales: {
-	                x: {
-	                    stacked: true
-	                },
-	                y: {
-	                    stacked: true,
-	                    beginAtZero: true
-	                }
-	            },
-	            plugins: {
-	                legend: {
-	                    display: true,
-	                    position: 'bottom',
-	                },
-	                title: {
-	                    display: true,
-	                    text: 'Stacked Column Chart with Annotations'
-	                }
-	            }
-	        }
-	    });
-	});
-	
+        const ctx = document.getElementById('my-chart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                datasets: [{
+                    label: 'Dataset 1',
+                    data: [-60, 20, -30, 40, -50, 60, -70],
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    yAxisID: 'y',
+                }, {
+                    label: 'Dataset 2',
+                    data: [10, -20, 30, -40, 50, -60, 70],
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    yAxisID: 'y1'
+                }]
+            },
+            options: {
+                responsive: true,
+                interaction: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                stacked: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Chart.js Line Chart - Multi Axis'
+                    }
+                },
+                scales: {
+                    y: {
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                    },
+                    y1: {
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+                        grid: {
+                            drawOnChartArea: false,
+                        },
+                    },
+                }
+            }
+        });
+    });
 	
 	
 	

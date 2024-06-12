@@ -1,6 +1,7 @@
 package com.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -46,7 +47,27 @@ public class Statistics extends HttpServlet {
         fromDate = statisticService.convertDateFormat(fromDate);
         toDate = statisticService.convertDateFormat(toDate);
         req.setAttribute("ErrorByDate_Statistics", statisticService.getAlertbyTimestamp_Statistics(Camera_Name, fromDate, toDate));
+        List<CameraError> cameraErrors = new ArrayList<>();
+        cameraErrors = statisticService.getAlertbyTimestamp_Statistics(Camera_Name, fromDate, toDate);
+		Map<String, List<CameraError>> partitionedMap = statisticService.partitionByErrorType(cameraErrors);
+
+		// Lấy ra 3 List tương ứng với mỗi error_type
+		List<CameraError> list1 = partitionedMap.get("area");
+		List<CameraError> list2 = partitionedMap.get("body");
+		List<CameraError> list3 = partitionedMap.get("machine");
+		int[] detections1 = new int[7];
+		int[] detections2 = new int[7];
+		int[] detections3 = new int[7];
+		detections1 = StatisticService.countByWeekday(list1);
+		detections2 = StatisticService.countByWeekday(list2);
+		detections3 = StatisticService.countByWeekday(list3);
+		req.setAttribute("Static1", detections1);
+		req.setAttribute("Static2", detections2);
+		req.setAttribute("Static3", detections3);
+		
+
         req.getRequestDispatcher("/statistics.jsp").forward(req, resp); 
+        
 	}
 	
 

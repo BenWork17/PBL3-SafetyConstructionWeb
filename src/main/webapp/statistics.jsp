@@ -170,20 +170,27 @@
         const myChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
                 datasets: [{
-                    label: 'Dataset 1',
-                    data: [-60, 20, -30, 40, -50, 60, -70],
+                    label: 'BODY',
+                    data: [-60, 20, -30, 40, -50, 30, -70],
                     borderColor: 'rgba(255, 99, 132, 1)',
                     backgroundColor: 'rgba(255, 99, 132, 0.2)',
                     yAxisID: 'y',
                 }, {
-                    label: 'Dataset 2',
+                    label: 'AREA',
                     data: [10, -20, 30, -40, 50, -60, 70],
                     borderColor: 'rgba(54, 162, 235, 1)',
                     backgroundColor: 'rgba(54, 162, 235, 0.2)',
                     yAxisID: 'y1'
-                }]
+                }, {
+                    label: 'MACHINE',
+                    data: [13, -20, 30, -40, 70, -60, 7],
+                    borderColor: 'rgb(153, 102, 255)',
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    yAxisID: 'y2'
+                }
+                ]
             },
             options: {
                 responsive: true,

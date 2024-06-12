@@ -1,3 +1,5 @@
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.Map"%>
 <%@page import="model.CameraError"%>
 <%@page import="com.google.gson.Gson"%>
 <%@page import="model.CameraProject"%>
@@ -20,7 +22,19 @@
 	List<CameraProject> cameraProjects3 = (List<CameraProject>) request.getAttribute("CameraProject_Statistics");
     List<CameraError> cameraErrors = (List<CameraError>) request.getAttribute("ErrorByDate_Statistics");
 
+
+	// Generate JSON for error types and their counts
+
+	Map<String, Integer> errorTypeCounts = new HashMap<>();
+	if (cameraErrors != null) {
+	    for (CameraError error : cameraErrors) {
+	        String errorType = error.getError_type();
+	        errorTypeCounts.put(errorType, errorTypeCounts.getOrDefault(errorType, 0) + 1);
+	    }
+	}
+	String errorTypeCountsJson = new Gson().toJson(errorTypeCounts);
 	%>
+	
 <body>
     <div id="header"></div>
     <div class="wrapper">
@@ -111,7 +125,44 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
 	<script >
+	
+	
+<%--     document.addEventListener('DOMContentLoaded', () => {
+        const ctx = document.getElementById('my-chart').getContext('2d');
+        
+        // Parse the error type counts from the JSON
+        const errorTypeCounts = <%= errorTypeCountsJson %>;
+
+        // Extract labels and data for the chart
+        const labels = Object.keys(errorTypeCounts);
+        const data = Object.values(errorTypeCounts);
+
+        const myChart = new Chart(ctx, {
+            type: 'bar', // Change to 'bar' for a bar chart
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Error Types',
+                    data: data,
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    });
+	 --%>
+	
 	document.addEventListener('DOMContentLoaded', () => {
         const ctx = document.getElementById('my-chart').getContext('2d');
         const myChart = new Chart(ctx, {
@@ -163,9 +214,6 @@
             }
         });
     });
-	
-	
-	
 	
 
 	const Data =[

@@ -101,6 +101,7 @@ List<CameraProject> cameraProject11=(List<CameraProject>) request.getAttribute("
 								<thead>
 									<tr>
 										<th>Time</th>
+										<th>Error Type</th>
 										<th>Detection</th>
 									</tr>
 								</thead>
@@ -111,6 +112,7 @@ List<CameraProject> cameraProject11=(List<CameraProject>) request.getAttribute("
 									    for (int i = 0; i < cameraerror1.size(); i++) {
 									%>
 									        <tr>
+									        	<td><%= cameraerror1.get(i).getTimesptamp() %></td>
 									            <td><%= cameraerror1.get(i).getError_type() %></td>
 									            <td><%= cameraerror1.get(i).getdescript() %></td>
 									        </tr>

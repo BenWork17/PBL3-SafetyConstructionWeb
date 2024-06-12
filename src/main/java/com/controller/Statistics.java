@@ -1,6 +1,8 @@
 package com.controller;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,6 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
+import model.CameraError;
 import service.CameraProjectService;
 import service.StatisticService;
 
@@ -24,6 +29,11 @@ public class Statistics extends HttpServlet {
 		// TODO Auto-generated method stub
 		req.setAttribute("CameraProject_Statistics", cameraProjectService.getCameraProject());
 		req.getRequestDispatcher("/statistics.jsp").forward(req, resp);
+		//adchart
+        String cameraName = req.getParameter("cameraName");
+        String fromDate = req.getParameter("fromDate");
+        String toDate = req.getParameter("toDate");
+        
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -38,4 +48,7 @@ public class Statistics extends HttpServlet {
         req.setAttribute("ErrorByDate_Statistics", statisticService.getAlertbyTimestamp_Statistics(Camera_Name, fromDate, toDate));
         req.getRequestDispatcher("/statistics.jsp").forward(req, resp); 
 	}
+	
+
+	
 }

@@ -44,6 +44,7 @@ public class CameraProjectRepository {
 		}
 		return list;
 	}
+
 	public int addCameraProject(String Camera_name, String IP_address, String Status, String Project_Name) {
 	    Connection connection = sqlseverConnection.getConnection();
 	    String query1 = "SELECT Project_ID FROM Project WHERE Project_name = ?";

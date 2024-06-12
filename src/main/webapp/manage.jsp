@@ -202,6 +202,26 @@ List<CameraProject> cameraProject=(List<CameraProject>) request.getAttribute("Ca
     	        });
     			
     		});
+     		$('#btn_add_cam').click(function(ev){
+    			ev.preventDefault()
+    			var camera_name = $('#Camera_name').val()
+    			var ip_adress = $('#IP_address').val()
+    			var status = $('#Status').val()
+				var project_name = $('#Project').val()
+    			$.ajax({
+    				method:"POST",
+    				url:"http://localhost:8081/pbl3/api/addcamera",
+    				data:{
+    					cameraame:camera_name,
+    					ipadress:ip_adress,
+    					status:status,
+    					projectname:project_name
+    				}
+    			}).done(function(data){
+    				
+    			});
+    			
+    		}) 
     		    		
     	})
     </script>
@@ -299,7 +319,7 @@ List<CameraProject> cameraProject=(List<CameraProject>) request.getAttribute("Ca
         }
         
         
-        function saveCamera(event) {
+/*         function saveCamera(event) {
             event.preventDefault();
             var camera_name = $('#Camera_name').val();
             var ip_address = $('#IP_address').val();
@@ -334,7 +354,7 @@ List<CameraProject> cameraProject=(List<CameraProject>) request.getAttribute("Ca
             }).fail(function() {
                 alert('Failed to add camera');
             });
-        }
+        } */
 
 		 function saveModifyUser(event) {
 			    event.preventDefault();

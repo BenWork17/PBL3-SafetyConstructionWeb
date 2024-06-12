@@ -214,9 +214,10 @@
                        <div class="element-icon"></div>
                        <div class="element-area"> ${item.Project_name}</div>
                        <div class="element-name-cctv">${item.Camera_name}</div>
-                       <div class="element-status-cctv"></div>
+
                        <div class="element-bookmark">
-                           <button onclick="toggleBookmark(this)"><i class="fas fa-bell"></i></button>
+                       <button class="bookmark-btn" onclick="toggleBookmark('${item.Project_name}', '${item.Camera_name}', '${item.IP_address}', this)">
+						Bookmark</button>
                        </div>
                    </div>
                    <div class="element-notifications">
@@ -287,13 +288,13 @@
             bookmark.IP_address === ipAddress
         );
 
-        if (index === -1) {
+         if (index === -1) {
             bookmarkedItems.push(item);
-            button.textContent = 'Bookmarked';
+            button.textContent = 'Bookmark';
         } else {
             bookmarkedItems.splice(index, 1);
             button.textContent = 'Bookmark';
-        }
+        } 
     }
 
     </script>

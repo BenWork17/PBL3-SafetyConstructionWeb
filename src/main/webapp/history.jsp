@@ -7,12 +7,8 @@
     pageEncoding="UTF-8"%>
 
     
-    
 <!DOCTYPE html>
 <html lang="en">
-
-
-
 
 <head>
     <meta charset="UTF-8">
@@ -22,11 +18,8 @@
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 <%
-List<CameraProject> cameraProjects1= (List<CameraProject>) request.getAttribute("CameraProject1");
-
+List<CameraProject> cameraProjects1 = (List<CameraProject>) request.getAttribute("CameraProject1");
 %>
-
-
 
 <body>
     <div id="header"></div>
@@ -40,7 +33,7 @@ List<CameraProject> cameraProjects1= (List<CameraProject>) request.getAttribute(
                     <h3>Search Detection History</h3>
                     <p>Retrieve alarms history based on detection period and location</p>
                 </div>
-                <form class="item-button" action="http://localhost:8081/pbl3/history" method="post">
+                <form class="item-button" action="http://localhost:8081/pbl3/history" method="post" onsubmit="return Search();">
                     <div class="button-onsite">
                         <div class="name-button">Onsite</div>
                         <div class="content-button">
@@ -53,10 +46,9 @@ List<CameraProject> cameraProjects1= (List<CameraProject>) request.getAttribute(
                             <div class="name-button">Channel</div>
                             <div class="content-button">
                                 <div class="selects">
-                                    <select class=" customSelect" name="customSelect2a" id="customSelect2">
+                                    <select class="customSelect" name="customSelect2a" id="customSelect2">
                                     </select>
                                 </div>
-
                             </div>
                         </div>
                         <div class="date-time" id="date-picker">
@@ -64,7 +56,7 @@ List<CameraProject> cameraProjects1= (List<CameraProject>) request.getAttribute(
                             <span>To: <input id="to" name="toDate" type="text"></span>
                         </div>
                         <div class="button-search">
-                            <button type ="submit" onclick="Search()">Search<i class="fas fa-search"></i></button>
+                            <button type="submit">Search<i class="fas fa-search"></i></button>
                         </div>
                     </div>
                 </form>
@@ -72,82 +64,78 @@ List<CameraProject> cameraProjects1= (List<CameraProject>) request.getAttribute(
             <div class="box-inquiry">
                 <div class="item-title">
                     <h3>Detection History Inquiry</h3>
-                    <span class="span-nd">Search :All CH& Period - 2004-04-14 to 2004-05-23</span>
+                    <span class="span-nd">
+                    	Information After Query
+                    </span>
                 </div>
                 <div class="inquiry">
-                	<table>
+                    <table>
                         <thead>
-                          <tr>
-                            <th>#</th>
-                            <th>Time</th>
-                            <th>Status</th>
-                            <th>OnSite</th>
-                            <th>Channel</th>
-<!--                             <th>Time</th>
- -->                            <th>Error</th>
-                            <th>View details</th>
-                          </tr>
+                            <tr>
+                                <th>#</th>
+                                <th>Time</th>
+                                <th>Status</th>
+                                <th>OnSite</th>
+                                <th>Channel</th>
+                                <th>Error</th>
+                                <th>View details</th>
+                            </tr>
                         </thead>
                         <tbody>
-	                      
-							<%
-							List<CameraError> cameraError = (List<CameraError>) request.getAttribute("ErrorByDate");
-							if (cameraError != null) {
-							    for (int i = 0; i < cameraError.size(); i++) {
-							%>
-							        <tr>
-							            <td><%= (i + 1) %></td>
-							            <td><%= cameraError.get(i).getTimesptamp() %></td>
-							            <td><%= cameraError.get(i).getStastus() %></td>
-							            <td><%= cameraError.get(i).getProject_Name() %></td>
-							            <td><%= cameraError.get(i).getCamera_name() %></td>
-							            <td><%= cameraError.get(i).getError_type() %></td>
-							            <td><%= cameraError.get(i).getdescript() %></td>
-							        </tr>
-							<%
-							    }
-							} else {
-							%>
-							    <tr>
-							        <td colspan="6">No errors found.</td>
-							    </tr>
-							<%
-							}
-							%>
-                            </tbody>
-                      </table>
+                            <%
+                            List<CameraError> cameraError = (List<CameraError>) request.getAttribute("ErrorByDate");
+                            if (cameraError != null) {
+                                for (int i = 0; i < cameraError.size(); i++) {
+                            %>
+                            <tr>
+                                <td><%= (i + 1) %></td>
+                                <td><%= cameraError.get(i).getTimesptamp() %></td>
+                                <td><%= cameraError.get(i).getStastus() %></td>
+                                <td><%= cameraError.get(i).getProject_Name() %></td>
+                                <td><%= cameraError.get(i).getCamera_name() %></td>
+                                <td><%= cameraError.get(i).getError_type() %></td>
+                                <td><%= cameraError.get(i).getdescript() %></td>
+                            </tr>
+                            <%
+                                }
+                            } else {
+                            %>
+                            <tr>
+                                <td colspan="7">No errors found.</td>
+                            </tr>
+                            <%
+                            }
+                            %>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
         <script src="./common/heardcm.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <script >
-        fetch('./header.jsp')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('header').innerHTML = data;
-        })
-        .catch(error => console.error('Error fetching header:', error));
-            
-        
-        	
+        <script>
+            fetch('./header.jsp')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('header').innerHTML = data;
+                })
+                .catch(error => console.error('Error fetching header:', error));
 
-			const Data =[
-				<%for(int i=0;i < cameraProjects1.size();i++){%>
-				{
-					name: '<%= cameraProjects1.get(i).getCamera_name() %>',
-		            area: '<%= cameraProjects1.get(i).getProject_name() %>'
-					
-				}
-				<% if(i < cameraProjects1.size() - 1) { %>,<% } %>
-	        <% } %>
-			];
-			
+            const Data = [
+                <% for (int i = 0; i < cameraProjects1.size(); i++) { %>
+                {
+                    name: '<%= cameraProjects1.get(i).getCamera_name() %>',
+                    area: '<%= cameraProjects1.get(i).getProject_name() %>'
+                }
+                <% if (i < cameraProjects1.size() - 1) { %>, <% } %>
+                <% } %>
+            ];
+
             var customSelector1 = document.getElementById("customSelect1");
             var customSelector2 = document.getElementById("customSelect2");
             var addedOptions = new Set();
-            Data.forEach(function(item) {
+            Data.forEach(function (item) {
                 if (!addedOptions.has(item.area)) {
                     var option = document.createElement("option");
                     option.value = item.area;
@@ -156,71 +144,69 @@ List<CameraProject> cameraProjects1= (List<CameraProject>) request.getAttribute(
                     addedOptions.add(item.area);
                 }
             });
-			
-            function updateCustomSelector1(area) {
-                // Clear existing options
-                customSelector1.innerHTML = '';
 
-                // Filter Data to get names for the selected area
-                Data.filter(item => item.area === area).forEach(function(item) {
+            function updateCustomSelector1(area) {
+                customSelector1.innerHTML = '';
+                Data.filter(item => item.area === area).forEach(function (item) {
                     var option = document.createElement("option");
                     option.value = item.name;
                     option.text = item.name;
                     customSelector1.appendChild(option);
                 });
             }
-            
-            customSelector2.addEventListener('change', function() {
+
+            customSelector2.addEventListener('change', function () {
                 var selectedArea = this.value;
                 updateCustomSelector1(selectedArea);
             });
-            
+
             if (customSelector2.options.length > 0) {
                 updateCustomSelector1(customSelector2.options[0].value);
             }
-            
-            
+
             function Search() {
                 var fromDate = document.getElementById("from").value;
                 var toDate = document.getElementById("to").value;
-                var selectedOnsite = document.getElementById("customSelect1").value; // Sửa đổi ở đây
+                var selectedOnsite = document.getElementById("customSelect1").value;
+
                 if (!selectedOnsite) {
                     alert("Please select an onsite.");
-                    return;
+                    return false;  
                 }
-            
+
                 if (!fromDate || !toDate) {
                     alert("Please select both start and end dates.");
-                    return;
+                    return false;  
                 }
-            
+                var fromDateObj = new Date(document.getElementById("from").value);
+                var toDateObj = new Date(document.getElementById("to").value);
+
+                if (fromDateObj > toDateObj) {
+                    alert("End date must be greater than start date");
+                    return false;  
+                }
+
+                alert('Search success');
+
                 var formattedFromDate = formatDate(fromDate);
                 var formattedToDate = formatDate(toDate);
-            
-                var historyText = `Search: "${selectedOnsite}" CH& Period - ${formattedFromDate} to ${formattedToDate}`;
+
+/*                 var historyText = `Search: "${selectedOnsite}" CH& Period - ${formattedFromDate} to ${formattedToDate}`;
                 document.querySelector('.item-title .span-nd').textContent = historyText;
+ */
+                return true;  
             }
             
+
+
             function formatDate(dateString) {
-                var [day, month, year] = dateString.split('/');
+                var dateParts = dateString.split('/');
+                var day = dateParts[0];
+                var month = dateParts[1];
+                var year = dateParts[2];
                 return `${year}-${month}-${day}`;
             }
-            
 
-            function search() {
-                var fromDate = new Date(document.getElementById("from").value);
-                var toDate = new Date(document.getElementById("to").value);
-
-                if (fromDate > toDate) {
-                    alert("End date must be greater than start date");
-                    return;
-                }
-
-                // Thực hiện tìm kiếm dựa trên fromDate và toDate
-                // Viết mã tìm kiếm ở đây
-            }
-
-            // Khởi tạo datepicker cho input "From" và "To"
             document.addEventListener("DOMContentLoaded", function () {
                 var fromDate, toDate;
                 document.getElementById("from").addEventListener("click", function () {
@@ -251,11 +237,6 @@ List<CameraProject> cameraProjects1= (List<CameraProject>) request.getAttribute(
                     $(`#${id}`).datepicker(datePickerConfig).datepicker("show");
                 }
             });
-            
-            
-            
-
-
         </script>
 </body>
 

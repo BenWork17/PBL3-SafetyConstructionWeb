@@ -170,22 +170,22 @@ hr{
 .element-type{
     height:50%;
     display: flex;
-    justify-content: center;
     align-items: center;
     margin-top: 5px;
 }
 .element-icon{
     width: 15px;
     height:15px;
+    margin-left:5px;
     background-color: red;
     border-radius: 50%;
 }
 .element-area{
-    width: 50px;
+    width: auto;
     margin:0px 10px;
 }
 .element-name-cctv{
-    width: 50px;
+    width: auto;
     margin-left: 10px;
 }
 .element-status-cctv{
@@ -193,7 +193,8 @@ hr{
     margin-left: 10px;
 }
 .element-bookmark{
-    width: 20px;
+    width: 65px;
+    margin-left: auto;
 }
 .element-notifications{
     height:50%;

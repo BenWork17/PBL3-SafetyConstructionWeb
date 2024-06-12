@@ -48,7 +48,7 @@
                         <h3>Search Onsite Statistics</h3>
                         <p>Set statistical data period</p>
                     </div>
-                    <form class="element-search" action="http://localhost:8081/pbl3/statistics" method="post">
+                    <form class="element-search" action="http://localhost:8081/pbl3/statistics" method="post" onsubmit="return Search();">
                         <div class="button">
                             <div class="button1"><span>Onsite</span></div>
                             <div class="button2" >
@@ -59,13 +59,13 @@
                             <span>From: <input id="from" type="text" name="fromDate"></span>
                             <span>To: <input id="to" type="text" name="toDate"></span>
                         </div>
-                        <button type="submit" class="button-search" onclick="Search()">Search<i class="fas fa-search"></i><span></span></button>
+                        <button type="submit" class="button-search" >Search<i class="fas fa-search"></i><span></span></button>
                     </form>
                 </div>
                 <div class="all-detection-history">
                     <div class="element-title">
                         <h3>All Detection History</h3>
-                        <span>Search :All CH& Period - 2004-04-14 to 2004-05-23</span>
+                        <span>Information After Query</span>
                     </div>
                     <div class="box-inquiry">
 	                    <div class="inquiry">
@@ -127,44 +127,8 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    
+   
 	<script >
-	
-	
-<%--     document.addEventListener('DOMContentLoaded', () => {
-        const ctx = document.getElementById('my-chart').getContext('2d');
-        
-        // Parse the error type counts from the JSON
-        const errorTypeCounts = <%= errorTypeCountsJson %>;
-
-        // Extract labels and data for the chart
-        const labels = Object.keys(errorTypeCounts);
-        const data = Object.values(errorTypeCounts);
-
-        const myChart = new Chart(ctx, {
-            type: 'bar', // Change to 'bar' for a bar chart
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: 'Error Types',
-                    data: data,
-                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                    borderColor: 'rgba(255, 99, 132, 1)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    });
-	 --%>
-	
 	document.addEventListener('DOMContentLoaded', () => {
         const ctx = document.getElementById('my-chart').getContext('2d');
         const myChart = new Chart(ctx, {
@@ -240,26 +204,36 @@
 	});
 
 
-	function search() {
+	function Search() {
 	    var fromDate = document.getElementById("from").value;
 	    var toDate = document.getElementById("to").value;
 	    var selectedOnsite = document.getElementById("customSelect").value;
 
-	    if (!selectedOnsite) {
-	        alert("Please select an onsite.");
-	        return;
-	    }
+        if (!selectedOnsite) {
+            alert("Please select an onsite.");
+            return false;  
+        }
 
-	    if (!fromDate || !toDate) {
-	        alert("Please select both start and end dates.");
-	        return;
-	    }
+        if (!fromDate || !toDate) {
+            alert("Please select both start and end dates.");
+            return false;  
+        }
+        var fromDateObj = new Date(document.getElementById("from").value);
+        var toDateObj = new Date(document.getElementById("to").value);
+
+        if (fromDateObj > toDateObj) {
+            alert("End date must be greater than start date");
+            return false;  
+        }
+
+        alert('Search success');
 
 	    var formattedFromDate = formatDate(fromDate);
 	    var formattedToDate = formatDate(toDate);
 
-	    var historyText = `Search: "${selectedOnsite}" CH& Period - ${formattedFromDate} to ${formattedToDate}`;
+/* 	    var historyText = `Search: "${selectedOnsite}" CH& Period - ${formattedFromDate} to ${formattedToDate}`;
 	    document.querySelector('.all-detection-history span').textContent = historyText;
+	     */
 	}
 
 	function formatDate(dateString) {

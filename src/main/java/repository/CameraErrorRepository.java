@@ -101,7 +101,7 @@ public class CameraErrorRepository {
 	public List<CameraError> getAlertbyTimestamp(String cameraname, String Project_name, String Date_1, String Date_2) {
 		List<CameraError> list = new ArrayList<>();
 		Connection connection = sqlseverConnection.getConnection();
-		String query = "SELECT Cameras.Camera_ID,Cameras.Camera_name,Cameras.IP_address,Status,Project_Name, Error_type, descript\r\n"
+		String query = "SELECT Cameras.Camera_ID,Cameras.Camera_name,Cameras.IP_address,Status,Project_Name, Error_type,Alerts.Timestamp, descript\r\n"
 				+ "fROM Cameras\r\n"
 				+ "INNER JOIN Project ON Project.Project_ID = Cameras.Project_ID\r\n"
 				+ "INNER JOIN Alerts ON Cameras.Camera_ID = Alerts.Camera_ID\r\n"
@@ -122,6 +122,7 @@ public class CameraErrorRepository {
 				cameraError.setStastus(resultSet.getString("Status"));
 				cameraError.setProject_Name(resultSet.getString("Project_Name"));
 				cameraError.setError_type(resultSet.getString("Error_type"));
+				cameraError.setTimesptamp(resultSet.getString("Timestamp"));
 				cameraError.setdescript(resultSet.getString("descript"));
 				list.add(cameraError);
 			}
@@ -143,7 +144,7 @@ public class CameraErrorRepository {
 	public List<CameraError> getAlertbyTimestamp_Statistics(String cameraname, String Date_1, String Date_2) {
 		List<CameraError> list = new ArrayList<>();
 		Connection connection = sqlseverConnection.getConnection();
-		String query = "SELECT Cameras.Camera_ID,Cameras.Camera_name,Cameras.IP_address,Status,Project_Name, Error_type, descript\r\n"
+		String query = "SELECT Cameras.Camera_ID,Cameras.Camera_name,Cameras.IP_address,Status,Project_Name, Error_type,Alerts.Timestamp, descript\r\n"
 				+ "fROM Cameras\r\n"
 				+ "INNER JOIN Project ON Project.Project_ID = Cameras.Project_ID\r\n"
 				+ "INNER JOIN Alerts ON Cameras.Camera_ID = Alerts.Camera_ID\r\n"
@@ -163,6 +164,7 @@ public class CameraErrorRepository {
 				cameraError.setStastus(resultSet.getString("Status"));
 				cameraError.setProject_Name(resultSet.getString("Project_Name"));
 				cameraError.setError_type(resultSet.getString("Error_type"));
+				cameraError.setTimesptamp(resultSet.getString("Timestamp"));
 				cameraError.setdescript(resultSet.getString("descript"));
 				list.add(cameraError);
 			}
@@ -180,21 +182,21 @@ public class CameraErrorRepository {
 		return list;
 	}
 
-//	public static void main(String[] args) {
-//		CameraErrorRepository cam = new CameraErrorRepository();
-//		List<CameraError> list = cam.getAlertbyTimestamp("Camera1", "SiteA", "2023-05-01","2024-05-08");
-//		for(CameraError o : list) {
-//			System.out.println(o);
-//		}
-//	}
-
-
 	public static void main(String[] args) {
 		CameraErrorRepository cam = new CameraErrorRepository();
-		List<CameraError> list = cam.getTop10CameraAndError();
+		List<CameraError> list = cam.getAlertbyTimestamp("Camera1", "SiteA", "2023-05-01","2024-05-08");
 		for(CameraError o : list) {
 			System.out.println(o);
 		}
 	}
+
+
+//	public static void main(String[] args) {
+//		CameraErrorRepository cam = new CameraErrorRepository();
+//		List<CameraError> list = cam.getTop10CameraAndError();
+//		for(CameraError o : list) {
+//			System.out.println(o);
+//		}
+//	}
 
 }

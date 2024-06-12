@@ -44,36 +44,51 @@ public class CameraProjectRepository {
 		}
 		return list;
 	}
-	public int addCameraProject(String Camera_name, String IP_address,String Status,String Project_Name) {
-		Connection connection = sqlseverConnection.getConnection();
-		String query = "DECLARE @site_id INT\r\n"
-				+ "SET @site_id = (SELECT Project_ID FROM Project WHERE Project_name = ?)\r\n"
-				+ "INSERT INTO Cameras (Camera_name, IP_address, Status, Project_ID) VALUES\r\n"
-				+ "(?, ?, ?, @site_id)";
-		int isAdd =0;
-		try {
-			PreparedStatement preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setString(1, Project_Name);
-			preparedStatement.setString(2, Camera_name);
-			preparedStatement.setString(3, IP_address);
-			preparedStatement.setString(4, Status);
 
-			isAdd = preparedStatement.executeUpdate();
+	public int addCameraProject(String Camera_name, String IP_address, String Status, String Project_Name) {
+	    Connection connection = sqlseverConnection.getConnection();
+	    String query1 = "SELECT Project_ID FROM Project WHERE Project_name = ?";
+	    String query2 = "INSERT INTO Cameras (Camera_name, IP_address, Status, Project_ID) VALUES (?, ?, ?, ?)";
+	    int isAdd = 0;
+	    try {
+	        // Prepare the first statement to get the Project_ID
+	        PreparedStatement preparedStatement1 = connection.prepareStatement(query1);
+	        preparedStatement1.setString(1, Project_Name);
+	        ResultSet resultSet = preparedStatement1.executeQuery();
 
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (connection != null) {
-					connection.close();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return isAdd;
-		
+	        int site_id = -1;
+	        if (resultSet.next()) {
+	            site_id = resultSet.getInt("Project_ID");
+	        }
+	        
+	        // Check if the Project_ID was found
+	        if (site_id == -1) {
+	            throw new SQLException("Project not found");
+	        }
+
+	        // Prepare the second statement to insert the camera
+	        PreparedStatement preparedStatement2 = connection.prepareStatement(query2);
+	        preparedStatement2.setString(1, Camera_name);
+	        preparedStatement2.setString(2, IP_address);
+	        preparedStatement2.setString(3, Status);
+	        preparedStatement2.setInt(4, site_id);
+
+	        isAdd = preparedStatement2.executeUpdate();
+
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        try {
+	            if (connection != null) {
+	                connection.close();
+	            }
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	    }
+	    return isAdd;
 	}
+
 	public int DeleteCameraProjectByID(int id) {
 		Connection connection = sqlseverConnection.getConnection();
 		String query = "DELETE FROM Cameras WHERE Camera_ID = ?";
@@ -140,9 +155,9 @@ public class CameraProjectRepository {
 	public static void main(String[] args) {
 		CameraProjectRepository cam = new CameraProjectRepository();
 		List<CameraProject> list = cam.getCameraAndProject();
-		for (CameraProject o : list) {
-			System.out.println(o);
-		}
+		cam.addCameraProject("tesst", "1.1", "active", "SiteA");
+		System.out.println("1");
+
 	}
 
 

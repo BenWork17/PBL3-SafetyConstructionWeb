@@ -73,6 +73,7 @@
 		                        <thead>
 		                          <tr>
 		                            <th>#</th>
+		                            <th>Time</th>
 		                            <th>Status</th>
 		                            <th>OnSite</th>
 		                            <th>Channel</th>
@@ -90,6 +91,7 @@
 									%>
 									        <tr>
 									            <td><%= (i + 1) %></td>
+									            <td><%= cameraError.get(i).getTimesptamp() %></td>
 									            <td><%= cameraError.get(i).getStastus() %></td>
 									            <td><%= cameraError.get(i).getProject_Name() %></td>
 									            <td><%= cameraError.get(i).getCamera_name() %></td>

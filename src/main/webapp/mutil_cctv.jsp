@@ -130,7 +130,7 @@
                         </div>
                     </div>
                 `;
-                DATA = cam.filter(item => item.Project_name === 'SITE-A');
+                DATA = cam.filter(item => item.Project_name === 'SiteA');
                 renderPage(DATA, '.cctv-view-content', '.previous', '.next', '.page-number');
                 break;
             case 'site-B':
@@ -149,7 +149,7 @@
                         </div>
                     </div>
                 `;
-                DATA = cam.filter(item => item.Project_name === 'SITE-B');
+                DATA = cam.filter(item => item.Project_name === 'SiteB');
                 renderPage(DATA, '.cctv-view-content', '.previous', '.next', '.page-number');
                 break;
             case 'underground-vertical-zone':
@@ -168,7 +168,7 @@
                         </div>
                     </div>
                 `;
-                DATA = cam.filter(item => item.Project_name === 'Underground Vertical Zone');
+                DATA = cam.filter(item => item.Project_name === 'Underground');
                 renderPage(DATA, '.cctv-view-content', '.previous', '.next', '.page-number');
                 break;
             case 'show-bookmark':

@@ -182,21 +182,21 @@ public class CameraErrorRepository {
 		return list;
 	}
 
-	public static void main(String[] args) {
-		CameraErrorRepository cam = new CameraErrorRepository();
-		List<CameraError> list = cam.getAlertbyTimestamp("Camera1", "SiteA", "2023-05-01","2024-05-08");
-		for(CameraError o : list) {
-			System.out.println(o);
-		}
-	}
-
-
 //	public static void main(String[] args) {
 //		CameraErrorRepository cam = new CameraErrorRepository();
-//		List<CameraError> list = cam.getTop10CameraAndError();
+//		List<CameraError> list = cam.getAlertbyTimestamp("Camera1", "SiteA", "2023-05-01","2024-05-08");
 //		for(CameraError o : list) {
 //			System.out.println(o);
 //		}
 //	}
+
+
+	public static void main(String[] args) {
+		CameraErrorRepository cam = new CameraErrorRepository();
+		List<CameraError> list = cam.getTop10CameraAndError();
+		for(CameraError o : list) {
+			System.out.println(o);
+		}
+	}
 
 }

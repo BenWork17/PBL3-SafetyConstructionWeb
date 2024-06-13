@@ -52,8 +52,8 @@ public class Statistics extends HttpServlet {
 		Map<String, List<CameraError>> partitionedMap = statisticService.partitionByErrorType(cameraErrors);
 
 		// Lấy ra 3 List tương ứng với mỗi error_type
-		List<CameraError> list1 = partitionedMap.get("area");
-		List<CameraError> list2 = partitionedMap.get("hat");
+		List<CameraError> list1 = partitionedMap.get("body");
+		List<CameraError> list2 = partitionedMap.get("area");
 		List<CameraError> list3 = partitionedMap.get("area");
 		int[] detections1 = new int[7];
 		int[] detections2 = new int[7];

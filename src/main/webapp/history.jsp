@@ -35,15 +35,8 @@ List<CameraProject> cameraProjects1 = (List<CameraProject>) request.getAttribute
                 </div>
                 <form class="item-button" action="http://localhost:8081/pbl3/history" method="post" onsubmit="return Search();">
                     <div class="button-onsite">
-                        <div class="name-button">Onsite</div>
-                        <div class="content-button">
-                            <div class="selects">
-                                <select class="customSelect" name="customSelect1a" id="customSelect1">
-                                </select>
-                            </div>
-                        </div>
-                        <div class="button-channel">
-                            <div class="name-button">Channel</div>
+                    	<div class="button-channel">
+                            <div class="name-button">Onsite</div>
                             <div class="content-button">
                                 <div class="selects">
                                     <select class="customSelect" name="customSelect2a" id="customSelect2">
@@ -51,6 +44,14 @@ List<CameraProject> cameraProjects1 = (List<CameraProject>) request.getAttribute
                                 </div>
                             </div>
                         </div>
+                        <div class="name-button">Channel</div>
+                        <div class="content-button">
+                            <div class="selects">
+                                <select class="customSelect" name="customSelect1a" id="customSelect1">
+                                </select>
+                            </div>
+                        </div>
+                        
                         <div class="date-time" id="date-picker">
                             <span>From: <input id="from" name="fromDate" type="text"></span>
                             <span>To: <input id="to" name="toDate" type="text"></span>

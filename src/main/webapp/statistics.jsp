@@ -53,7 +53,7 @@
                     </div>
                     <form class="element-search" action="http://localhost:8081/pbl3/statistics" method="post" onsubmit="return Search();">
                         <div class="button">
-                            <div class="button1"><span>Onsite</span></div>
+                            <div class="button1"><span>Channel</span></div>
                             <div class="button2" >
                                 <select id="customSelect"  name="customSelect1a"></select>
                             </div>

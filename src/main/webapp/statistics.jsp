@@ -152,13 +152,13 @@
                     data: statis2,
                     borderColor: 'rgba(54, 162, 235, 1)',
                     backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                    yAxisID: 'y1'
+                    yAxisID: 'y'
                 }, {
                     label: 'MACHINE',
                     data: statis3,
                     borderColor: 'rgb(153, 102, 255)',
                     backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                    yAxisID: 'y2'
+                    yAxisID: 'y'
                 }
                 ]
             },

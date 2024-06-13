@@ -19,6 +19,9 @@
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 	<%
+	int[] statis1=(int[]) request.getAttribute("Static1");
+	int[] statis2=(int[]) request.getAttribute("Static2");
+	int[] statis3=(int[]) request.getAttribute("Static3");
 	List<CameraProject> cameraProjects3 = (List<CameraProject>) request.getAttribute("CameraProject_Statistics");
     List<CameraError> cameraErrors = (List<CameraError>) request.getAttribute("ErrorByDate_Statistics");
 
@@ -129,6 +132,9 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
    
 	<script >
+	var statis1 = <%= java.util.Arrays.toString(statis1) %>;
+	var statis2 = <%= java.util.Arrays.toString(statis2) %>;
+	var statis3 = <%= java.util.Arrays.toString(statis3) %>;
 	document.addEventListener('DOMContentLoaded', () => {
         const ctx = document.getElementById('my-chart').getContext('2d');
         const myChart = new Chart(ctx, {
@@ -137,19 +143,19 @@
                 labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
                 datasets: [{
                     label: 'BODY',
-                    data: [-60, 20, -30, 40, -50, 30, -70],
+                    data: statis1,
                     borderColor: 'rgba(255, 99, 132, 1)',
                     backgroundColor: 'rgba(255, 99, 132, 0.2)',
                     yAxisID: 'y',
                 }, {
                     label: 'AREA',
-                    data: [10, -20, 30, -40, 50, -60, 70],
+                    data: statis2,
                     borderColor: 'rgba(54, 162, 235, 1)',
                     backgroundColor: 'rgba(54, 162, 235, 0.2)',
                     yAxisID: 'y1'
                 }, {
                     label: 'MACHINE',
-                    data: [13, -20, 30, -40, 70, -60, 7],
+                    data: statis3,
                     borderColor: 'rgb(153, 102, 255)',
                     backgroundColor: 'rgba(54, 162, 235, 0.2)',
                     yAxisID: 'y2'

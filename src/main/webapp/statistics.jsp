@@ -53,7 +53,7 @@
                     </div>
                     <form class="element-search" action="http://localhost:8081/pbl3/statistics" method="post" onsubmit="return Search();">
                         <div class="button">
-                            <div class="button1"><span>Onsite</span></div>
+                            <div class="button1"><span>Channel</span></div>
                             <div class="button2" >
                                 <select id="customSelect"  name="customSelect1a"></select>
                             </div>
@@ -152,13 +152,13 @@
                     data: statis2,
                     borderColor: 'rgba(54, 162, 235, 1)',
                     backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                    yAxisID: 'y1'
+                    yAxisID: 'y'
                 }, {
                     label: 'MACHINE',
                     data: statis3,
                     borderColor: 'rgb(153, 102, 255)',
                     backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                    yAxisID: 'y2'
+                    yAxisID: 'y'
                 }
                 ]
             },

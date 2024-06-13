@@ -180,7 +180,7 @@ List<CameraProject> cameraProject11=(List<CameraProject>) request.getAttribute("
     const Data = [];
     <% } %>
 
-    var customSelector1 = document.getElementById("customSelect1");
+/*     var customSelector1 = document.getElementById("customSelect1");
 		Data.forEach(function (item) {
         var option = document.createElement("option");
         option.value = item.name;
@@ -193,9 +193,38 @@ List<CameraProject> cameraProject11=(List<CameraProject>) request.getAttribute("
         option.value = item.area;
         option.text = item.area;
         customSelector2.appendChild(option);
-    })
+    }) */
 
+    var customSelector1 = document.getElementById("customSelect1");
+    var customSelector2 = document.getElementById("customSelect2");
+    var addedOptions = new Set();
+    Data.forEach(function (item) {
+        if (!addedOptions.has(item.area)) {
+            var option = document.createElement("option");
+            option.value = item.area;
+            option.text = item.area;
+            customSelector2.appendChild(option);
+            addedOptions.add(item.area);
+        }
+    });
+    function updateCustomSelector1(area) {
+        customSelector1.innerHTML = '';
+        Data.filter(item => item.area === area).forEach(function (item) {
+            var option = document.createElement("option");
+            option.value = item.name;
+            option.text = item.name;
+            customSelector1.appendChild(option);
+        });
+    }
+    customSelector2.addEventListener('change', function () {
+        var selectedArea = this.value;
+        updateCustomSelector1(selectedArea);
+    });
 
+    if (customSelector2.options.length > 0) {
+        updateCustomSelector1(customSelector2.options[0].value);
+    }
+    
 
     function updateDateTime() {
         const now = new Date();

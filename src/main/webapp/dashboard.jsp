@@ -34,7 +34,7 @@ String monthlyReportDataJson = (String) request.getAttribute("monthlyReportData"
             <div class="notifications">
                 <div class="item-title-notification">
                     <h5>Weekly Emergency Notification Detection</h5>
-                    <p>Worker Collapsed & Crash</p>
+                    <p>AreaError</p>
                 </div>
                 <div class="item-statistics">
                     <div class="data">
@@ -49,7 +49,7 @@ String monthlyReportDataJson = (String) request.getAttribute("monthlyReportData"
             <div class="notifications">
                 <div class="item-title-notification">
                     <h5>Weekly Danger Notification Detection</h5>
-                    <p>Entry into Hazardous Area</p>
+                    <p>BodyError</p>
                 </div>
                 <div class="item-statistics">
                     <div class="data">
@@ -64,7 +64,7 @@ String monthlyReportDataJson = (String) request.getAttribute("monthlyReportData"
             <div class="notifications">
                 <div class="item-title-notification">
                     <h5>Weekly Warning Notification Detection</h5>
-                    <p>Hard hat Non-Compliance & No Signalman</p>
+                    <p>MachineError</p>
                 </div>
                 <div class="item-statistics">
                     <div class="data">

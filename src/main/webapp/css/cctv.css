@@ -88,7 +88,7 @@
     border-radius: 5px;
     cursor: pointer;
     margin: 10px 0;
-    margin-left: 330px;
+    margin-left: auto;
 }
 .add-p{
     display: flex;

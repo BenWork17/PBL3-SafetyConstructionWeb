@@ -5,3 +5,4 @@ Với việc ứng dụng công nghệ AI trong quản lý an toàn lao động,
 
 Điểm đặc biệt:
 Xây dựng một trang web sử dụng camera tích hợp AI để giám sát công trường đồng thời phát hiện những nơi có thể sẽ xảy ra nguy hiểm cho người công nhân.
+![image](https://github.com/user-attachments/assets/a9262e6a-8cdb-4ebc-aef6-80e6785beb0d)

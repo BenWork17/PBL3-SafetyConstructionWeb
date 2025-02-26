@@ -45,30 +45,19 @@ This project is a **Safety Construction Management System** built using **Java S
 - **Email:** admin@scm.com
 - **Password:** 123456
 
-### **Virtual Payment Account:**
-- **Bank Name:** NCB
-- **Card Number:** 9704198526191432198
-- **Account Name:** NGUYEN VAN B
-- **Release Date:** 07/25
 
 ## 📌 Installation & Setup
 
 1. Clone this repository:
    ```sh
-   git clone https://github.com/yourusername/safety-construction-management.git
+   git clone https://github.com/NoSleep17/PBL3-SafetyConstructionWeb.git
    ```
 2. Import the project into **Eclipse** or **IntelliJ IDEA**.
 3. Configure the **MySQL Database**:
-   - Import `safety_construction.sql` into MySQL.
+   - Import `PBL3-SafetyConstructionWeb.sql` into MySQL.
    - Update `db.properties` with your database credentials.
 4. Run the project using **Apache Tomcat**.
-5. Access the website at `http://localhost:8080/SafetyConstruction`
-
-## 🛠 How to Customize
-
-- Modify UI elements in `webapp` directory.
-- Update database queries in `dao` package.
-- Implement new business logic in `service` package.
+5. Access the website at `http://localhost:8080/PBL3-SafetyConstructionWeb`
 
 ## 🐞 Found a Bug?
 

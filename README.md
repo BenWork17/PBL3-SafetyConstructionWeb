@@ -1,11 +1,85 @@
-# PBL3-SafetyConstructionWeb
-Mô tả dự án:
-Mục tiêu của đề tài này là thiết kế và xây dựng một hệ thống web tiên tiến, sử dụng công nghệ AI để phát hiện các khu vực nguy hiểm trên công trường và đưa ra các biện pháp cải thiện an toàn lao động. Hệ thống này không chỉ giúp nâng cao hiệu quả quản lý mà còn đóng vai trò quan trọng trong việc bảo vệ sức khỏe và tính mạng của công nhân. 
-Với việc ứng dụng công nghệ AI trong quản lý an toàn lao động, đề tài này không chỉ hướng đến việc giảm thiểu rủi ro tai nạn mà còn nâng cao chất lượng và hiệu quả của quá trình xây dựng. Chúng tôi tin rằng, hệ thống này sẽ mang lại những thay đổi tích cực và tạo ra một môi trường làm việc an toàn, bền vững hơn cho tất cả mọi người trên công trường.
+# Safety Construction Management Website
 
-Điểm đặc biệt:
-Xây dựng một trang web sử dụng camera tích hợp AI để giám sát công trường đồng thời phát hiện những nơi có thể sẽ xảy ra nguy hiểm cho người công nhân.
+This project is a **Safety Construction Management System** built using **Java Servlet & JSP**. It helps manage safety protocols, monitor construction activities, and facilitate real-time communication between workers, inspectors, and managers.
 
-<img src="images/demo-ui.png" alt="Demo UI" width="500">
+## 🚀 Features
 
+- **User Authentication & Role-Based Access** (Workers, Inspectors, Managers, Administrators)
+- **Real-Time Communication** using WebSockets
+- **Incident Reporting & Safety Violation Alerts**
+- **Task & Project Management**
+- **AJAX-based Dynamic Updates**
+- **Virtual Payment Integration** for safety training & certification fees
 
+## 🏗️ Technologies Used
+
+### **BackEnd:**
+- Java Servlet & JSP
+- MySQL (Database)
+- JDBC (Database Connection)
+- WebSocket (Real-time Communication)
+
+### **FrontEnd:**
+- HTML, CSS, JavaScript
+- jQuery & AJAX (Dynamic UI Updates)
+
+## 🔗 Live Demo
+
+[Click here to view the demo](http://safetyconstruction-java.ltempurl.com/)
+
+## 🔑 Test Accounts
+
+### **General User Account:**
+- **Username:** safeworker2024
+- **Password:** safeaccess
+
+### **Safety Inspector Account:**
+- **Email:** inspector@scm.com
+- **Password:** 123456
+
+### **Site Manager Account:**
+- **Email:** manager@scm.com
+- **Password:** 123456
+
+### **Administrator Account:**
+- **Email:** admin@scm.com
+- **Password:** 123456
+
+### **Virtual Payment Account:**
+- **Bank Name:** NCB
+- **Card Number:** 9704198526191432198
+- **Account Name:** NGUYEN VAN B
+- **Release Date:** 07/25
+
+## 📌 Installation & Setup
+
+1. Clone this repository:
+   ```sh
+   git clone https://github.com/yourusername/safety-construction-management.git
+   ```
+2. Import the project into **Eclipse** or **IntelliJ IDEA**.
+3. Configure the **MySQL Database**:
+   - Import `safety_construction.sql` into MySQL.
+   - Update `db.properties` with your database credentials.
+4. Run the project using **Apache Tomcat**.
+5. Access the website at `http://localhost:8080/SafetyConstruction`
+
+## 🛠 How to Customize
+
+- Modify UI elements in `webapp` directory.
+- Update database queries in `dao` package.
+- Implement new business logic in `service` package.
+
+## 🐞 Found a Bug?
+
+If you find an issue or want to suggest an improvement, submit an **issue** in the **Issues tab**. PRs are welcome!
+
+## 🚧 Roadmap / Upcoming Features
+
+- **Automated Safety Reports** 📊
+- **AI-based Hazard Detection** 🚧
+- **Multi-language Support** 🌎
+
+## ☕ Like this Project?
+
+If you find this project useful and want to support further development, feel free to **buy me a coffee!** 🚀

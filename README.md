@@ -57,7 +57,7 @@ This project is a **Safety Construction Management System** built using **Java S
    - Import `PBL3-SafetyConstructionWeb.sql` into MySQL.
    - Update `db.properties` with your database credentials.
 4. Run the project using **Apache Tomcat**.
-5. Access the website at `http://localhost:8080/PBL3-SafetyConstructionWeb`
+5. Access the website at `http://localhost:8081/PBL3-SafetyConstructionWeb`
 
 ## 🐞 Found a Bug?
 

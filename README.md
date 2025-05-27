@@ -2,6 +2,19 @@
 
 This project is a **Safety Construction Management System** built using **Java Servlet & JSP**. It helps manage safety protocols, monitor construction activities, and facilitate real-time communication between workers, inspectors, and managers.
 
+## UI
+![image](https://github.com/user-attachments/assets/78f8bbdb-c662-49b4-89c5-2aa4b2447f48)
+![image](https://github.com/user-attachments/assets/18016ef3-cac7-42fd-8a1f-0aa34b4d53fa)
+![image](https://github.com/user-attachments/assets/974e8af3-f940-4e70-8ea5-b12ef07eb612)
+![image](https://github.com/user-attachments/assets/eeb42a18-07dd-429b-9606-fe6f91b33236)
+![image](https://github.com/user-attachments/assets/7fe1361c-0ab9-4e86-9e66-e1d5fa4ed50e)
+![image](https://github.com/user-attachments/assets/a13874ec-bfd7-4c29-afb2-891e07e52c54)
+
+
+
+
+
+
 ## 🚀 Features
 
 - **User Authentication & Role-Based Access** (Workers, Inspectors, Managers, Administrators)
